@@ -37,22 +37,22 @@ wsl --list --online
 ```
 
 ### Instalando distribuições
-Sintaxe:
+**Sintaxe**
 
 `wsl --install -d <nome-da-distribuicao>`
 
-Exemplo de uso:
+**Exemplo de uso:**
 
 ```sh
 wsl --install -d Ubuntu
 ```
 
 ### Acessando distribuições
-Sintaxe:
+**Sintaxe**
 
 `wsl.exe -d <nome-da-distribuicao>`
 
-Exemplo de uso:
+**Exemplo de uso:**
 
 ```sh
 wsl.exe -d Ubuntu
