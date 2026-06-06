@@ -1,4 +1,4 @@
-# Documentação
+# Base de Conhecimento / Laboratório de Estudos
 Este repositório reúne os principais comandos e conceitos estudados, servindo também como um índice para os projetos desenvolvidos ao longo da jornada de aprendizado.
 
 ## Sumário
@@ -13,12 +13,10 @@ Este repositório reúne os principais comandos e conceitos estudados, servindo 
   - [Selecionando a versão](#selecionando-a-versão)
   - [Exibindo distribuições existentes](#exibindo-distribuições-existentes)
   - [Instalando distribuições](#instalando-distribuições)
-    - [Instalando uma distribuição Ubuntu](#instalando-uma-distribuição-ubuntu)
-    - [Instalando uma distribuição Debian](#instalando-uma-distribuição-debian)
 </details>
 
 ## WSL
-> Para trabalhar com o WSL `Windows Subsystem for Linux`, acessar o PowerShell como administrador
+> Para trabalhar com o WSL (Windows Subsystem for Linux), execute o PowerShell como administrador.
 
 ### Atualizando o WSL
 ```sh
@@ -38,16 +36,16 @@ wsl --list --online
 
 ### Instalando distribuições
 
-wsl --install -d `nome-da-distribuicao`
+`wsl --install -d <nome-da-distribuicao>`
 
 Seguem abaixo alguns exemplos:
 
-#### Instalando uma distribuição Ubuntu
+#### Ubuntu
 ```sh
 wsl --install -d Ubuntu
 ```
-#### Instalando uma distribuição Debian
-```sh
+#### Debian
+```bash
 wsl --install -d Debian
 ```
 
