@@ -4,17 +4,11 @@
 
 ## Sumário
 
-<details open>
-  <summary>
-    <strong>WSL</strong>
-  </summary>
-
-  - [Atualizando o WSL](#atualizando-o-wsl)
-  - [Selecionando a versão](#selecionando-a-versão)
-  - [Exibindo distribuições existentes](#exibindo-distribuições-existentes)
-  - [Instalando distribuições](#instalando-distribuições)
-  - [Acessando distribuições](#acessando-distribuições)
-</details>
+- [Atualizando o WSL](#atualizando-o-wsl)
+- [Selecionando a versão](#selecionando-a-versão)
+- [Exibindo distribuições existentes](#exibindo-distribuições-existentes)
+- [Instalando distribuições](#instalando-distribuições)
+- [Acessando distribuições](#acessando-distribuições)
 
 ### Atualizando o WSL
 ```sh
