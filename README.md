@@ -29,6 +29,7 @@ wsl --update
 ```sh
 wsl --set-default-version 2
 ```
+> **Observação:** Atualmente existem apenas duas versões do WSL. O Docker funciona apenas com WSL 2.
 
 ### Exibindo distribuições existentes
 ```sh
