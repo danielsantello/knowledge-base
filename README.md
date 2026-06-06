@@ -1,4 +1,5 @@
 # Documentação
+> Este repositório reúne os principais comandos e conceitos estudados, servindo também como um índice para os projetos desenvolvidos ao longo da jornada de aprendizado.
 
 ## Sumário
 
