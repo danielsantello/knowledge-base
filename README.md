@@ -1,24 +1,53 @@
 # Documentação
 
-## WSL - Windows Subsystem for Linux
+## Sumário
 
-Para trabalhar com o WSL, acessar o PowerShell como administrador
+<details open>
+  <summary>
+    <strong>WSL</strong>
+  </summary>
+
+  - [WSL](#wsl)
+  - [Atualizar o WSL](#atualizar-o-wsl)
+  - [Selecionar versão](#selecionar-versão)
+  - [Exibir distribuições existentes](#exibir-distribuições-existentes)
+  - [Instalar distribuição](#instalar-distribuição)
+    - [Instalar Ubuntu](#instalar-ubuntu)
+    - [Instalar Debian](#instalar-debian)
+</details>
+
+## WSL
+> Para trabalhar com o WSL `Windows Subsystem for Linux`, acessar o PowerShell como administrador
 
 ### Atualizar o WSL
 ```sh
 wsl --update
 ```
 
-Para selecionar versão
+### Selecionar versão
+```sh
 wsl --set-default-version 2
+```
 
-Para exibir as distribuições existentes
+### Exibir distribuições existentes
+```sh
 wsl --list --online
+```
 
-Para instalar uma outra distribuição
-wsl --install -d nome-da-distribuicao
+### Instalar distribuição
+
+wsl --install -d `nome-da-distribuicao`
+
+Seguem abaixo alguns exemplos:
+
+- Instalar `ubuntu`
+```sh
 wsl --install -d Ubuntu
+```
+- Insalar `debian`
+```sh
 wsl --install -d Debian
+```
 
 Para acessar:
 wsl.exe -d Debian
