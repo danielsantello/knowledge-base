@@ -8,43 +8,43 @@
   </summary>
 
   - [WSL](#wsl)
-  - [Atualizar o WSL](#atualizar-o-wsl)
-  - [Selecionar versão](#selecionar-versão)
-  - [Exibir distribuições existentes](#exibir-distribuições-existentes)
-  - [Instalar distribuição](#instalar-distribuição)
-    - [Instalar Ubuntu](#instalar-ubuntu)
-    - [Instalar Debian](#instalar-debian)
+  - [Atualizando o WSL](#atualizando-o-wsl)
+  - [Selecionando a versão](#selecionando-a-versão)
+  - [Exibindo distribuições existentes](#exibindo-distribuições-existentes)
+  - [Instalando distribuições](#instalando-distribuições)
+    - [Instalando uma distribuição Ubuntu](#instalando-uma-distribuição-ubuntu)
+    - [Instalando uma distribuição Debian](#instalando-uma-distribuição-debian)
 </details>
 
 ## WSL
 > Para trabalhar com o WSL `Windows Subsystem for Linux`, acessar o PowerShell como administrador
 
-### Atualizar o WSL
+### Atualizando o WSL
 ```sh
 wsl --update
 ```
 
-### Selecionar versão
+### Selecionando a versão
 ```sh
 wsl --set-default-version 2
 ```
 
-### Exibir distribuições existentes
+### Exibindo distribuições existentes
 ```sh
 wsl --list --online
 ```
 
-### Instalar distribuição
+### Instalando distribuições
 
 wsl --install -d `nome-da-distribuicao`
 
 Seguem abaixo alguns exemplos:
 
-#### - Instalar `ubuntu`
+- #### Instalando uma distribuição `ubuntu`
 ```sh
 wsl --install -d Ubuntu
 ```
-- #### Instalar `debian`
+- #### Instalando uma distribuição `debian`
 ```sh
 wsl --install -d Debian
 ```
