@@ -39,13 +39,8 @@ wsl --list --online
 
 `wsl --install -d <nome-da-distribuicao>`
 
-#### Ubuntu
 ```sh
 wsl --install -d Ubuntu
-```
-#### Debian
-```sh
-wsl --install -d Debian
 ```
 
 ### Acessando distribuições
