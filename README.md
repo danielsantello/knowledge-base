@@ -40,11 +40,11 @@ wsl --install -d `nome-da-distribuicao`
 
 Seguem abaixo alguns exemplos:
 
-- Instalar `ubuntu`
+#### - Instalar `ubuntu`
 ```sh
 wsl --install -d Ubuntu
 ```
-- Insalar `debian`
+- #### Instalar `debian`
 ```sh
 wsl --install -d Debian
 ```
