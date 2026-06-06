@@ -13,6 +13,7 @@ Este repositório reúne os principais comandos e conceitos estudados, servindo 
   - [Selecionando a versão](#selecionando-a-versão)
   - [Exibindo distribuições existentes](#exibindo-distribuições-existentes)
   - [Instalando distribuições](#instalando-distribuições)
+  - [Acessando distribuições](#acessando-distribuições)
 </details>
 
 ## WSL
@@ -37,8 +38,6 @@ wsl --list --online
 ### Instalando distribuições
 
 `wsl --install -d <nome-da-distribuicao>`
-
-Seguem abaixo alguns exemplos:
 
 #### Ubuntu
 ```sh
