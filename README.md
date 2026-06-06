@@ -3,5 +3,5 @@ Este repositório reúne os principais comandos, conceitos e experimentos realiz
 
 ## Sumário
 
-- [WSL](/docs/wsl.md)
+- [WSL](docs/wsl.md)
 
