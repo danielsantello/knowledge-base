@@ -1,5 +1,5 @@
 # Documentação
-> Este repositório reúne os principais comandos e conceitos estudados, servindo também como um índice para os projetos desenvolvidos ao longo da jornada de aprendizado.
+Este repositório reúne os principais comandos e conceitos estudados, servindo também como um índice para os projetos desenvolvidos ao longo da jornada de aprendizado.
 
 ## Sumário
 
@@ -42,11 +42,11 @@ wsl --install -d `nome-da-distribuicao`
 
 Seguem abaixo alguns exemplos:
 
-- #### Instalando uma distribuição `ubuntu`
+#### Instalando uma distribuição Ubuntu
 ```sh
 wsl --install -d Ubuntu
 ```
-- #### Instalando uma distribuição `debian`
+#### Instalando uma distribuição Debian
 ```sh
 wsl --install -d Debian
 ```
