@@ -1,5 +1,5 @@
-# Base de Conhecimento / Laboratório de Estudos
-Este repositório reúne os principais comandos e conceitos estudados, servindo também como um índice para os projetos desenvolvidos ao longo da jornada de aprendizado.
+# Base de Conhecimento
+Este repositório reúne os principais comandos, conceitos e experimentos realizados ao longo da jornada de aprendizado, servindo também como índice para projetos desenvolvidos.
 
 ## Sumário
 
@@ -18,6 +18,7 @@ Este repositório reúne os principais comandos e conceitos estudados, servindo 
 
 ## WSL
 > Para trabalhar com o WSL (Windows Subsystem for Linux), execute o PowerShell como administrador.
+
 
 ### Atualizando o WSL
 ```sh
