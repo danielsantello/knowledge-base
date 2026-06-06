@@ -45,13 +45,17 @@ Seguem abaixo alguns exemplos:
 wsl --install -d Ubuntu
 ```
 #### Debian
-```bash
+```sh
 wsl --install -d Debian
 ```
 
-Para acessar:
-wsl.exe -d Debian
+### Acessando distribuições
+`wsl.exe -d <nome-da-distribuicao>`
+
+```sh
 wsl.exe -d Ubuntu
+```
+
 
 Para ver as versões instaladas
 wsl --list -v
