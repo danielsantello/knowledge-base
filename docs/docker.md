@@ -66,17 +66,17 @@ This message shows that your installation appears to be working correctly.
 ```sh
 docker ps
 ```
-> **Observação:** por padrão, `docker ps` mostra apenas os containers em execução
+> **Observação:** por padrão, `docker ps` mostra apenas os containers em execução.
 
 ```sh
 docker ps -a
 ```
-> **Observação:** lista containers em execução e também os que já finalizaram
+> **Observação:** lista containers em execução e também os que já finalizaram.
 
 ```sh
 docker ps -a -q
 ```
-> **Observação:** lista apenas os id dos containers
+> **Observação:** lista apenas os IDs dos containers.
 
 ## Criando container em modo interativo
 **Sintaxe**
