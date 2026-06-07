@@ -18,7 +18,7 @@
 sudo service docker status
 ```
 
-**Resultado esperado**
+**Resultado esperado:**
 ```text
 ○ docker.service - Docker Application Container Engine
      Loaded: loaded (...)
@@ -31,7 +31,7 @@ sudo service docker status
 sudo service docker start
 ```
 
-**Resultado esperado**
+**Resultado esperado:**
 ```text
 ● docker.service - Docker Application Container Engine
      Loaded: loaded (...)
@@ -55,7 +55,7 @@ docker ps --help
 docker run hello-world
 ```
 
-**Resultado esperado**
+**Resultado esperado:**
 ```text
 Hello from Docker!
 This message shows that your installation appears to be working correctly.
