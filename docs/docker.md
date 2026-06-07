@@ -81,28 +81,26 @@ docker ps -a -q
 ## Criando container em modo interativo
 **Sintaxe**
 
-`docker run -it <nome-da-distribuicao> bash`
+`docker run -it <nome-da-imagem> bash`
 
 **Exemplo de uso:**
 ```sh
 docker run -it ubuntu bash
 ```
-> **Observação:** sempre que precisar passar parâmetros, informar depois do run.
+> **Observação:** Os parâmetros do container devem ser informados após o comando `run`.
 
-`docker run` - executa um container
+**Explicação dos parâmetros**
 
-`-i` - modo interativo, vai manter o stdin ativo, para manter o processo rodando. Vincula o terminal ao container
-
-`-t` - tty, permite rodar comandos no terminal
-
-`ubuntu` - nome da imagem que será executada
-
-`bash` - comando que será executado
+- `docker run` → executa um container
+- `-i` → modo interativo, mantém o STDIN ativo
+- `-t` → aloca um terminal (TTY)
+- `ubuntu` → imagem que será executada
+- `bash` → comando executado ao iniciar o container
 
 ## Criando container e removendo ao término da execução
 **Sintaxe**
 
-`docker run -it --rm <nome-da-distribuicao> bash`
+`docker run -it --rm <nome-da-imagem> bash`
 
 **Exemplo de uso:**
 ```sh
@@ -115,11 +113,22 @@ docker run -p 8080:80 nginx
 ```
 
 > [!NOTE]
-> O comando acima subirá o nginx que responderá na porta 80 por padrão  
-> Porém, essa porta 80 é a do container, ou seja, se tentar acesssar http://localhost, não vai conseguir  
-> Precisamos fazer um mapeamento da máquina para a máquina do container  
-> O parâmetro -p 8080:80 fará esse mapeamento  
-> Ao acessar a porta 8080 da máquina local, a requisição será encaminhada pra porta 80 do container
+> **Mapeamento de portas**
+>
+> O Nginx responde na porta `80` dentro do container.
+>
+> O parâmetro `-p 8080:80` cria um mapeamento:
+>
+> - `8080` → porta da máquina host
+> - `80` → porta do container
+>
+> Ao acessar:
+>
+> `http://localhost:8080`
+>
+> a requisição será encaminhada para a porta `80` do container.
+
+
 
 -------------------------------
 -- PUBLICANDO PORTAS NO HOST --
