@@ -15,11 +15,11 @@
 sudo service docker status
 ```
 
-```sh
-dalq@Daniel:~$ sudo service docker status
+**Resultado esperado**
+```text
 ○ docker.service - Docker Application Container Engine
-     Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; preset: enabled)
-     Active: inactive (dead) since Sun 2026-06-07 19:56:07 -03; 5s ago
+     Loaded: loaded (...)
+     Active: inactive (dead) ...
 	 ...
 ```
 
@@ -28,11 +28,11 @@ dalq@Daniel:~$ sudo service docker status
 sudo service docker start
 ```
 
-```sh
-dalq@Daniel:~$ sudo service docker status
+**Resultado esperado**
+```text
 ● docker.service - Docker Application Container Engine
-     Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; preset: enabled)
-     Active: active (running) since Sun 2026-06-07 19:58:06 -03; 2s ago
+     Loaded: loaded (...)
+     Active: active (running) ...
      ...
 ```
 
@@ -52,9 +52,8 @@ docker ps --help
 docker run hello-world
 ```
 
-```sh
-dalq@Daniel:~$ docker run hello-world
-
+**Resultado esperado**
+```text
 Hello from Docker!
 This message shows that your installation appears to be working correctly.
 ...
@@ -64,17 +63,17 @@ This message shows that your installation appears to be working correctly.
 ```sh
 docker ps
 ```
-> por padrão, docker ps mostra apenas os containers em execução
+> **Observação:** por padrão, `docker ps` mostra apenas os containers em execução
 
 ```sh
 docker ps -a
 ```
-> lista containers em execução e também os que já finalizaram
+> **Observação:** lista containers em execução e também os que já finalizaram
 
 ```sh
 docker ps -a -q
 ```
-> lista apenas os id dos containers
+> **Observação:** lista apenas os id dos containers
 
 
 ---------------------
