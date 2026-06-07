@@ -6,4 +6,5 @@ Este repositório reúne os principais comandos, conceitos e experimentos realiz
 ### Infraestrutura
 
 - [WSL](docs/wsl.md)
+- [Docker](docs/docker.md)
 
