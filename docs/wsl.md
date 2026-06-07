@@ -6,59 +6,73 @@
 
 - [Atualizando o WSL](#atualizando-o-wsl)
 - [Selecionando a versão](#selecionando-a-versão)
+- [Mudando a versão de uma distribuição](#mudando-a-versão-de-uma-distribuição)
 - [Exibindo distribuições existentes](#exibindo-distribuições-existentes)
 - [Instalando distribuições](#instalando-distribuições)
 - [Acessando distribuições](#acessando-distribuições)
+- [Exibindo as distribuições instaladas](#exibindo-as-distribuições-instaladas)
+- [Desativando todas as instâncias ativas](#desativando-todas-as-instâncias-ativas)
 
-### Atualizando o WSL
+## Atualizando o WSL
 ```sh
 wsl --update
 ```
 
-### Selecionando a versão
+## Selecionando a versão
+**Sintaxe**
+
+`wsl --set-default-version <numero-da-versao>`
+
+**Exemplo de uso:**
 ```sh
 wsl --set-default-version 2
 ```
+
+## Mudando a versão de uma distribuição
+**Sintaxe**
+
+`wsl --set-version <nome-da-distribuicao> <numero-da-versao>`
+
+**Exemplo de uso:**
+```sh
+wsl --set-version Ubuntu 1
+```
 > **Observação:** Atualmente existem apenas duas versões do WSL. O Docker funciona apenas com WSL 2.
 
-### Exibindo distribuições existentes
+## Exibindo distribuições existentes
 ```sh
 wsl --list --online
 ```
 
-### Instalando distribuições
+## Instalando distribuições
 **Sintaxe**
 
 `wsl --install -d <nome-da-distribuicao>`
 
 **Exemplo de uso:**
-
 ```sh
 wsl --install -d Ubuntu
 ```
 
-### Acessando distribuições
+## Acessando distribuições
 **Sintaxe**
 
 `wsl.exe -d <nome-da-distribuicao>`
 
 **Exemplo de uso:**
-
 ```sh
 wsl.exe -d Ubuntu
 ```
 
-
-Para ver as versões instaladas
+## Exibindo as distribuições instaladas
+```sh
 wsl --list -v
+```
 
-Caso seja necessário mudar para a WSL 1, digitar:
-wsl --set-version Debian 1
-
-OBS.: Até o momento temos apenas duas versões da WSL. Docker só funciona na versão WSL 2
-
-Para desativar todas as instâncias ativas
+## Desativando todas as instâncias ativas
+```sh
 wsl --shutdown
+```
 
 Para parar somente uma distribuição Linux específica
 wsl --t <distribution name>
