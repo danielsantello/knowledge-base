@@ -14,6 +14,8 @@
 - [Parando todas as instâncias ativas](#parando-todas-as-instâncias-ativas)
 - [Parando uma distribuição](#parando-uma-distribuição)
 - [Removendo uma distribuição](#removendo-uma-distribuição)
+- [Limitando recursos da máquina principal](#limitando-recursos-da-máquina-principal)
+- [Pacotes básicos para instalar nas distribuições Ubuntu](#pacotes-básicos-para-instalar-nas-distribuições-Ubuntu)
 
 ## Atualizando o WSL
 ```sh
@@ -96,22 +98,18 @@ wsl --t Ubuntu
 wsl --unregister Ubuntu
 ```
 
-Limitendo recursos da máquina principal
-Editar o arquivo C:\Users\<seu_usuario>\.wslconfig
+## Limitando recursos da máquina principal
+Editar o arquivo `C:\Users\<seu_usuario>\.wslconfig`
+
+```sh
 [wsl2]
 memory=8GB
 processors=4
 swap=1GB
+```
 
-Pacotes básicos para instalar nas distribuições Ubuntu:
+## Pacotes básicos para instalar nas distribuições Ubuntu
+```sh
 apt-get update && \
 apt-get install iproute2 net-tools iputils-ping dnsutils traceroute curl wget
-
-Gerando chaves públicas e privadas para github
-ls -al ~/.ssh
-ssh-keygen -t ed25519 -C "daniel@grupotwo.com.br"
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_ed25519
-cat ~/.ssh/id_ed25519.pub
-
-git remote set-url origin git@github.com:danielsantello/full-cycle-rocks.git
+```
