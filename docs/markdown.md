@@ -6,6 +6,20 @@
   <a href="https://dalqsistemas.com.br/" target="blank"><img src="https://fullcycle.com.br/wp-content/themes/fullcycle/assets/images/logo-fc.svg"/></a>
 </p>
 
+dockerize ![version v0.12.0](https://img.shields.io/badge/version-v0.12.0-brightgreen.svg) ![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)
+=============
+
+# JWT Token Manager
+
+[![CI](https://github.com/dev-toolbelt/jwt-token-manager/actions/workflows/ci.yml/badge.svg)](https://github.com/dev-toolbelt/jwt-token-manager/actions/workflows/ci.yml)
+[![Coverage](https://codecov.io/gh/dev-toolbelt/jwt-token-manager/branch/main/graph/badge.svg)](https://codecov.io/gh/dev-toolbelt/jwt-token-manager)
+[![Latest Stable Version](https://poser.pugx.org/dev-toolbelt/jwt-token-manager/v/stable)](https://packagist.org/packages/dev-toolbelt/jwt-token-manager)
+[![Total Downloads](https://poser.pugx.org/dev-toolbelt/jwt-token-manager/downloads)](https://packagist.org/packages/dev-toolbelt/jwt-token-manager)
+[![License](https://poser.pugx.org/dev-toolbelt/jwt-token-manager/license)](https://packagist.org/packages/dev-toolbelt/jwt-token-manager)
+[![PHP Version](https://img.shields.io/packagist/php-v/dev-toolbelt/jwt-token-manager)](https://packagist.org/packages/dev-toolbelt/jwt-token-manager)
+
+# Node Version Manager [![Tests](https://github.com/nvm-sh/nvm/actions/workflows/tests-fast.yml/badge.svg?branch=master)][3] [![nvm version](https://img.shields.io/badge/version-v0.40.5-yellow.svg)][4] [![CII Best Practices](https://bestpractices.dev/projects/684/badge)](https://bestpractices.dev/projects/684)
+
 #### Títulos
 
 # Título 1
@@ -20,6 +34,14 @@
 
 * 1. Item 1
 * 2. Item 2
+
+- Item 1
+  + Sub-item 1
+  + Sub-item 2
+
+- Item 2
+  - Sub-item 1
+  - Sub-item 2
 
 #### Links
 
@@ -36,6 +58,9 @@ Destacando uma **palavra** em uma frase
 Destacando uma <kbd>palavra</kbd> em uma frase
 
 > Destacando uma frase
+
+> [!WARNING]
+> io.js was a [fork of Node.js](https://en.wikipedia.org/wiki/Node.js#History), created in 2014 and merged back in 2015. io.js shipped v1, v2, and v3 release lines; post-merge, node.js began releasing with v4.
 
 #### Separadores
 
@@ -73,9 +98,65 @@ sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
 ```
 
+``` Dockerfile
+ENV DOCKERIZE_VERSION v0.12.0
+
+RUN apt-get update \
+    && apt-get install -y wget \
+    && wget -O - https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz | tar xzf - -C /usr/local/bin \
+    && apt-get autoremove -yqq --purge wget && rm -rf /var/lib/apt/lists/*
+```
+
+```php
+use DevToolbelt\JwtTokenManager\JwtConfig;
+use DevToolbelt\JwtTokenManager\JwtTokenManager;
+
+// Create configuration
+$config = new JwtConfig(
+    privateKey: file_get_contents('/path/to/private.key'),
+    publicKey: file_get_contents('/path/to/public.key'),
+    issuer: 'https://api.yourapp.com'
+);
+
+// Initialize the manager
+$manager = new JwtTokenManager($config);
+
+// Generate a token
+$token = $manager->encode('user-123', [
+    'name' => 'John Doe',
+    'role' => 'admin'
+]);
+
+// Decode and validate the token
+$payload = $manager->decode($token);
+
+echo $payload->getSubject();      // "user-123"
+echo $payload->getClaim('name');  // "John Doe"
+echo $payload->getClaim('role');  // "admin"
+```
+
+``` javascript
+Moip.Validator.isSecurityCodeValid("5105105105105100", "123");    //return true
+Moip.Validator.isSecurityCodeValid("5105105105105100", "12");     //return false
+```
+
+#### Tabelas
+
+| Algorithm | Type | Description |
+|-----------|------|-------------|
+| `HS256`, `HS384`, `HS512` | HMAC | Symmetric key algorithms |
+| `RS256`, `RS384`, `RS512` | RSA | Asymmetric RSA algorithms |
+| `ES256`, `ES384`, `ES512` | ECDSA | Elliptic Curve algorithms |
+| `PS256`, `PS384`, `PS512` | RSA-PSS | RSA with PSS padding |
+| `EdDSA` | EdDSA | Edwards-curve Digital Signature |
+
 #### Ícones
 
 ⚠️  Warning
+
+Made with ❤️ by [Dev Toolbelt](https://github.com/Dev-Toolbelt)
+
+**[⬆ voltar ao topo](#table-of-contents)**
 
 
 ## Sumário
@@ -181,3 +262,23 @@ sudo systemctl enable containerd.service
       - [Quer configurar um ambiente mais produtivo no Windows?](#quer-configurar-um-ambiente-mais-produtivo-no-windows)
 
 </details>
+
+
+## <a name='translation'>Traduções</a>
+
+  Este style guide está disponível em outros idiomas:
+
+  - ![br](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Brazil.png) **Brazilian Portuguese**: [armoucar/javascript-style-guide](https://github.com/armoucar/javascript-style-guide)
+  - ![bg](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Bulgaria.png) **Bulgarian**: [borislavvv/javascript](https://github.com/borislavvv/javascript)
+  - ![ca](https://raw.githubusercontent.com/fpmweb/javascript-style-guide/master/img/catala.png) **Catalan**: [fpmweb/javascript-style-guide](https://github.com/fpmweb/javascript-style-guide)
+  - ![tw](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Taiwan.png) **Chinese(Traditional)**: [jigsawye/javascript](https://github.com/jigsawye/javascript)
+  - ![cn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/China.png) **Chinese(Simplified)**: [adamlu/javascript-style-guide](https://github.com/adamlu/javascript-style-guide)
+  - ![fr](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/France.png) **French**: [nmussy/javascript-style-guide](https://github.com/nmussy/javascript-style-guide)
+  - ![de](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Germany.png) **German**: [timofurrer/javascript-style-guide](https://github.com/timofurrer/javascript-style-guide)
+  - ![it](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Italy.png) **Italian**: [sinkswim/javascript-style-guide](https://github.com/sinkswim/javascript-style-guide)
+  - ![jp](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Japan.png) **Japanese**: [mitsuruog/javacript-style-guide](https://github.com/mitsuruog/javacript-style-guide)
+  - ![kr](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/South-Korea.png) **Korean**: [tipjs/javascript-style-guide](https://github.com/tipjs/javascript-style-guide)
+  - ![pl](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Poland.png) **Polish**: [mjurczyk/javascript](https://github.com/mjurczyk/javascript)
+  - ![ru](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Russia.png) **Russian**: [uprock/javascript](https://github.com/uprock/javascript)
+  - ![es](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Spain.png) **Spanish**: [paolocarrasco/javascript-style-guide](https://github.com/paolocarrasco/javascript-style-guide)
+  - ![th](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Thailand.png) **Thai**: [lvarayut/javascript-style-guide](https://github.com/lvarayut/javascript-style-guide)
