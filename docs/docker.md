@@ -8,6 +8,8 @@
 - [Consultando ajuda](#consultando-ajuda)
 - [Testando a instalação](#testando-a-instalação)
 - [Listando containers](#listando-containers)
+- [Criando container em modo interativo](#criando-container-em-modo-interativo)
+- [Criando container e removendo ao término da execução](#criando-container-e-removendo-ao-término-da-execução)
   
 
 ## Verificando o serviço do Docker
@@ -75,28 +77,48 @@ docker ps -a -q
 ```
 > **Observação:** lista apenas os id dos containers
 
+## Criando container em modo interativo
+**Sintaxe**
 
----------------------
--- MODO INTERATIVO --
----------------------
--- Criar o container e já rodar em modo interativo
-docker run -it ubuntu bash (sempre que precisar passar parâmetros, informar depois do run)
+`docker run -it <nome-da-distribuicao> bash`
 
--- Explicação de cada comando:
-docker run -> executar um container
--it => parâmetros, mesmo que -i -t
-	-i => modo interativo, vai manter o stdin ativo, para manter o processo rodando. Vincula o terminal ao container
- 	-t => tty, permite rodar comandos no terminal
-ubuntu => nome da imagem que será executada
-bash => comando que será executado
+**Exemplo de uso:**
+```sh
+docker run -it ubuntu bash
+```
+> **Observação:** sempre que precisar passar parâmetros, informar depois do run.
 
+`docker run` - executa um container
 
-----------------------------
--- EXECUTANDO E REMOVENDO --
-----------------------------
--- Cria o container e exclui quando terminar a execução
-docker run -it --rm ubuntu bash (sempre que precisar passar parâmetros, informar depois do run)
+`-i` - modo interativo, vai manter o stdin ativo, para manter o processo rodando. Vincula o terminal ao container
 
+`-t` - tty, permite rodar comandos no terminal
+
+`ubuntu` - nome da imagem que será executada
+
+`bash` - comando que será executado
+
+## Criando container e removendo ao término da execução
+**Sintaxe**
+
+`docker run -it --rm <nome-da-distribuicao> bash`
+
+**Exemplo de uso:**
+```sh
+docker run -it --rm ubuntu bash
+```
+
+## Publicando portas no host
+```sh
+docker run -p 8080:80 nginx
+```
+
+> **Observação:**  
+> O comando acima subirá o nginx que responderá na porta 80 por padrão  
+> Porém, essa porta 80 é a do container, ou seja, se tentar acesssar http://localhost, não vai conseguir  
+> Precisamos fazer um mapeamento da máquina para a máquina do container  
+> O parâmetro -p 8080:80 fará esse mapeamento  
+> Ao acessar a porta 8080 da máquina local, a requisição será encaminhada pra porta 80 do container
 
 -------------------------------
 -- PUBLICANDO PORTAS NO HOST --
