@@ -20,14 +20,7 @@ dalq@Daniel:~$ sudo service docker status
 ○ docker.service - Docker Application Container Engine
      Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; preset: enabled)
      Active: inactive (dead) since Sun 2026-06-07 19:56:07 -03; 5s ago
-   Duration: 1min 42.130s
- Invocation: dc6329da2b6e45c6ab16580eb2de0137
-TriggeredBy: ● docker.socket
-       Docs: https://docs.docker.com
-    Process: 381 ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock (code=exited, status=0/SUCC>
-   Main PID: 381 (code=exited, status=0/SUCCESS)
-   Mem peak: 126.4M
-        CPU: 1.575s
+	 ...
 ```
 
 **Ativando o serviço do Docker**
@@ -41,15 +34,7 @@ dalq@Daniel:~$ sudo service docker status
 ● docker.service - Docker Application Container Engine
      Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; preset: enabled)
      Active: active (running) since Sun 2026-06-07 19:58:06 -03; 2s ago
- Invocation: 177553fc61eb43219fb882c67d2e0e08
-TriggeredBy: ● docker.socket
-       Docs: https://docs.docker.com
-   Main PID: 915 (dockerd)
-      Tasks: 14
-     Memory: 33.4M (peak: 34.5M)
-        CPU: 1.540s
-     CGroup: /system.slice/docker.service
-             └─915 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+     ...
 ```
 
 **Parando o serviço do Docker**
