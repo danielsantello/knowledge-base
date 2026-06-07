@@ -15,7 +15,7 @@
 - [Parando uma distribuição](#parando-uma-distribuição)
 - [Removendo uma distribuição](#removendo-uma-distribuição)
 - [Limitando recursos da máquina principal](#limitando-recursos-da-máquina-principal)
-- [Pacotes básicos para instalar nas distribuições Ubuntu](#pacotes-básicos-para-instalar-nas-distribuições-Ubuntu)
+- [Pacotes básicos para instalar nas distribuições Ubuntu](#pacotes-básicos-para-instalar-nas-distribuições-ubuntu)
 
 ## Atualizando o WSL
 ```sh
@@ -81,11 +81,11 @@ wsl --shutdown
 ## Parando uma distribuição
 **Sintaxe**
 
-`wsl --t <nome-da-distribuicao>`
+`wsl --terminate <nome-da-distribuicao>`
 
 **Exemplo de uso:**
 ```sh
-wsl --t Ubuntu
+wsl --terminate Ubuntu
 ```
 
 ## Removendo uma distribuição
@@ -99,9 +99,11 @@ wsl --unregister Ubuntu
 ```
 
 ## Limitando recursos da máquina principal
-Editar o arquivo `C:\Users\<seu_usuario>\.wslconfig`
+Edite o arquivo:
 
-```sh
+`C:\Users\<seu_usuario>\.wslconfig`
+
+```ini
 [wsl2]
 memory=8GB
 processors=4
@@ -111,5 +113,5 @@ swap=1GB
 ## Pacotes básicos para instalar nas distribuições Ubuntu
 ```sh
 apt-get update && \
-apt-get install iproute2 net-tools iputils-ping dnsutils traceroute curl wget
+apt-get install -y iproute2 net-tools iputils-ping dnsutils traceroute curl wget
 ```
