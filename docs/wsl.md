@@ -11,7 +11,9 @@
 - [Instalando distribuições](#instalando-distribuições)
 - [Acessando distribuições](#acessando-distribuições)
 - [Exibindo as distribuições instaladas](#exibindo-as-distribuições-instaladas)
-- [Desativando todas as instâncias ativas](#desativando-todas-as-instâncias-ativas)
+- [Parando todas as instâncias ativas](#parando-todas-as-instâncias-ativas)
+- [Parando uma distribuição](#parando-uma-distribuição)
+- [Removendo uma distribuição](#removendo-uma-distribuição)
 
 ## Atualizando o WSL
 ```sh
@@ -69,18 +71,30 @@ wsl.exe -d Ubuntu
 wsl --list -v
 ```
 
-## Desativando todas as instâncias ativas
+## Parando todas as instâncias ativas
 ```sh
 wsl --shutdown
 ```
 
-Para parar somente uma distribuição Linux específica
-wsl --t <distribution name>
+## Parando uma distribuição
+**Sintaxe**
 
-Para remover uma distribuição
-wsl --unregister <distribution name>
+`wsl --t <nome-da-distribuicao>`
+
+**Exemplo de uso:**
+```sh
+wsl --t Ubuntu
+```
+
+## Removendo uma distribuição
+**Sintaxe**
+
+`wsl --unregister <nome-da-distribuicao>`
+
+**Exemplo de uso:**
+```sh
 wsl --unregister Ubuntu
-wsl --unregister Debian
+```
 
 Limitendo recursos da máquina principal
 Editar o arquivo C:\Users\<seu_usuario>\.wslconfig
