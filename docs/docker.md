@@ -10,6 +10,7 @@
 - [Listando containers](#listando-containers)
 - [Criando container em modo interativo](#criando-container-em-modo-interativo)
 - [Criando container e removendo ao término da execução](#criando-container-e-removendo-ao-término-da-execução)
+- [Publicando portas no host](#publicando-portas-no-host)
   
 
 ## Verificando o serviço do Docker
@@ -113,7 +114,7 @@ docker run -it --rm ubuntu bash
 docker run -p 8080:80 nginx
 ```
 
-> **Observação:**  
+> [!NOTE]
 > O comando acima subirá o nginx que responderá na porta 80 por padrão  
 > Porém, essa porta 80 é a do container, ou seja, se tentar acesssar http://localhost, não vai conseguir  
 > Precisamos fazer um mapeamento da máquina para a máquina do container  
