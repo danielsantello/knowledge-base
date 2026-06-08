@@ -9,8 +9,12 @@
 - [Testando a instalação](#testando-a-instalação)
 - [Listando containers](#listando-containers)
 - [Criando container em modo interativo](#criando-container-em-modo-interativo)
-- [Criando container e removendo ao término da execução](#criando-container-e-removendo-ao-término-da-execução)
+- [Removendo o container ao término da execução](#removendo-o-container-ao-término-da-execução)
 - [Publicando portas no host](#publicando-portas-no-host)
+- [Criando container em background](#criando-container-em-background)
+- [Associando o terminal ao container](#associando-o-terminal-ao-container)
+- [Criando um container nomeado](#criando-um-container-nomeado)
+- [Renomeando containers](#renomeando-containers)
   
 
 ## Verificando o serviço do Docker
@@ -97,7 +101,7 @@ docker run -it ubuntu bash
 - `ubuntu` → imagem que será executada
 - `bash` → comando executado ao iniciar o container
 
-## Criando container e removendo ao término da execução
+## Removendo o container ao término da execução
 **Sintaxe**
 
 `docker run -it --rm <nome-da-imagem> bash`
@@ -129,45 +133,45 @@ docker run -p 8080:80 nginx
 > a requisição será encaminhada para a porta `80` do container.
 
 
+## Criando container em background
+```sh
+docker run -d -p 8080:80 nginx
+```
 
--------------------------------
--- PUBLICANDO PORTAS NO HOST --
--------------------------------
-docker run -p 8080:80 nginx
--- O comando acima subirá o nginx que responderá na porta 80 por padrão
--- Porém, essa porta 80 é a do container, ou seja, se tentar acesssar http://localhost, não vai conseguir
--- Precisamos fazer um mapeamento da máquina para a máquina do container
--- O parâmetro -p 8080:80 fará esse mapeamento
--- Ao acessar a porta 8080 da máquina local, a requisição será encaminhada pra porta 80 do container
+> **Observação:** o parâmetro `-d` executa o container em modo **detached** (background).
+>
+> Nesse modo, o terminal é liberado imediatamente após a criação do container.
 
-
----------------------------------------------------
--- CRIANDO UM CONTAINER EM BACKGROUND (DETACHED) --
----------------------------------------------------
-docker run -d -p 8080:80 nginx (estamos fazendo um redirecionamento da porta local 8080 para a porta 80 do container)
--- o container ficará rodando em background, não mais associado (attached) ao terminal
-
--- Para ver a saida em modo background, podemos usar:
-docker logs server (exibe o log e volta pro terminal)
-docker logs -f server (exibe o log e trava o terminal)
-
-
--------------------------------------------------
--- ASSOCIANDO (ATTACH) O TERMINAL AO CONTAINER --
--------------------------------------------------
+## Associando o terminal ao container
+```sh
 docker attach nginx
+```
+> [!IMPORTANT]
+> O comando `attach` conecta seu terminal ao processo principal do container.
+>
+> Para abrir um terminal dentro de um container já em execução, normalmente utiliza-se:
+>
+> `docker exec -it <nome-do-container> bash`
 
+## Criando um container nomeado
+**Sintaxe**
 
-----------------------------------
--- CRIANDO UM CONTAINER NOMEADO --
-----------------------------------
+`docker run -d -p 8080:80 --name <nome-do-container> <nome-da-imagem>`
+
+**Exemplo de uso:**
+```sh
 docker run -d -p 8080:80 --name nginx-server nginx
+```
 
+## Renomeando containers
+**Sintaxe**
 
----------------------------
--- RENOMEANDO CONTAINERS --
----------------------------
+`docker rename <nome-antigo> <nome-novo>`
+
+**Exemplo de uso:**
+```sh
 docker rename nginx nginx-server
+```
 
 
 ------------------------
@@ -297,3 +301,7 @@ curl http://host.docker.internal:8000 (imaginando que tenho um servidor web na m
 docker logs [container_id]
 docker logs [container_name]
 docker logs -f laravel (fica em modo de exibição dos logs)
+
+-- Para ver a saida em modo background, podemos usar:
+docker logs server (exibe o log e volta pro terminal)
+docker logs -f server (exibe o log e trava o terminal)
