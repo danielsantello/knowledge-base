@@ -15,6 +15,13 @@
 - [Associando o terminal ao container](#associando-o-terminal-ao-container)
 - [Criando um container nomeado](#criando-um-container-nomeado)
 - [Renomeando containers](#renomeando-containers)
+- [Criando containers](#criando-containers)
+- [Removendo container](#removendo-container)
+- [Removendo vários containers](#removendo-vários-containers)
+- [Executando containers](#executando-containers)
+- [Parando containers](#parando-containers)
+- [Executando comandos dentro de um container em execução](#executando-comandos-dentro-de-um-container-em-execução)
+- [Acessando o terminal dentro de um container](#acessando-o-terminal-dentro-de-um-container)
   
 
 ## Verificando o serviço do Docker
@@ -173,55 +180,92 @@ docker run -d -p 8080:80 --name nginx-server nginx
 docker rename nginx nginx-server
 ```
 
+## Criando containers
+**Sintaxe**
 
-------------------------
--- CRIANDO CONTAINERS --
-------------------------
+`docker create --name <nome-do-container> <nome-da-imagem>`
+
+**Exemplo de uso:**
+```sh
 docker create --name nginx-server nginx
+```
+> O comando **create** apenas cria o container, sem executar. Diferente do docker run que cria e executa
 
--- O comando create apenas cria o container, sem executar. Diferente do docker run que cria e executa
+## Removendo container
+**Sintaxe**
 
+`docker rm <container_id>`  
+`docker rm <container_name>`
 
---------------------------
--- REMOVENDO CONTAINERS --
---------------------------
-docker rm <container_id>
-docker rm <container_name>
+> [!IMPORTANT]
+> Não é possível remover um container em execução.
+>
+> Para forçar a remoção:
+>
+> ```sh
+> docker rm -f <container_id>  
+> docker rm -f <container_name>
+> ```
 
-OSB.: Não é possível remover um container em execução. Se necessário, digitar -f para forçar (force) a remoção:
-docker rm <container_id> -f
-docker rm <container_name> -f
-
--- Para remover vários containers
+## Removendo vários containers
+**Exemplos de uso:**
+```sh
 docker rm 49b000cf2fdb 1ed329fa2fb2 28ab953b6465
-docker rm $(docker ps -qa) -f
+```
 
+```sh
+docker rm -f $(docker ps -qa)
+```
 
--------------------------------------
--- EXECUTANDO E PARANDO CONTAINERS --
--------------------------------------
-docker start <container_id>
-docker start <container_name>
-docker stop <container_id>
-docker stop <container_name>
+## Executando containers
+**Sintaxe**
 
--- Parar e executar todos os containers
+`docker start <container_id>`  
+`docker start <container_name>`
+
+**Exemplos de uso:**
+```sh
+docker start app
+```
+
+```sh
 docker start $(docker ps -qa)
+```
+
+> **Observação:** esse último exemplo executa todos os containers criados
+
+## Parando containers
+**Sintaxe**
+
+`docker stop <container_id>`  
+`docker stop <container_name>`
+
+**Exemplos de uso:**
+```sh
+docker stop app
+```
+
+```sh
 docker stop $(docker ps -qa)
+```
 
+> **Observação:** esse último exemplo, para todos os containers em execução
 
-----------------------------------------------------------
--- EXECUTAR COMANDOS DENTRO DE UM CONTAINER EM EXECUÇÃO --
-----------------------------------------------------------
-docker exec <container_id> ls
-docker exec <container_name> ls
-docker exec nginx-server ls
+## Executando comandos dentro de um container em execução
+**Sintaxe**
 
+`docker exec <container_id> <comando>`  
+`docker exec <container_name> <comando>`
 
--------------------------------------------
--- ACESSAR O BASH DENTRO DE UM CONTAINER --
--------------------------------------------
-docker exec -it nginx-server bash
+**Exemplo de uso:**
+```sh
+docker exec app ls
+```
+
+## Acessando o terminal dentro de um container
+```sh
+docker exec -it app bash
+```
 
 
 ----------------
