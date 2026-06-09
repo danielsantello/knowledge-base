@@ -22,6 +22,7 @@
 - [Parando containers](#parando-containers)
 - [Executando comandos dentro de um container em execução](#executando-comandos-dentro-de-um-container-em-execução)
 - [Acessando o terminal dentro de um container](#acessando-o-terminal-dentro-de-um-container)
+- [Resumo dos principais comandos](#resumo-dos-principais-comandos)
   
 
 ## Verificando o serviço do Docker
@@ -265,6 +266,42 @@ docker exec app ls
 ## Acessando o terminal dentro de um container
 ```sh
 docker exec -it app bash
+```
+
+## Resumo dos principais comandos
+```sh
+docker ps
+docker ps -a
+docker run -it ubuntu bash
+docker run -it --rm ubuntu bash
+docker run -p 8080:80 nginx
+docker run -d -p 8080:80 nginx
+docker run -d -p 8080:80 --name nginx-server nginx
+docker attach nginx
+
+docker rm <container_id|container_name>
+docker rm <container_id|container_name> -f
+docker rm 49b000cf2fdb 1ed329fa2fb2 28ab953b6465
+docker rm $(docker ps -qa) -f
+
+docker exec <container_id|container_name> ls
+docker exec -it <container_id|container_name> bash
+
+docker run -d --name nginx-server -p 8080:80 -v "$(pwd)"/html:/usr/share/nginx/html nginx
+docker run -d --name nginx-server -p 8080:80 --mount type=bind,source="$(pwd)"/html,target=/usr/share/nginx/html nginx
+docker run -d --name nginx-server -p 8080:80 --mount type=bind,source="$(pwd)"/html,target=/usr/share/nginx/html,ro nginx (somente leitura)
+
+docker volume ls
+docker volume create meuvolume
+docker run -d --name nginx-server -p 8080:80 --mount type=volume,source=meuvolume,target=/app nginx
+
+docker network ls
+docker network create --driver bridge dalq
+docker run -dit --name ubuntu1 --network dalq ubuntu bash
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <container_id|container_name>
+
+docker logs <container_id|container_name>
+docker logs -f <container_id|container_name> (fica em modo de exibição dos logs)
 ```
 
 
