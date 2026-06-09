@@ -22,6 +22,13 @@
 - [Parando containers](#parando-containers)
 - [Executando comandos dentro de um container em execução](#executando-comandos-dentro-de-um-container-em-execução)
 - [Acessando o terminal dentro de um container](#acessando-o-terminal-dentro-de-um-container)
+- [Mapeando uma pasta local](#mapeando-uma-pasta-local)
+- [Gerenciando volumes](#gerenciando-volumes)
+	- [Listando volumes criados](#listando-volumes-criados)
+ 	- [Criando um novo volume](#criando-um-novo-volume)
+  	- [Exibindo dados de um volume](#exibindo-dados-de-um-volume)
+  	- [Limpando volumes sem utilização](#limpando-volumes-sem-utilização)
+  	- [Mapeando um volume no container](#mapeando-um-volume-no-container)
 - [Resumo dos principais comandos](#resumo-dos-principais-comandos)
   
 
@@ -268,6 +275,67 @@ docker exec app ls
 docker exec -it app bash
 ```
 
+## Mapeando uma pasta local
+**Exemplos de uso:**
+```sh
+docker run -d --name nginx-server -p 8080:80 -v "$(pwd)"/html:/usr/share/nginx/html nginx
+```
+
+```sh
+docker run -d --name nginx-server -p 8080:80 --mount type=bind,source="$(pwd)"/html,target=/usr/share/nginx/html nginx
+```
+
+```sh
+docker run -d --name nginx-server -p 8080:80 --mount type=bind,source="$(pwd)"/html,target=/usr/share/nginx/html,ro nginx
+```
+
+> **Observação:** esse último exemplo, abre a pasta no destino como somente leitura `(ro - readonly)`
+
+## Gerenciando volumes
+### Listando volumes criados
+```sh
+docker volume ls
+```
+
+### Criando um novo volume
+**Sintaxe**
+
+`docker volume create <nome-do-volume>`
+
+**Exemplo de uso:**
+```sh
+docker volume create datadir
+```
+
+### Exibindo dados de um volume
+**Sintaxe**
+
+`docker volume inspect <nome-do-volume>`
+
+**Exemplo de uso:**
+```sh
+docker volume inspect datadir
+```
+
+> **Observação:** retorna um json com os metadados do volume
+
+### Limpando volumes sem utilização
+```sh
+docker volume prune
+```
+
+> **Observação:** limpa os volumes locais que não estão sendo usados
+
+### Mapeando um volume no container
+**Sintaxe**
+
+`docker run -d --name <nome-do-container> -p 8080:80 --mount type=volume,source=<nome-do-volume>,target=/app <nome-da-imagem>`
+
+**Exemplo de uso:**
+```sh
+docker run -d --name nginx-server -p 8080:80 --mount type=volume,source=datadir,target=/app nginx
+```
+
 ## Resumo dos principais comandos
 ```sh
 docker ps
@@ -303,28 +371,6 @@ docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <con
 docker logs <container_id|container_name>
 docker logs -f <container_id|container_name> (fica em modo de exibição dos logs)
 ```
-
-
-----------------
--- BIND MOUNT --
-----------------
-docker run -d --name nginx-server -p 8080:80 -v "$(pwd)"/html:/usr/share/nginx/html nginx
-docker run -d --name nginx-server -p 8080:80 --mount type=bind,source="$(pwd)"/html,target=/usr/share/nginx/html nginx
-docker run -d --name nginx-server -p 8080:80 --mount type=bind,source="$(pwd)"/html,target=/usr/share/nginx/html,ro nginx (somente leitura)
-
-Uma das diferenças entre os dois comandos é que, o comando -v, ele cria a pasta na origem, mesmo que ela não exista
-
-
--------------
--- VOLUMES --
--------------
-docker volume ls (lista os volumes criados)
-docker volume create meuvolume (cria um volume com o nome meuvolume)
-docker volume inspect meuvolume (retorna um json com os metadados do volume)
-docker volume prune (limpa os volumes locais que não estão sendo usados)
-
--- Para usar um volume no container
-docker run -d --name nginx-server -p 8080:80 --mount type=volume,source=meuvolume,target=/app nginx
 
 
 -------------
