@@ -16,6 +16,7 @@
 - [Removendo uma distribuição](#removendo-uma-distribuição)
 - [Limitando recursos da máquina principal](#limitando-recursos-da-máquina-principal)
 - [Pacotes básicos para instalar nas distribuições Ubuntu](#pacotes-básicos-para-instalar-nas-distribuições-ubuntu)
+- [Resumo dos principais comandos](#resumo-dos-principais-comandos)
 
 ## Atualizando o WSL
 ```sh
@@ -114,4 +115,13 @@ swap=1GB
 ```sh
 apt-get update && \
 apt-get install -y iproute2 net-tools iputils-ping dnsutils traceroute curl wget
+```
+
+## Resumo dos principais comandos
+```sh
+wsl --list -v
+wsl --list --online
+wsl --install -d Ubuntu
+wsl --shutdown
+wsl --unregister Ubuntu
 ```
