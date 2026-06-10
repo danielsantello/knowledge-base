@@ -7,32 +7,45 @@
 - [Parando o serviço do Docker](#parando-o-serviço-do-docker)
 - [Consultando ajuda](#consultando-ajuda)
 - [Testando a instalação](#testando-a-instalação)
-- [Listando containers](#listando-containers)
-- [Criando container em modo interativo](#criando-container-em-modo-interativo)
-- [Removendo o container ao término da execução](#removendo-o-container-ao-término-da-execução)
-- [Publicando portas no host](#publicando-portas-no-host)
-- [Criando container em background](#criando-container-em-background)
-- [Associando o terminal ao container](#associando-o-terminal-ao-container)
-- [Criando um container nomeado](#criando-um-container-nomeado)
-- [Renomeando containers](#renomeando-containers)
-- [Criando containers](#criando-containers)
-- [Removendo container](#removendo-container)
-- [Removendo vários containers](#removendo-vários-containers)
-- [Executando containers](#executando-containers)
-- [Parando containers](#parando-containers)
-- [Executando comandos dentro de um container em execução](#executando-comandos-dentro-de-um-container-em-execução)
-- [Acessando o terminal dentro de um container](#acessando-o-terminal-dentro-de-um-container)
-- [Mapeando uma pasta local](#mapeando-uma-pasta-local)
-- [Gerenciando volumes](#gerenciando-volumes)
+- [Containers](#containers)
+	- [Listando containers](#listando-containers)
+ 	- [Listando apenas os nomes dos containers](#listando-apenas-os-nomes-dos-containers)
+	- [Criando container em modo interativo](#criando-container-em-modo-interativo)
+	- [Removendo o container ao término da execução](#removendo-o-container-ao-término-da-execução)
+	- [Publicando portas no host](#publicando-portas-no-host)
+	- [Criando container em background](#criando-container-em-background)
+	- [Associando o terminal ao container](#associando-o-terminal-ao-container)
+	- [Criando um container nomeado](#criando-um-container-nomeado)
+	- [Renomeando containers](#renomeando-containers)
+	- [Criando containers](#criando-containers)
+	- [Removendo container](#removendo-container)
+	- [Removendo vários containers](#removendo-vários-containers)
+	- [Executando containers](#executando-containers)
+	- [Parando containers](#parando-containers)
+	- [Executando comandos dentro de um container em execução](#executando-comandos-dentro-de-um-container-em-execução)
+	- [Acessando o terminal dentro de um container](#acessando-o-terminal-dentro-de-um-container)
+	- [Mapeando uma pasta local](#mapeando-uma-pasta-local)
+ 	- [Inspecionando containers](#inspecionando-containers)
+- [Volumes](#volumes)
 	- [Listando volumes criados](#listando-volumes-criados)
  	- [Criando um novo volume](#criando-um-novo-volume)
   	- [Exibindo dados de um volume](#exibindo-dados-de-um-volume)
   	- [Limpando volumes sem utilização](#limpando-volumes-sem-utilização)
   	- [Mapeando um volume no container](#mapeando-um-volume-no-container)
-- [Gerenciando imagens](#gerenciando-imagens)
+- [Imagens](#imagens)
 	- [Listando imagens criadas](#listando-imagens-criadas)
  	- [Baixando imagens da DockerHub](#baixando-imagens-da-dockerhub)
   	- [Removendo imagens](#removendo-imagens)
+  	- [Removendo imagens não utilizadas](#removendo-imagens-não-utilizadas)
+- [Networks](#networks)
+	- [Tipos de networks](#tipos-de-networks)
+ 	- [Criando uma network](#criando-uma-network)
+ 	- [Listando networks criadas](#listando-networks-criadas)
+  	- [Exibindo dados de uma network](#exibindo-dados-de-uma-network)
+    - [Limpando networks sem utilização](#limpando-networks-sem-utilização)
+    - [Definindo qual network usar no container](#definindo-qual-network-usar-no-container)
+    - [Conectando uma network em um container existente](#conectando-uma-network-em-um-container-existente)
+    - [Descobrindo o ip de um container](#descobrindo-o-ip-de-um-container)
 - [Resumo dos principais comandos](#resumo-dos-principais-comandos)
   
 
@@ -85,7 +98,8 @@ This message shows that your installation appears to be working correctly.
 ...
 ```
 
-## Listando containers
+## Containers
+### Listando containers
 ```sh
 docker ps
 ```
@@ -101,7 +115,16 @@ docker ps -a -q
 ```
 > **Observação:** lista apenas os IDs dos containers.
 
-## Criando container em modo interativo
+### Listando apenas os nomes dos containers
+```sh
+docker ps --format "{{.Names}}"
+```
+
+```sh
+docker ps -aq
+```
+
+### Criando container em modo interativo
 **Sintaxe**
 
 `docker run -it <nome-da-imagem> bash`
@@ -120,7 +143,7 @@ docker run -it ubuntu bash
 - `ubuntu` → imagem que será executada
 - `bash` → comando executado ao iniciar o container
 
-## Removendo o container ao término da execução
+### Removendo o container ao término da execução
 **Sintaxe**
 
 `docker run -it --rm <nome-da-imagem> bash`
@@ -130,7 +153,7 @@ docker run -it ubuntu bash
 docker run -it --rm ubuntu bash
 ```
 
-## Publicando portas no host
+### Publicando portas no host
 ```sh
 docker run -p 8080:80 nginx
 ```
@@ -152,7 +175,7 @@ docker run -p 8080:80 nginx
 > a requisição será encaminhada para a porta `80` do container.
 
 
-## Criando container em background
+### Criando container em background
 ```sh
 docker run -d -p 8080:80 nginx
 ```
@@ -161,7 +184,7 @@ docker run -d -p 8080:80 nginx
 >
 > Nesse modo, o terminal é liberado imediatamente após a criação do container.
 
-## Associando o terminal ao container
+### Associando o terminal ao container
 ```sh
 docker attach nginx
 ```
@@ -172,7 +195,7 @@ docker attach nginx
 >
 > `docker exec -it <nome-do-container> bash`
 
-## Criando um container nomeado
+### Criando um container nomeado
 **Sintaxe**
 
 `docker run -d -p 8080:80 --name <nome-do-container> <nome-da-imagem>`
@@ -182,7 +205,7 @@ docker attach nginx
 docker run -d -p 8080:80 --name nginx-server nginx
 ```
 
-## Renomeando containers
+### Renomeando containers
 **Sintaxe**
 
 `docker rename <nome-antigo> <nome-novo>`
@@ -192,7 +215,7 @@ docker run -d -p 8080:80 --name nginx-server nginx
 docker rename nginx nginx-server
 ```
 
-## Criando containers
+### Criando containers
 **Sintaxe**
 
 `docker create --name <nome-do-container> <nome-da-imagem>`
@@ -203,7 +226,7 @@ docker create --name nginx-server nginx
 ```
 > O comando **create** apenas cria o container, sem executar. Diferente do docker run que cria e executa
 
-## Removendo container
+### Removendo container
 **Sintaxe**
 
 `docker rm <container_id>`  
@@ -219,7 +242,7 @@ docker create --name nginx-server nginx
 > docker rm -f <container_name>
 > ```
 
-## Removendo vários containers
+### Removendo vários containers
 **Exemplos de uso:**
 ```sh
 docker rm 49b000cf2fdb 1ed329fa2fb2 28ab953b6465
@@ -229,7 +252,7 @@ docker rm 49b000cf2fdb 1ed329fa2fb2 28ab953b6465
 docker rm -f $(docker ps -qa)
 ```
 
-## Executando containers
+### Executando containers
 **Sintaxe**
 
 `docker start <container_id>`  
@@ -246,7 +269,7 @@ docker start $(docker ps -qa)
 
 > **Observação:** esse último exemplo executa todos os containers criados
 
-## Parando containers
+### Parando containers
 **Sintaxe**
 
 `docker stop <container_id>`  
@@ -263,7 +286,7 @@ docker stop $(docker ps -q)
 
 > **Observação:** esse último exemplo, para todos os containers em execução
 
-## Executando comandos dentro de um container em execução
+### Executando comandos dentro de um container em execução
 **Sintaxe**
 
 `docker exec <container_id> <comando>`  
@@ -274,12 +297,12 @@ docker stop $(docker ps -q)
 docker exec app ls
 ```
 
-## Acessando o terminal dentro de um container
+### Acessando o terminal dentro de um container
 ```sh
 docker exec -it app bash
 ```
 
-## Mapeando uma pasta local
+### Mapeando uma pasta local
 **Exemplos de uso:**
 ```sh
 docker run -d --name nginx-server -p 8080:80 -v "$(pwd)"/html:/usr/share/nginx/html nginx
@@ -295,7 +318,19 @@ docker run -d --name nginx-server -p 8080:80 --mount type=bind,source="$(pwd)"/h
 
 > **Observação:** no primeiro exemplo, o parâmetro `-v` cria automaticamente a pasta de origem caso ela ainda não exista. No último exemplo, abre a pasta no destino como somente leitura `(ro - readonly)`
 
-## Gerenciando volumes
+### Inspecionando containers
+**Sintaxe**
+
+`docker inspect <nome-do-container>`
+
+**Exemplo de uso:**
+```sh
+docker inspect app
+```
+
+> **Observação:** retorna um `JSON` com os metadados do container
+
+## Volumes
 ### Listando volumes criados
 ```sh
 docker volume ls
@@ -321,7 +356,7 @@ docker volume create datadir
 docker volume inspect datadir
 ```
 
-> **Observação:** retorna um json com os metadados do volume
+> **Observação:** retorna um `JSON` com os metadados do volume
 
 ### Limpando volumes sem utilização
 ```sh
@@ -340,7 +375,7 @@ docker volume prune
 docker run -d --name nginx-server -p 8080:80 --mount type=volume,source=datadir,target=/app nginx
 ```
 
-## Gerenciando imagens
+## Imagens
 ### Listando imagens criadas
 ```sh
 docker images
@@ -364,6 +399,120 @@ docker pull ubuntu
 **Exemplo de uso:**
 ```sh
 docker rmi ubuntu
+```
+
+### Removendo imagens não utilizadas
+```sh
+docker image prune
+```
+
+## Networks
+### Tipos de networks
+
+- `bridge` → default, quando um container precisa se comunicar com outro
+- `host` → mesma rede do host, onde está executando o docker. O Host consegue acessar os containers sem o mapeamento
+- `overlay` → usado quando precisa de vários container para escalonamento - Swarm
+- `macvlan` → atribui um MAC/IP próprio ao container
+- `none` → container sem interface de rede
+
+### Criando uma network
+**Sintaxe**
+
+`docker network create --driver <nome-do-driver> <nome-da-network>`
+
+**Exemplo de uso:**
+```sh
+docker network create --driver bridge net01
+```
+
+### Listando networks criadas
+```sh
+docker network ls
+```
+
+### Limpando networks sem utilização
+```sh
+docker network prune
+```
+
+### Exibindo dados de uma network
+**Sintaxe**
+
+`docker network inspect <id-da-network>`  
+`docker network inspect <nome-da-network>`
+
+**Exemplos de uso:**
+```sh
+docker network inspect f293d0c2b0e5
+```
+
+```sh
+docker network inspect bridge
+```
+
+> **Observação:** retorna um `JSON` com os metadados da network
+
+### Definindo qual network usar no container
+```sh
+docker run -dit --name ubuntu1 --network net01 ubuntu bash
+```
+
+> **Observação:** quando se cria um container apontando pra uma network específica, é possível executar um ping pelo nome da máquina
+
+```sh
+docker run --rm -d --name nginx --network host nginx
+```
+
+> **Observação:** quando se cria um container apontando pra uma network `host`, é possível acessar direto assim:  
+> `http://localhost`
+>
+> Caso o container esteja em modo bridge e precisar acessar o host, pode ser feito dessa forma também:  
+> `http://host.docker.internal`
+
+### Conectando uma network em um container existente
+**Sintaxe**
+
+`docker network connect <nome-da-network> <nome-do-container>`
+
+**Exemplo de uso:**
+```sh
+docker network connect net01 ubuntu1
+```
+
+### Descobrindo o ip de um container
+**Sintaxe**
+
+`docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <nome-do-container>`  
+`docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <id-do-container>`
+
+**Exemplos de uso:**
+```sh
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ubuntu1
+```
+
+```sh
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' f293d0c2b0e5
+```
+
+## Logs
+**Sintaxe**
+
+`docker logs [container_id]`  
+`docker logs [container_name]`
+
+**Exemplos de uso:**
+```sh
+docker logs ubuntu1
+```
+
+```sh
+docker logs -f laravel
+```
+
+> **Observação:** o parâmetro -f mantém o terminal em modo de exibição
+
+```sh
+docker logs --tail 20 nginx
 ```
 
 ## Resumo dos principais comandos
@@ -401,59 +550,3 @@ docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <con
 docker logs <container_id|container_name>
 docker logs -f <container_id|container_name> (fica em modo de exibição dos logs)
 ```
-
-
-
-
-
--------------
--- NETWORK --
--------------
--- Tipos de networks:
---	bridge (default, quando um container precisa se comunicar com outro)
---	host (mesma rede do host, onde está executando o docker. O Host consegue acessar os containers sem o mapeamento)
---	overlay (usado quando precisa de vários container para escalonamento - Swarm)
---	maclan (mac address, quando precisa isolar um container)
---	none (container sem interface de rede)
-
-docker network
-docker network ls (lista redes existentes)
-docker network prune (remove redes que não estão em utilização)
-docker network inspect bridge (retorna json com dados da network)
-docker network inspect f293d0c2b0e5
-
-docker network create --driver bridge dalq (criar a rede em modo brigde chamada dalq)
-
-docker run -dit --name ubuntu1 --network dalq ubuntu bash
-docker run -dit --name ubuntu2 --network dalq ubuntu bash
-docker run -dit --name ubuntu3 ubuntu bash
-
--- No exemplo acima, a terceira maquina (ubuntu3) estará em uma rede diferente das outras duas
--- Além disso, quando crio um container apontando pra uma network, eu consigo fazer um ping pelo nome da máquina
-
-docker network connect dalq ubuntu3
-
--- Ao fazer isso, eu conecto a máquina ubuntu3 a mesma rede das demais, sendo possível comunicar entre elas
-
-docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ubuntu1
-docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' f293d0c2b0e5
-
--- Exemplo: criando um container na rede host:
-docker run --rm -d --name nginx --network host nginx
-
--- Desse modo, já consigo acessar direto assim: http://localhost
-
--- Caso o container esteja em modo bridge e precisar acessar o host, pode ser feito dessa forma também:
-curl http://host.docker.internal:8000 (imaginando que tenho um servidor web na maquina local rodando na porta 8000)
-
-
-----------
--- LOGS --
-----------
-docker logs [container_id]
-docker logs [container_name]
-docker logs -f laravel (fica em modo de exibição dos logs)
-
--- Para ver a saida em modo background, podemos usar:
-docker logs server (exibe o log e volta pro terminal)
-docker logs -f server (exibe o log e trava o terminal)
