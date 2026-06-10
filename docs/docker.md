@@ -29,6 +29,10 @@
   	- [Exibindo dados de um volume](#exibindo-dados-de-um-volume)
   	- [Limpando volumes sem utilização](#limpando-volumes-sem-utilização)
   	- [Mapeando um volume no container](#mapeando-um-volume-no-container)
+- [Gerenciando imagens](#gerenciando-imagens)
+	- [Listando imagens criadas](#listando-imagens-criadas)
+ 	- [Baixando imagens da DockerHub](#baixando-imagens-da-dockerhub)
+  	- [Removendo imagens](#removendo-imagens)
 - [Resumo dos principais comandos](#resumo-dos-principais-comandos)
   
 
@@ -254,7 +258,7 @@ docker stop app
 ```
 
 ```sh
-docker stop $(docker ps -qa)
+docker stop $(docker ps -q)
 ```
 
 > **Observação:** esse último exemplo, para todos os containers em execução
@@ -289,7 +293,7 @@ docker run -d --name nginx-server -p 8080:80 --mount type=bind,source="$(pwd)"/h
 docker run -d --name nginx-server -p 8080:80 --mount type=bind,source="$(pwd)"/html,target=/usr/share/nginx/html,ro nginx
 ```
 
-> **Observação:** esse último exemplo, abre a pasta no destino como somente leitura `(ro - readonly)`
+> **Observação:** no primeiro exemplo, o parâmetro `-v` cria automaticamente a pasta de origem caso ela ainda não exista. No último exemplo, abre a pasta no destino como somente leitura `(ro - readonly)`
 
 ## Gerenciando volumes
 ### Listando volumes criados
@@ -336,6 +340,32 @@ docker volume prune
 docker run -d --name nginx-server -p 8080:80 --mount type=volume,source=datadir,target=/app nginx
 ```
 
+## Gerenciando imagens
+### Listando imagens criadas
+```sh
+docker images
+```
+
+### Baixando imagens da DockerHub
+**Sintaxe**
+
+`docker pull <nome-da-imagem>`
+
+**Exemplo de uso:**
+```sh
+docker pull ubuntu
+```
+
+### Removendo imagens
+**Sintaxe**
+
+`docker rmi <nome-da-imagem>`
+
+**Exemplo de uso:**
+```sh
+docker rmi ubuntu
+```
+
 ## Resumo dos principais comandos
 ```sh
 docker ps
@@ -373,12 +403,7 @@ docker logs -f <container_id|container_name> (fica em modo de exibição dos log
 ```
 
 
--------------
--- IMAGENS --
--------------
-docker images (exibe as imagens que tem salvas no computador)
-docker pull ubuntu (apenas baixa a imagem do container register da DockerHub para o computador)
-docker rmi ubuntu (remove a imagem ubuntu)
+
 
 
 -------------
