@@ -282,7 +282,7 @@ docker stop app
 docker stop $(docker ps -q)
 ```
 
-> **Observação:** esse último exemplo, para todos os containers em execução
+> **Observação:** esse último exemplo para todos os containers em execução.
 
 ### Executando comandos dentro de um container em execução
 **Sintaxe**
