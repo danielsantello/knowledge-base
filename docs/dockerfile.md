@@ -86,9 +86,9 @@ docker build -t danielsantello1982/nginx-local:latest .
 docker run -d -p 8080:80 --name nginx danielsantello1982/nginx-local:latest
 ```
 
-> **Resultado:**
-> criará uma imagem com o NGINX  
-> criará uma pasta chamada /app  
-> instalará o programa vim  
-> copiará o conteúdo da pasta html da máquina local para o diretório /usr/share/nginx/html do container
+> **Resultado:**  
+> - criará uma imagem com o NGINX  
+> - criará uma pasta chamada /app  
+> - instalará o programa vim  
+> - copiará o conteúdo da pasta html da máquina local para o diretório /usr/share/nginx/html do container
 
