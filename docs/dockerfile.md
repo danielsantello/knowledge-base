@@ -8,6 +8,8 @@
 - [Instruções](#instruções)
 - [Exemplos](#exemplos)
 	- [Hello World](#hello-world)
+	- [Nginx + VIM](#nginx-+-vim)
+	- [Nginx + Mapeamento Local](#nginx-+-mapeamento-local)
 
 ## Criando imagens
 > por padrão, cria-se um arquivo chamado Dockerfile na pasta principal do projeto.
@@ -53,4 +55,40 @@ CMD [ "echo", "Hello World" ]
 docker build -t danielsantello1982/hello-world:latest .
 docker run --rm danielsantello1982/hello-world:latest
 ```
+
+### Nginx + VIM
+```dockerfile
+FROM nginx:latest
+
+RUN apt-get update
+RUN apt-get install vim -y
+```
+
+```sh
+docker build -t danielsantello1982/nginx-vim:latest .
+docker run -d -p 8080:80 --name nginx danielsantello1982/nginx-vim:latest
+```
+
+### Nginx + Mapeamento Local
+```dockerfile
+FROM nginx:latest
+
+WORKDIR /app
+
+RUN apt-get update &&\
+    apt-get install vim -y
+
+COPY html /usr/share/nginx
+```
+
+```sh
+docker build -t danielsantello1982/nginx-local:latest .
+docker run -d -p 8080:80 --name nginx danielsantello1982/nginx-local:latest
+```
+
+> **Resultado:**
+> criará uma imagem com o NGINX  
+> criará uma pasta chamada /app  
+> instalará o programa vim  
+> copiará o conteúdo da pasta html da máquina local para o diretório /usr/share/nginx/html do container
 
