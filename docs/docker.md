@@ -5,7 +5,6 @@
 - [Verificando o serviço do Docker](#verificando-o-serviço-do-docker)
 - [Iniciando o serviço do Docker](#iniciando-o-serviço-do-docker)
 - [Parando o serviço do Docker](#parando-o-serviço-do-docker)
-- [Restartando o serviço do Docker](#parando-o-serviço-do-docker)
 - [Consultando ajuda](#consultando-ajuda)
 - [Testando a instalação](#testando-a-instalação)
 - [Containers](#containers)
@@ -81,17 +80,6 @@ sudo service docker start
 ## Parando o serviço do Docker
 ```sh
 sudo service docker stop
-```
-
-## Restartando o serviço do Docker
-**Sintaxe**
-
-`docker restart <container_id>`
-`docker restart <container_name>`
-
-**Exemplo de uso:**
-```sh
-docker restart app
 ```
 
 ## Consultando ajuda
@@ -373,6 +361,8 @@ docker volume inspect datadir
 docker volume prune
 ```
 
+> **Observação:** limpa os volumes locais que não estão sendo usados
+
 ### Removendo volumes
 **Sintaxe**
 
@@ -382,8 +372,6 @@ docker volume prune
 ```sh
 docker volume rm datadir
 ```
-
-> **Observação:** limpa os volumes locais que não estão sendo usados
 
 ### Mapeando um volume no container
 **Sintaxe**
