@@ -8,8 +8,8 @@
 - [Instruções](#instruções)
 - [Exemplos](#exemplos)
 	- [Hello World](#hello-world)
-	- [Nginx + VIM](#nginx--vim)
-	- [Nginx + Arquivos Locais](#nginx--arquivos-locais)
+	- [Nginx com VIM](#nginx-com-vim)
+	- [Nginx com Arquivos Locais](#nginx-com-arquivos-locais)
 
 ## Criando imagens
 > por padrão, cria-se um arquivo chamado Dockerfile na pasta principal do projeto.
@@ -37,13 +37,17 @@ docker build -f Dockerfile.prod -t danielsantello1982/app:latest .
 docker push danielsantello1982/app:latest
 ```
 
-> **Observação:** o comando acima publicará a imagem no Docker Hub Registry.
+> **Observação:** antes de publicar uma imagem, é necessário estar autenticado no Docker Hub:
+>
+> ```sh
+> docker login
+> ```
 
 ## Instruções
 - `FROM` → define a imagem base utilizada na construção da nova imagem
 - `RUN` → executa comandos durante o processo de build
 - `WORKDIR` → define o diretório de trabalho da imagem
-- `COPY` → copia arquivos da máquina local para a imagem
+- `COPY` → copia arquivos da máquina local (contexto de build) para dentro da imagem
 - `CMD` → define o comando executado quando o container for iniciado
 
 ## Exemplos
@@ -59,7 +63,7 @@ docker build -t danielsantello1982/hello-world:latest .
 docker run --rm danielsantello1982/hello-world:latest
 ```
 
-### Nginx + VIM
+### Nginx com VIM
 ```dockerfile
 FROM nginx:latest
 
@@ -72,7 +76,7 @@ docker build -t danielsantello1982/nginx-vim:latest .
 docker run -d -p 8080:80 --name nginx danielsantello1982/nginx-vim:latest
 ```
 
-### Nginx + Arquivos Locais
+### Nginx com Arquivos Locais
 ```dockerfile
 FROM nginx:latest
 
@@ -90,8 +94,8 @@ docker run -d -p 8080:80 --name nginx danielsantello1982/nginx-local:latest
 ```
 
 > **Resultado:**  
-> - criará uma imagem com o NGINX  
-> - criará uma pasta chamada /app  
+> - criará uma imagem baseada no NGINX  
+> - definirá `/app` como diretório de trabalho (criando-o caso não exista)  
 > - instalará o programa vim  
-> - copiará o conteúdo da pasta html da máquina local para o diretório /usr/share/nginx/html do container
+> - copiará o conteúdo da pasta `html` da máquina local para `/usr/share/nginx/html`
 
