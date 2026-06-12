@@ -8,8 +8,8 @@
 - [Instruções](#instruções)
 - [Exemplos](#exemplos)
 	- [Hello World](#hello-world)
-	- [Nginx + VIM](#nginx-+-vim)
-	- [Nginx + Mapeamento Local](#nginx-+-mapeamento-local)
+	- [Nginx + VIM](#nginx--vim)
+	- [Nginx + Arquivos Locais](#nginx--arquivos-locais)
 
 ## Criando imagens
 > por padrão, cria-se um arquivo chamado Dockerfile na pasta principal do projeto.
@@ -41,6 +41,9 @@ docker push danielsantello1982/app:latest
 
 ## Instruções
 - `FROM` → define a imagem base utilizada na construção da nova imagem
+- `RUN` → executa comandos durante o processo de build
+- `WORKDIR` → define o diretório de trabalho da imagem
+- `COPY` → copia arquivos da máquina local para a imagem
 - `CMD` → define o comando executado quando o container for iniciado
 
 ## Exemplos
@@ -60,8 +63,8 @@ docker run --rm danielsantello1982/hello-world:latest
 ```dockerfile
 FROM nginx:latest
 
-RUN apt-get update
-RUN apt-get install vim -y
+RUN apt-get update && \
+    apt-get install -y vim
 ```
 
 ```sh
@@ -69,16 +72,16 @@ docker build -t danielsantello1982/nginx-vim:latest .
 docker run -d -p 8080:80 --name nginx danielsantello1982/nginx-vim:latest
 ```
 
-### Nginx + Mapeamento Local
+### Nginx + Arquivos Locais
 ```dockerfile
 FROM nginx:latest
 
 WORKDIR /app
 
-RUN apt-get update &&\
-    apt-get install vim -y
+RUN apt-get update && \
+    apt-get install -y vim
 
-COPY html /usr/share/nginx
+COPY html /usr/share/nginx/html
 ```
 
 ```sh
