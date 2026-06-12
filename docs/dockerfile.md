@@ -10,6 +10,7 @@
 	- [Hello World](#hello-world)
 	- [Nginx com VIM](#nginx-com-vim)
 	- [Nginx com Arquivos Locais](#nginx-com-arquivos-locais)
+	- [Laravel](#laravel)
 
 ## Criando imagens
 > por padrão, cria-se um arquivo chamado Dockerfile na pasta principal do projeto.
@@ -49,6 +50,7 @@ docker push danielsantello1982/app:latest
 - `WORKDIR` → define o diretório de trabalho da imagem
 - `COPY` → copia arquivos da máquina local (contexto de build) para dentro da imagem
 - `CMD` → define o comando executado quando o container for iniciado
+- `ENTRYPOINT` → define o comando principal executado ao iniciar o container
 
 ## Exemplos
 ### Hello World
@@ -98,4 +100,48 @@ docker run -d -p 8080:80 --name nginx danielsantello1982/nginx-local:latest
 > - definirá `/app` como diretório de trabalho (criando-o caso não exista)  
 > - instalará o programa vim  
 > - copiará o conteúdo da pasta `html` da máquina local para `/usr/share/nginx/html`
+
+### Laravel
+```dockerfile
+FROM php:8.4-cli
+
+WORKDIR /var/www/laravel
+
+RUN apt-get update && \
+    apt-get install -y libzip-dev && \
+    docker-php-ext-install zip
+
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
+    php composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
+    php -r "unlink('composer-setup.php');"
+
+RUN composer create-project --prefer-dist laravel/laravel laravel
+
+ENTRYPOINT [ "php", "artisan", "serve" ]
+
+CMD [ "--host=0.0.0.0" ]
+```
+
+```sh
+docker build -t danielsantello1982/laravel:latest .
+docker run --rm -d --name laravel -p 8000:8000 danielsantello1982/laravel:latest
+```
+
+**Exemplo alterando a porta padrão:**
+```sh
+docker run --rm -d --name laravel -p 8001:8001 danielsantello1982/laravel:latest --host=0.0.0.0 --port=8001
+```
+
+> **Observação:**  
+> O comando definido em `ENTRYPOINT` será sempre executado.  
+> Os parâmetros definidos em `CMD` podem ser substituídos ao executar o container.  
+> Os parâmetros informados após o nome da imagem substituem os valores definidos em `CMD`.
+
+> **Resultado:**  
+> - criará uma imagem baseada em PHP  
+> - instalará a extensão ZIP  
+> - instalará o Composer  
+> - criará um projeto Laravel  
+> - iniciará o servidor embutido do Laravel  
+> - permitirá alterar host e porta através dos parâmetros informados no `docker run`
 
