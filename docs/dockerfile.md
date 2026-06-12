@@ -13,8 +13,8 @@
 
 **Sintaxe**
 
-`docker build -t <namespace>/<nome-da-imagem>:<versão-da-imagem> .`  
-`docker build -t <namespace>/<nome-da-imagem>:<versão-da-imagem> . -f <nome-do-arquivo-dockerfile`
+`docker build -t <namespace>/<nome-da-imagem>:<versão> .`  
+`docker build -t <namespace>/<nome-da-imagem>:<versão> . -f <nome-do-arquivo-dockerfile`
 
 **Exemplos de uso:**
 ```sh
