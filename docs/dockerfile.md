@@ -5,6 +5,7 @@
 
 - [Criando imagens](#criando-imagens)
 - [Publicando imagens](#publicando-imagens)
+- [Instruções](#instruções)
 - [Exemplos](#exemplos)
 	- [Hello World](#hello-world)
 
@@ -14,7 +15,7 @@
 **Sintaxe**
 
 `docker build -t <namespace>/<nome-da-imagem>:<versão> .`  
-`docker build -t <namespace>/<nome-da-imagem>:<versão> . -f <nome-do-arquivo-dockerfile>`
+`docker build -f <nome-do-arquivo-dockerfile> -t <namespace>/<nome-da-imagem>:<versão> .`
 
 **Exemplos de uso:**
 ```sh
@@ -22,10 +23,12 @@ docker build -t danielsantello1982/app:latest .
 ```
 
 ```sh
-docker build -t danielsantello1982/app:latest . -f Dockerfile.prod
+docker build -f Dockerfile.prod -t danielsantello1982/app:latest .
 ```
 
-> **Observação:** o parâmetro `-f` deve ser usado quando o nome do dockerfile não segue o padrão.
+> **Observações:**  
+> o parâmetro `-f` deve ser usado quando o nome do dockerfile não segue o padrão.  
+> o ponto (`.`) representa o contexto de build, indicando que os arquivos necessários para a construção da imagem estão no diretório atual.
 
 ## Publicando imagens
 ```sh
@@ -33,6 +36,10 @@ docker push danielsantello1982/app:latest
 ```
 
 > **Observação:** o comando acima publicará a imagem no Docker Hub Registry.
+
+## Instruções
+- `FROM` → define a imagem base utilizada na construção da nova imagem
+- `CMD` → define o comando executado quando o container for iniciado
 
 ## Exemplos
 ### Hello World
