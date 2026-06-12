@@ -7,4 +7,5 @@ Este repositório reúne os principais comandos, conceitos e experimentos realiz
 
 - [WSL](docs/wsl.md)
 - [Docker](docs/docker.md)
+- [Docker Compose](docs/docker-compose.md)
 
