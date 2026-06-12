@@ -5,6 +5,7 @@
 - [Verificando o serviço do Docker](#verificando-o-serviço-do-docker)
 - [Iniciando o serviço do Docker](#iniciando-o-serviço-do-docker)
 - [Parando o serviço do Docker](#parando-o-serviço-do-docker)
+- [Restartando o serviço do Docker](#parando-o-serviço-do-docker)
 - [Consultando ajuda](#consultando-ajuda)
 - [Testando a instalação](#testando-a-instalação)
 - [Containers](#containers)
@@ -31,6 +32,7 @@
  	- [Criando um novo volume](#criando-um-novo-volume)
   	- [Exibindo dados de um volume](#exibindo-dados-de-um-volume)
   	- [Limpando volumes sem utilização](#limpando-volumes-sem-utilização)
+  	- [Removendo volumes](#removendo-volumes)
   	- [Mapeando um volume no container](#mapeando-um-volume-no-container)
 - [Imagens](#imagens)
 	- [Listando imagens criadas](#listando-imagens-criadas)
@@ -43,6 +45,7 @@
  	- [Listando networks criadas](#listando-networks-criadas)
   	- [Exibindo dados de uma network](#exibindo-dados-de-uma-network)
     - [Limpando networks sem utilização](#limpando-networks-sem-utilização)
+    - [Removendo networks](#removendo-networks)
     - [Definindo qual network usar no container](#definindo-qual-network-usar-no-container)
     - [Conectando uma network em um container existente](#conectando-uma-network-em-um-container-existente)
     - [Descobrindo o ip de um container](#descobrindo-o-ip-de-um-container)
@@ -78,6 +81,17 @@ sudo service docker start
 ## Parando o serviço do Docker
 ```sh
 sudo service docker stop
+```
+
+## Restartando o serviço do Docker
+**Sintaxe**
+
+`docker restart <container_id>`
+`docker restart <container_name>`
+
+**Exemplo de uso:**
+```sh
+docker restart app
 ```
 
 ## Consultando ajuda
@@ -118,10 +132,6 @@ docker ps -a -q
 ### Listando apenas os nomes dos containers
 ```sh
 docker ps --format "{{.Names}}"
-```
-
-```sh
-docker ps -aq
 ```
 
 ### Criando container em modo interativo
@@ -363,6 +373,16 @@ docker volume inspect datadir
 docker volume prune
 ```
 
+### Removendo volumes
+**Sintaxe**
+
+`docker volume rm <nome-do-volume>`
+
+**Exemplo de uso:**
+```sh
+docker volume rm datadir
+```
+
 > **Observação:** limpa os volumes locais que não estão sendo usados
 
 ### Mapeando um volume no container
@@ -433,6 +453,16 @@ docker network ls
 ### Limpando networks sem utilização
 ```sh
 docker network prune
+```
+
+### Removendo networks
+**Sintaxe**
+
+`docker network rm <nome-da-network>`
+
+**Exemplo de uso:**
+```sh
+docker network rm net01
 ```
 
 ### Exibindo dados de uma network
