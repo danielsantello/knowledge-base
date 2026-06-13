@@ -105,10 +105,10 @@ docker run --rm -d -p 8080:80 --name nginx danielsantello1982/nginx-arquivos-loc
 ```dockerfile
 FROM php:8.4-cli
 
-WORKDIR /var/www/laravel
+WORKDIR /var/www
 
 RUN apt-get update && \
-    apt-get install -y libzip-dev && \
+    apt-get install -y libzip-dev unzip git && \
     docker-php-ext-install zip
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
@@ -116,6 +116,8 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
     php -r "unlink('composer-setup.php');"
 
 RUN composer create-project --prefer-dist laravel/laravel laravel
+
+WORKDIR /var/www/laravel
 
 ENTRYPOINT [ "php", "artisan", "serve" ]
 
