@@ -240,9 +240,12 @@ docker network create --driver bridge net01
 
 > [!IMPORTANT]
 > Os containers precisam estar na mesma rede Docker para que o Nginx consiga localizar o container Laravel através do nome:
-> `fastcgi_pass laravel:9000;`
-> 
-> Nesse caso, laravel é o nome atribuído ao container durante sua criação.
+>
+> ```text
+> fastcgi_pass laravel:9000;
+> ```
+>
+> Nesse caso, `laravel` é o nome atribuído ao container durante sua criação.
 
 Fazer o build das duas imagens:
 ```sh
