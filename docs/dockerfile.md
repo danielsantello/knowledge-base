@@ -11,6 +11,7 @@
 	- [Nginx com VIM](#nginx-com-vim)
 	- [Nginx com Arquivos Locais](#nginx-com-arquivos-locais)
 	- [Laravel](#laravel)
+	- [Laravel com Nginx](#laravel-com-nginx)
 
 ## Criando imagens
 > por padrão, cria-se um arquivo chamado Dockerfile na pasta principal do projeto.
@@ -147,3 +148,93 @@ docker run --rm -d --name laravel -p 8001:8001 danielsantello1982/laravel:latest
 > - iniciará o servidor embutido do Laravel  
 > - permitirá alterar host e porta através dos parâmetros informados no `docker run`
 
+### Laravel com Nginx
+Para esse exemplo, vamos criar dois arquivos Dockerfiles.
+
+O primeiro arquivo chamado `Dockerfile.laravel`:
+```dockerfile
+FROM php:8.4-cli
+
+WORKDIR /var/www
+
+RUN apt-get update && \
+    apt-get install -y libzip-dev unzip git && \
+    docker-php-ext-install zip
+
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
+    php composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
+    php -r "unlink('composer-setup.php');"
+
+RUN composer create-project --prefer-dist laravel/laravel laravel
+
+WORKDIR /var/www/laravel
+
+ENTRYPOINT [ "php", "artisan", "serve" ]
+
+CMD [ "--host=0.0.0.0" ]
+```
+
+O segundo arquivo chamado `Dockerfile.nginx`:
+```dockerfile
+FROM nginx:1.15.0-alpine
+
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d
+
+RUN mkdir -p /var/www/public && \
+    touch /var/www/public/index.php
+```
+
+Criar também um outro arquivo chamado `nginx.conf`:
+```text
+server {
+    listen 80;
+    index index.php index.html;
+    root /var/www/laravel/public;
+
+    add_header X-Frame-Options "SAMEORIGIN";
+    add_header X-XSS-Protection "1; mode=block";
+    add_header X-Content-Type-Options "nosniff";
+
+    charset utf-8;
+
+    location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass laravel:9000;
+        fastcgi_param SCRIPT_FILENAME /var/www/public/index.php;
+        include fastcgi_params;
+    }
+
+    location / {
+        try_files $uri $uri/ /index.php$query_string;
+    }
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location = /robots.txt  { access_log off; log_not_found off; }
+
+    error_page 404 /index.php;
+
+    location ~ /\.(?!well-know).* {
+        deny all;
+    }
+}
+```
+
+Criar uma rede do tipo `bridge` chamada `net01`:
+```sh
+docker network create --driver bridge net01
+```
+
+Fazer o build das duas imagens:
+```sh
+docker build -f Dockerfile.laravel -t danielsantello1982/laravel:latest .
+docker build -f Dockerfile.nginx -t danielsantello1982/nginx:latest .
+```
+
+Rodar as duas imagens:
+```sh
+docker run --rm -d --network net01 --name laravel danielsantello1982/laravel:latest
+docker run --rm -d --network net01 -p 8080:80 --name nginx danielsantello1982/nginx:latest
+```
+
+Depois, basta acessar a página `https://localhost:8080`. O Nginx enviará as requisições para o PHP-FPM onde temos o Laravel instalado.
