@@ -417,6 +417,11 @@ docker rmi -f ubuntu
 > **Observação:** o parâmetro `-f` força a exclusão mesmo quando existir um container criado dessa imagem
 
 ### Removendo várias imagens
+**Sintaxe**
+
+`docker rmi -f <image_id> <image_id> <image_id> ...`  
+
+**Exemplo de uso:**
 ```sh
 docker rmi $(docker images -q)
 ```
