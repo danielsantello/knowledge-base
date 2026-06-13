@@ -92,7 +92,7 @@ COPY html /usr/share/nginx/html
 
 ```sh
 docker build -t danielsantello1982/nginx-arquivos-locais:latest .
-docker run -d -p 8080:80 --name nginx danielsantello1982/nginx-arquivos-locais:latest
+docker run --rm -d -p 8080:80 --name nginx danielsantello1982/nginx-arquivos-locais:latest
 ```
 
 > **Resultado:**  
