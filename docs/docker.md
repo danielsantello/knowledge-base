@@ -403,12 +403,18 @@ docker pull ubuntu
 ### Removendo imagens
 **Sintaxe**
 
-`docker rmi <nome-da-imagem>`
+`docker rmi <nome-da-imagem>`  
+`docker rmi <id-da-imagem>`  
+`docker rmi -f <nome-da-imagem>`  
+`docker rmi -f <id-da-imagem>`
 
 **Exemplo de uso:**
 ```sh
 docker rmi ubuntu
+docker rmi -f ubuntu
 ```
+
+> **Observação:** o parâmetro `-f` força a exclusão mesmo quando existir um container criado dessa imagem
 
 ### Removendo várias imagens
 ```sh
