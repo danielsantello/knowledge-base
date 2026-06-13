@@ -281,20 +281,20 @@ docker run --rm -it -v $(pwd)/:/usr/src/app -p 3000:3000 --name node node:22 bas
 >
 > Nesse exemplo:
 > 
-> $(pwd) → diretório atual da máquina local
-> /usr/src/app → diretório dentro do container
-
-Dessa forma, os arquivos criados dentro do container ficam persistidos na máquina local.
+> - $(pwd) → diretório atual da máquina local
+> - /usr/src/app → diretório dentro do container
+>
+> Dessa forma, os arquivos criados dentro do container ficam persistidos na máquina local.
 
 Dentro do container, executar:
 ```sh
 cd /usr/src/app
-npm init
-npm install express --save
+npm init -y
+npm install express
 ```
 
 Criar um arquivo chamado `index.js` na pasta do projeto:
-```node
+```javascript
 const express = require('express')
 const app = express()
 const port = 3000
@@ -322,6 +322,9 @@ EXPOSE 3000
 
 CMD ["node","index.js"]
 ```
+
+> **Observação:**  
+> o comando `EXPOSE` documenta a porta utilizada pela aplicação dentro do container. Ele não publica automaticamente a porta para a máquina host.
 
 Criar o builder e executar o container:
 ```sh
