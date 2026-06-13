@@ -341,7 +341,7 @@ docker run --rm -p 3000:3000 --name node danielsantello1982/node:latest
 
 Depois, basta acessar: `http://localhost:3000`
 
-> **Resultado:**  
+> **Resultado:**
 > - criará uma imagem baseada em Node.js  
 > - copiará os arquivos da aplicação para a imagem  
 > - exporá a porta 3000  
