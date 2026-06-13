@@ -329,7 +329,7 @@ EXPOSE 3000
 CMD ["node","index.js"]
 ```
 
-> **Observações:**
+> **Observações:**  
 > o comando `COPY` copiará todo o conteúdo do diretório atual para dentro da imagem, incluindo os arquivos `index.js`, `package.json` e demais arquivos do projeto.  
 > o comando `EXPOSE` documenta a porta utilizada pela aplicação dentro do container. Ele não publica automaticamente a porta para a máquina host.
 
