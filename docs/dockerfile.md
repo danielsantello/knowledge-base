@@ -11,7 +11,7 @@
 	- [Nginx com VIM](#nginx-com-vim)
 	- [Nginx com Arquivos Locais](#nginx-com-arquivos-locais)
 	- [Laravel](#laravel)
-	- [Laravel com Nginx](#laravel-com-nginx)
+	- [Laravel com Proxy Reverso Nginx](#laravel-com-proxy-reverso-nginx)
 
 ## Criando imagens
 > por padrão, cria-se um arquivo chamado Dockerfile na pasta principal do projeto.
@@ -148,7 +148,18 @@ docker run --rm -d --name laravel -p 8001:8001 danielsantello1982/laravel:latest
 > - iniciará o servidor embutido do Laravel  
 > - permitirá alterar host e porta através dos parâmetros informados no `docker run`
 
-### Laravel com Nginx
+### Laravel com Proxy Reverso Nginx
+Fluxo do exemplo:
+```text
+Browser
+↓
+Nginx
+↓
+php artisan serve
+↓
+Laravel
+```
+
 Para esse exemplo, vamos criar dois arquivos Dockerfiles.
 
 O primeiro arquivo chamado `Dockerfile.laravel`:
@@ -206,7 +217,7 @@ server {
     }
 
     location / {
-        try_files $uri $uri/ /index.php$query_string;
+        try_files $uri $uri/ /index.php?$query_string;
     }
 
     location = /favicon.ico { access_log off; log_not_found off; }
@@ -214,7 +225,7 @@ server {
 
     error_page 404 /index.php;
 
-    location ~ /\.(?!well-know).* {
+    location ~ /\.(?!well-known).* {
         deny all;
     }
 }
@@ -237,4 +248,9 @@ docker run --rm -d --network net01 --name laravel danielsantello1982/laravel:lat
 docker run --rm -d --network net01 -p 8080:80 --name nginx danielsantello1982/nginx:latest
 ```
 
-Depois, basta acessar a página `https://localhost:8080`. O Nginx enviará as requisições para o PHP-FPM onde temos o Laravel instalado.
+Depois, basta acessar: `http://localhost:8080`
+
+O Nginx atuará como proxy reverso, encaminhando as requisições para o container Laravel.
+
+> [!NOTE]
+> Este exemplo tem finalidade didática e demonstra a comunicação entre containers utilizando Nginx como proxy reverso. Em ambientes de produção é mais comum utilizar Nginx em conjunto com PHP-FPM.
