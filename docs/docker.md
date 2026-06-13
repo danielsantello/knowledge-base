@@ -37,6 +37,7 @@
 	- [Listando imagens criadas](#listando-imagens-criadas)
  	- [Baixando imagens da DockerHub](#baixando-imagens-da-dockerhub)
   	- [Removendo imagens](#removendo-imagens)
+  	- [Removendo várias imagens](#removendo-varias-imagens)
   	- [Removendo imagens não utilizadas](#removendo-imagens-não-utilizadas)
 - [Networks](#networks)
 	- [Tipos de networks](#tipos-de-networks)
@@ -407,6 +408,11 @@ docker pull ubuntu
 **Exemplo de uso:**
 ```sh
 docker rmi ubuntu
+```
+
+### Removendo várias imagens
+```sh
+docker rmi $(docker images -q)
 ```
 
 ### Removendo imagens não utilizadas
