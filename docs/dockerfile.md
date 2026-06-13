@@ -12,6 +12,7 @@
 	- [Nginx com Arquivos Locais](#nginx-com-arquivos-locais)
 	- [Laravel](#laravel)
 	- [Laravel utilizando Nginx como Proxy Reverso](#laravel-utilizando-nginx-como-proxy-reverso)
+ 	- [Node](#node)
 
 ## Criando imagens
 > por padrão, cria-se um arquivo chamado Dockerfile na pasta principal do projeto.
@@ -265,3 +266,75 @@ O Nginx atuará como proxy reverso, encaminhando as requisições para o contain
 
 > [!NOTE]
 > Este exemplo tem finalidade didática e demonstra a comunicação entre containers utilizando Nginx como proxy reverso para uma aplicação Laravel executada através do comando php artisan serve. Em ambientes de produção é mais comum > utilizar Nginx em conjunto com PHP-FPM.
+
+### Node
+#### Passo 1 - Criar o projeto
+
+Executar o seguinte container:
+```sh
+docker run --rm -it -v $(pwd)/:/usr/src/app -p 3000:3000 --name node node:22 bash
+```
+
+> [!NOTE]
+>
+> O parâmetro -v cria um mapeamento entre uma pasta da máquina local e uma pasta do container.
+>
+> Nesse exemplo:
+> 
+> $(pwd) → diretório atual da máquina local
+> /usr/src/app → diretório dentro do container
+
+Dessa forma, os arquivos criados dentro do container ficam persistidos na máquina local.
+
+Dentro do container, executar:
+```sh
+cd /usr/src/app
+npm init
+npm install express --save
+```
+
+Criar um arquivo chamado `index.js` na pasta do projeto:
+```node
+const express = require('express')
+const app = express()
+const port = 3000
+
+app.get('/', (req, res) => {
+    res.send('<h1>Rodando pelo Node</h1>')
+})
+
+app.listen(port, ()=> {
+    console.log('Rodando na porta ' + port)
+})
+```
+
+#### Passo 2 - Criar a imagem
+
+Criar o Dockerfile:
+```dockerfile
+FROM node:22
+
+WORKDIR /usr/src/app
+
+COPY . /usr/src/app
+
+EXPOSE 3000
+
+CMD ["node","index.js"]
+```
+
+Criar o builder e executar o container:
+```sh
+docker build -t danielsantello1982/node:latest .
+docker run --rm -p 3000:3000 --name node danielsantello1982/node:latest
+```
+
+Depois, basta acessar: `http://localhost:3000`
+
+> **Resultado:**  
+> - criará uma imagem baseada em Node.js  
+> - copiará os arquivos da aplicação para a imagem  
+> - exporá a porta 3000  
+> - iniciará a aplicação através do comando `node index.js`  
+> - disponibilizará a aplicação em `http://localhost:3000`
+
