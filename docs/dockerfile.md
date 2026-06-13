@@ -11,7 +11,7 @@
 	- [Nginx com VIM](#nginx-com-vim)
 	- [Nginx com Arquivos Locais](#nginx-com-arquivos-locais)
 	- [Laravel](#laravel)
-	- [Laravel com Proxy Reverso Nginx](#laravel-com-proxy-reverso-nginx)
+	- [Laravel utilizando Nginx como Proxy Reverso](#laravel-utilizando-nginx-como-proxy-reverso)
 
 ## Criando imagens
 > por padrão, cria-se um arquivo chamado Dockerfile na pasta principal do projeto.
@@ -148,7 +148,7 @@ docker run --rm -d --name laravel -p 8001:8001 danielsantello1982/laravel:latest
 > - iniciará o servidor embutido do Laravel  
 > - permitirá alterar host e porta através dos parâmetros informados no `docker run`
 
-### Laravel com Proxy Reverso Nginx
+### Laravel utilizando Nginx como Proxy Reverso
 Fluxo do exemplo:
 ```text
 Browser
@@ -237,6 +237,12 @@ Criar uma rede do tipo `bridge` chamada `net01`:
 ```sh
 docker network create --driver bridge net01
 ```
+
+> [!IMPORTANT]
+> Os containers precisam estar na mesma rede Docker para que o Nginx consiga localizar o container Laravel através do nome:
+> `fastcgi_pass laravel:9000;`
+> 
+> Nesse caso, laravel é o nome atribuído ao container durante sua criação.
 
 Fazer o build das duas imagens:
 ```sh
