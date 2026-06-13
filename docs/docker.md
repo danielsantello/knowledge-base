@@ -424,6 +424,7 @@ docker rmi -f ubuntu
 **Exemplo de uso:**
 ```sh
 docker rmi $(docker images -q)
+docker rmi -f $(docker images -q)
 ```
 
 ### Removendo imagens não utilizadas
