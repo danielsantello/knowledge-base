@@ -75,7 +75,7 @@ RUN apt-get update && \
 
 ```sh
 docker build -t danielsantello1982/nginx-vim:latest .
-docker run -d -p 8080:80 --name nginx danielsantello1982/nginx-vim:latest
+docker run --rm -d -p 8080:80 --name nginx danielsantello1982/nginx-vim:latest
 ```
 
 ### Nginx com Arquivos Locais
