@@ -281,8 +281,8 @@ docker run --rm -it -v $(pwd)/:/usr/src/app -p 3000:3000 --name node node:22 bas
 >
 > Nesse exemplo:
 > 
-> - $(pwd) → diretório atual da máquina local
-> - /usr/src/app → diretório dentro do container
+> - `$(pwd)` → diretório atual da máquina local
+> - `/usr/src/app` → diretório dentro do container
 >
 > Dessa forma, os arquivos criados dentro do container ficam persistidos na máquina local.
 
@@ -292,6 +292,12 @@ cd /usr/src/app
 npm init -y
 npm install express
 ```
+
+> **Resultado:**  
+> - criará o arquivo `package.json`  
+> - criará o arquivo `package-lock.json`  
+> - instalará a dependência `express`  
+> - criará a pasta `node_modules`
 
 Criar um arquivo chamado `index.js` na pasta do projeto:
 ```javascript
@@ -323,10 +329,11 @@ EXPOSE 3000
 CMD ["node","index.js"]
 ```
 
-> **Observação:**  
+> **Observações:**
+> o comando `COPY` copiará todo o conteúdo do diretório atual para dentro da imagem, incluindo os arquivos `index.js`, `package.json` e demais arquivos do projeto.  
 > o comando `EXPOSE` documenta a porta utilizada pela aplicação dentro do container. Ele não publica automaticamente a porta para a máquina host.
 
-Criar o builder e executar o container:
+Fazer o build da imagem e executar o container:
 ```sh
 docker build -t danielsantello1982/node:latest .
 docker run --rm -p 3000:3000 --name node danielsantello1982/node:latest
