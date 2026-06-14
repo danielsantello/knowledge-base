@@ -8,6 +8,7 @@
 - [Instruções](#instruções)
 - [Exemplos](#exemplos)
 	- [Hello World](#hello-world)
+ 	- [Argumentos](#argumentos)
  	- [Java](#java)
 	- [Nginx com VIM](#nginx-com-vim)
 	- [Nginx com Arquivos Locais](#nginx-com-arquivos-locais)
@@ -119,6 +120,62 @@ CMD [ "echo", "Hello World" ]
 docker build -t danielsantello1982/hello-world:latest .
 docker run --rm danielsantello1982/hello-world:latest
 ```
+
+### Argumentos
+```dockerfile
+FROM alpine:3.19
+
+ARG APP_VERSION=1.0
+ARG APP_NAME=MinhaApp
+
+ENV APP_VERSION=${APP_VERSION}
+ENV APP_NAME=${APP_NAME}
+
+RUN echo "=== BUILD ===" && \
+    echo "Aplicação: ${APP_NAME}" && \
+    echo "Versão: ${APP_VERSION}"
+
+CMD ["sh", "-c", "echo \"=== RUNTIME === Aplicação: ${APP_NAME} | Versão: ${APP_VERSION}\""]
+```
+
+Build:
+```sh
+docker build --build-arg APP_NAME=DALQ --build-arg APP_VERSION=2.5 -t danielsantello1982/args:latest .
+```
+
+Resultado:
+```sh
+...
+=> [2/2] RUN echo "=== BUILD ===" &&     echo "Aplicação: DALQ" &&     echo "Versão: 2.5"
+...
+```
+
+Execução:
+```sh
+docker run --rm danielsantello1982/args:latest
+```
+
+Resultado:
+```sh
+=== RUNTIME === Aplicação: DALQ | Versão: 2.5
+```
+
+> [!IMPORTANT]
+> ```sh
+> CMD echo "Olá"
+> ```
+> Executa através de `/bin/sh -c`.
+> 
+> ```sh
+> CMD ["echo", "Olá"]
+> ```
+> Executa diretamente o comando, sem shell intermediário. É o formato recomendado.
+> 
+> ```sh
+> CMD ["sh", "-c", "echo $APP_NAME"]
+> ```
+> Necessário quando se deseja utilizar recursos do shell, como variáveis de ambiente, pipes (`|`), redirecionamentos (`>`) ou operadores (`&&`).
+
 
 ### Java
 ```dockerfile
