@@ -8,6 +8,7 @@
 - [Instruções](#instruções)
 - [Exemplos](#exemplos)
 	- [Hello World](#hello-world)
+ 	- [Java](#java)
 	- [Nginx com VIM](#nginx-com-vim)
 	- [Nginx com Arquivos Locais](#nginx-com-arquivos-locais)
 	- [Laravel](#laravel)
@@ -110,6 +111,24 @@ CMD [ "echo", "Hello World" ]
 docker build -t danielsantello1982/hello-world:latest .
 docker run --rm danielsantello1982/hello-world:latest
 ```
+
+### Java
+```dockerfile
+FROM alpine:3.19
+RUN apk add openjdk21-jre
+CMD java -version
+```
+
+```sh
+docker build -t danielsantello1982/java:latest .
+docker run --rm danielsantello1982/java:latest
+```
+
+> **Resultado:**  
+> - criará uma imagem baseada no `Alpine Linux 3.19`  
+> - instalará o `Java Runtime Environment (JRE)` versão 21 durante o processo de build  
+> - executará o comando `java -version` ao iniciar o container  
+> - exibirá na tela a versão do Java instalada na imagem
 
 ### Nginx com VIM
 ```dockerfile
