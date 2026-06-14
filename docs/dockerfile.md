@@ -15,6 +15,7 @@
 	- [Laravel](#laravel)
 	- [Laravel utilizando Nginx como Proxy Reverso](#laravel-utilizando-nginx-como-proxy-reverso)
  	- [Node](#node)
+- [Resumo dos principais comandos](#resumo-dos-principais-comandos)
 
 ## Criando imagens
 > por padrão, cria-se um arquivo chamado Dockerfile na pasta principal do projeto.
@@ -480,3 +481,11 @@ Depois, basta acessar: `http://localhost:3000`
 > - exporá a porta 3000  
 > - iniciará a aplicação através do comando `node index.js`  
 > - disponibilizará a aplicação em `http://localhost:3000`
+
+## Resumo dos principais comandos
+```sh
+docker build -t danielsantello1982/minhaimagem:latest .
+docker build -t danielsantello1982/minhaimagem:latest . -f DockerfileName
+docker push danielsantello1982/minhaimagem:latest
+docker pull danielsantello1982/minhaimagem:latest
+```
