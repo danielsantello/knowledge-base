@@ -72,4 +72,8 @@ docker compose -f <nome-do-arquivo> up
 docker compose ps
 docker compose logs -f
 docker compose down
+
+# para recriar um ambiente, garantindo que tudo seja recriado do zero
+docker compose down -v
+docker compose up --build
 ```
