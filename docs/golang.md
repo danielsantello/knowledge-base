@@ -6,6 +6,7 @@
 - [Motivação](#motivação)
 - [Principais Diferenciais](#principais-diferenciais)
 - [Casos de Uso](#casos-de-uso)
+- [Filosofia da Linguagem](#filosofia-da-linguagem)
 - [Referências](#referências)
 
 ### Características
@@ -70,6 +71,13 @@ Exemplos:
 - Consul
 - Vault
 - Prometheus
+
+### Filosofia da Linguagem
+- Simplicidade acima de flexibilidade
+- Legibilidade acima de abstrações complexas
+- Composição acima de herança
+- Convenção acima de configuração
+- Menos recursos para reduzir complexidade
 
 ### Referências
 - [Go Expert - Full Cycle](https://github.com/devfullcycle/goexpert)  
