@@ -309,7 +309,7 @@ Depois, basta acessar: `http://localhost:8080`
 O Nginx atuará como proxy reverso, encaminhando as requisições para o container Laravel.
 
 > [!NOTE]
-> Este exemplo tem finalidade didática e demonstra a comunicação entre containers utilizando Nginx como proxy reverso para uma aplicação Laravel executada através do comando php artisan serve. Em ambientes de produção é mais comum > utilizar Nginx em conjunto com PHP-FPM.
+> Este exemplo tem finalidade didática e demonstra a comunicação entre containers utilizando Nginx como proxy reverso para uma aplicação Laravel executada através do comando php artisan serve. Em ambientes de produção é mais comum utilizar Nginx em conjunto com PHP-FPM.
 
 ### Node
 #### Passo 1 - Criar o projeto
