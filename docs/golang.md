@@ -4,6 +4,7 @@
 - [Características](#características)
 - [O que Go não é](#o-que-a-go-não-é)
 - [Motivação](#motivação)
+- [Referências](#referências)
 
 ### Características
 - Open Source
@@ -39,4 +40,8 @@
 - Detecção de Race Conditions
 - Deploy simples (apenas um arquivo binário)
 - Baixa curva de aprendizado
+
+### Referências
+- [Go Expert - Full Cycle](https://github.com/devfullcycle/goexpert)  
+  Repositório oficial do curso de Pós-Graduação Go Expert da Full Cycle.
 
