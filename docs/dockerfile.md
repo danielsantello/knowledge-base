@@ -26,7 +26,8 @@
 `docker build -f <nome-do-arquivo-dockerfile> -t <namespace>/<nome-da-imagem>:<versão> .`  
 `docker build --no-cache -f <nome-do-arquivo-dockerfile> -t <namespace>/<nome-da-imagem>:<versão> .`
 
-> **Observação:** o parâmetro `--no-cache` força a execução de todas as instruções do Dockerfile novamente, ignorando o cache de camadas utilizado em builds anteriores. A imagem base somente será baixada novamente caso não exista localmente ou esteja desatualizada.
+> [!NOTE]
+> - o parâmetro `--no-cache` força a execução de todas as instruções do Dockerfile novamente, ignorando o cache de camadas utilizado em builds anteriores. A imagem base somente será baixada novamente caso não exista localmente ou esteja desatualizada.
 
 **Exemplos de uso:**
 ```sh
@@ -37,9 +38,9 @@ docker build -t danielsantello1982/app:latest .
 docker build -f Dockerfile.prod -t danielsantello1982/app:latest .
 ```
 
-> **Observações:**  
-> o parâmetro `-f` deve ser usado quando o nome do dockerfile não segue o padrão.  
-> o ponto (`.`) representa o contexto de build, indicando que os arquivos necessários para a construção da imagem estão no diretório atual.
+> [!NOTE]
+> - o parâmetro `-f` deve ser usado quando o nome do dockerfile não segue o padrão.  
+> - o ponto (`.`) representa o contexto de build, indicando que os arquivos necessários para a construção da imagem estão no diretório atual.
 
 ## Adicionando tags
 **Sintaxe**
