@@ -99,6 +99,8 @@ docker push danielsantello1982/app:latest
 - `COPY` → copia arquivos da máquina local (contexto de build) para dentro da imagem
 - `CMD` → define o comando executado quando o container for iniciado
 - `ENTRYPOINT` → define o comando principal executado ao iniciar o container
+- `ARG` → define variáveis disponíveis apenas durante o build
+- `ENV` → define variáveis de ambiente disponíveis durante o build e execução do container
 
 | Instrução  | Quando executa  |
 | ---------- | --------------- |
