@@ -4,6 +4,8 @@
 - [Características](#características)
 - [O que Go não é](#o-que-a-go-não-é)
 - [Motivação](#motivação)
+- [Principais Diferenciais](#principais-diferenciais)
+- [Casos de Uso](#casos-de-uso)
 - [Referências](#referências)
 
 ### Características
@@ -17,11 +19,11 @@
 - Nasceu na Google (começou a ser projetada em Sep - 2007)
 - Versão 1.0 nasceu em 2012
 - A partir da v1.5 - Próprio compilador foi feito em GO
-- Totalmente retrocompatível a partir da v1 (o software feito na 1.15 vai funcionar na 1.16)
+- Forte compromisso com compatibilidade retroativa desde a versão 1 (o software feito na 1.15 vai funcionar na 1.16)
 - Criada por:
-  - Rob Pike - UNIX & UTF-8
+  - Rob Pike - UNIX, Plan 9 e UTF-8
   - Robert Griesemar - V8 (motores dos browser, node.js)
-  - Ken Thompson - UNIX & UTF-8
+  - Ken Thompson - UNIX, B e UTF-8
 
 ### O que a GO NÃO é
 - Linguagem de programação que resolverá todos os problemas
@@ -41,7 +43,43 @@
 - Deploy simples (apenas um arquivo binário)
 - Baixa curva de aprendizado
 
+### Principais Diferenciais
+- Compilação extremamente rápida
+- Binário único para distribuição
+- Garbage Collector nativo
+- Concorrência através de Goroutines
+- Comunicação entre processos através de Channels
+- Biblioteca padrão muito completa
+- Ferramentas nativas de testes
+- Ferramentas nativas de profiling
+- Ferramentas nativas para detecção de Race Conditions
+
+### Casos de Uso
+- APIs REST
+- Microserviços
+- Ferramentas de linha de comando (CLI)
+- ETLs
+- Sistemas distribuídos
+- Aplicações de rede
+- Containers e infraestrutura
+
+Exemplos:
+- Docker
+- Kubernetes
+- Terraform
+- Consul
+- Vault
+- Prometheus
+
 ### Referências
 - [Go Expert - Full Cycle](https://github.com/devfullcycle/goexpert)  
   Repositório oficial do curso de Pós-Graduação Go Expert da Full Cycle.
 
+- [Go.dev](https://go.dev/)  
+  Site oficial da linguagem Go.
+
+- [Tour of Go](https://go.dev/tour/)  
+  Tutorial interativo oficial.
+
+- [Go by Example](https://gobyexample.com/)  
+  Exemplos práticos da linguagem.
