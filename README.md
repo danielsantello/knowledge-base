@@ -10,3 +10,20 @@ Este repositório reúne os principais comandos, conceitos e experimentos realiz
 - [Dockerfile](docs/dockerfile.md)
 - [Docker Compose](docs/docker-compose.md)
 
+### Linguagens
+
+- Go
+- PHP
+- Node.js
+
+### Bancos de Dados
+
+- MySQL
+- Redis
+- Manticore
+
+### Observabilidade
+
+- Consul
+- Prometheus
+- Grafana
