@@ -19,7 +19,7 @@
 
 ## Criando imagens
 > [!TIP]
-> por padrão, cria-se um arquivo chamado Dockerfile na pasta principal do projeto.
+> por padrão, cria-se um arquivo chamado `Dockerfile` na pasta principal do projeto.
 
 **Sintaxe**
 
