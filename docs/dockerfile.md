@@ -1,9 +1,9 @@
-
 # Dockerfile
 
 ## Sumário
 
 - [Criando imagens](#criando-imagens)
+- [Adicionando tags](#adicionando-tags)
 - [Publicando imagens](#publicando-imagens)
 - [Instruções](#instruções)
 - [Exemplos](#exemplos)
@@ -22,9 +22,9 @@
 `docker build .`  
 `docker build -t <namespace>/<nome-da-imagem>:<versão> .`  
 `docker build -f <nome-do-arquivo-dockerfile> -t <namespace>/<nome-da-imagem>:<versão> .`  
-`docker build -f <nome-do-arquivo-dockerfile> -t <namespace>/<nome-da-imagem>:<versão> . --no-cache`  
+`docker build --no-cache -f <nome-do-arquivo-dockerfile> -t <namespace>/<nome-da-imagem>:<versão> .`
 
-> **Observação:**  o parâmetro `--no-cache` vai forçar a baixa da imagem base novamente, ignorando o cache.
+> **Observação:** o parâmetro `--no-cache` força a execução de todas as instruções do Dockerfile novamente, ignorando o cache de camadas utilizado em builds anteriores. A imagem base somente será baixada novamente caso não exista localmente ou esteja desatualizada.
 
 **Exemplos de uso:**
 ```sh
@@ -38,6 +38,46 @@ docker build -f Dockerfile.prod -t danielsantello1982/app:latest .
 > **Observações:**  
 > o parâmetro `-f` deve ser usado quando o nome do dockerfile não segue o padrão.  
 > o ponto (`.`) representa o contexto de build, indicando que os arquivos necessários para a construção da imagem estão no diretório atual.
+
+## Adicionando tags
+**Sintaxe**
+
+`docker tag <imagem-origem>:<tag> <imagem-destino>:<tag>`
+
+**Exemplos de uso:**
+```sh
+docker tag danielsantello1982/app:latest danielsantello1982/app:1.0
+```
+
+> **Observação:** o comando não cria uma nova imagem. Ele apenas adiciona um novo nome apontando para a mesma imagem.
+
+**Exemplo:**
+
+```text
+danielsantello1982/app:latest
+        ↓
+      IMAGE ID
+      abc123
+```
+
+Após executar:
+
+```sh
+docker tag danielsantello1982/app:latest danielsantello1982/app:1.0
+```
+
+teremos:
+
+```text
+danielsantello1982/app:latest
+                 ↓
+               abc123
+
+danielsantello1982/app:1.0
+                 ↓
+               abc123
+```
+
 
 ## Publicando imagens
 ```sh
@@ -351,4 +391,3 @@ Depois, basta acessar: `http://localhost:3000`
 > - exporá a porta 3000  
 > - iniciará a aplicação através do comando `node index.js`  
 > - disponibilizará a aplicação em `http://localhost:3000`
-
