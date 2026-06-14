@@ -18,6 +18,7 @@
 - [Resumo dos principais comandos](#resumo-dos-principais-comandos)
 
 ## Criando imagens
+> [!TIP]
 > por padrão, cria-se um arquivo chamado Dockerfile na pasta principal do projeto.
 
 **Sintaxe**
