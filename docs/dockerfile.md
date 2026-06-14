@@ -19,8 +19,12 @@
 
 **Sintaxe**
 
+`docker build .`  
 `docker build -t <namespace>/<nome-da-imagem>:<versão> .`  
-`docker build -f <nome-do-arquivo-dockerfile> -t <namespace>/<nome-da-imagem>:<versão> .`
+`docker build -f <nome-do-arquivo-dockerfile> -t <namespace>/<nome-da-imagem>:<versão> .`  
+`docker build -f <nome-do-arquivo-dockerfile> -t <namespace>/<nome-da-imagem>:<versão> . --no-cache`  
+
+> **Observação:**  o parâmetro `--no-cache` vai forçar a baixa da imagem base novamente, ignorando o cache.
 
 **Exemplos de uso:**
 ```sh
@@ -136,7 +140,7 @@ docker run --rm -d --name laravel -p 8000:8000 danielsantello1982/laravel:latest
 docker run --rm -d --name laravel -p 8001:8001 danielsantello1982/laravel:latest --host=0.0.0.0 --port=8001
 ```
 
-> **Observação:**  
+> **Observações:**  
 > O comando definido em `ENTRYPOINT` será sempre executado.  
 > Os parâmetros definidos em `CMD` podem ser substituídos ao executar o container.  
 > Os parâmetros informados após o nome da imagem substituem os valores definidos em `CMD`.
