@@ -115,8 +115,9 @@ docker run --rm danielsantello1982/hello-world:latest
 ### Java
 ```dockerfile
 FROM alpine:3.19
+
 RUN apk add openjdk21-jre
-CMD java -version
+CMD [ "java", "-version" ]
 ```
 
 ```sh
