@@ -99,6 +99,14 @@ docker push danielsantello1982/app:latest
 - `CMD` → define o comando executado quando o container for iniciado
 - `ENTRYPOINT` → define o comando principal executado ao iniciar o container
 
+| Instrução  | Quando executa  |
+| ---------- | --------------- |
+| ARG        | Build           |
+| RUN        | Build           |
+| ENV        | Build e Runtime |
+| CMD        | Runtime         |
+| ENTRYPOINT | Runtime         |
+
 ## Exemplos
 ### Hello World
 ```dockerfile
