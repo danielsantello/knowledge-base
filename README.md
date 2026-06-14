@@ -12,7 +12,7 @@ Este repositório reúne os principais comandos, conceitos e experimentos realiz
 
 ### Linguagens
 
-- Go
+- [Go](docs/golang.md)
 - PHP
 - Node.js
 
