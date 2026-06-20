@@ -8,6 +8,8 @@
 - [Casos de Uso](#casos-de-uso)
 - [Filosofia da Linguagem](#filosofia-da-linguagem)
 - [Instalação](#instalação)
+- [Exemplos](#exemplos)
+  - [Hello](#hello)
 - [Referências](#referências)
 
 ### Características
@@ -111,6 +113,26 @@ export PATH=$PATH:$(go env GOPATH)/bin
 source ~/.bashrc
 ```
 
+### Exemplos
+#### Hello
+Criar um arquivo chamado `main.go` com o seguinte conteúdo:
+```go
+package main
+
+func main() {
+	println("Hello")
+}
+```
+
+Executar:
+```sh
+go run main.go
+```
+
+Resultado esperado:
+```sh
+Hello
+```
 
 ### Referências
 - [Go Expert - Full Cycle](https://github.com/devfullcycle/goexpert)  
