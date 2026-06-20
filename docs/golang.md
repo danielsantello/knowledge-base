@@ -12,7 +12,7 @@
 	- [Hello](#hello)
 - [Referências](#referências)
 	- [Cursos](#cursos)
- 	- [Documentação Oficial](#documentação-oficial)
+	- [Documentação Oficial](#documentação-oficial)
 	- [Ferramentas Online](#ferramentas-online)
 
 ### Características
@@ -70,7 +70,7 @@
 - Aplicações de rede
 - Containers e infraestrutura
 
-Exemplos:
+Tecnologias conhecidas escritas em Go:
 - Docker
 - Kubernetes
 - Terraform
@@ -99,7 +99,7 @@ go version
 
 Resultado esperado:
 ```sh
-go version go1.26.0 linux/amd64
+go version goX.Y.Z linux/amd64
 ```
 
 Exibindo as variáveis de ambiente que o Go utiliza:
