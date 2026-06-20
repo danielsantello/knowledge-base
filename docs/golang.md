@@ -89,5 +89,8 @@ Exemplos:
 - [Tour of Go](https://go.dev/tour/)  
   Tutorial interativo oficial.
 
+- [Go Playground](https://go.dev/play/)  
+  The Go Playground.
+
 - [Go by Example](https://gobyexample.com/)  
   Exemplos práticos da linguagem.
