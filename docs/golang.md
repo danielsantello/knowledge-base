@@ -9,8 +9,11 @@
 - [Filosofia da Linguagem](#filosofia-da-linguagem)
 - [Instalação](#instalação)
 - [Exemplos](#exemplos)
-  - [Hello](#hello)
+	- [Hello](#hello)
 - [Referências](#referências)
+	- [Cursos](#cursos)
+ 	- [Documentação Oficial](#documentação-oficial)
+	- [Ferramentas Online](#ferramentas-online)
 
 ### Características
 - Open Source
@@ -85,6 +88,7 @@ Exemplos:
 ### Instalação
 Instalando no Ubuntu via WSL:
 ```sh
+sudo apt update
 sudo apt install golang-go
 ```
 
@@ -104,14 +108,16 @@ go env
 ```
 
 Algumas variáveis importantes:
-- `GOPATH` → pasta padrão, onde o Go guardará os binários na compilação
+- `GOPATH` → diretório de trabalho do Go, utilizado para armazenar binários, cache e arquivos relacionados ao desenvolvimento
 - `GOMODCACHE` → armazena os arquivos do gerenciador de dependências
 
-Adicionando o Go no Path do SO
+Adicionando o Go no PATH do sistema:
 ```sh
-export PATH=$PATH:$(go env GOPATH)/bin
+echo 'export PATH=$PATH:$(go env GOPATH)/bin' >> ~/.bashrc
 source ~/.bashrc
 ```
+
+> **Observação:** o primeiro comando adiciona a configuração permanentemente ao arquivo `.bashrc`.
 
 ### Exemplos
 #### Hello
@@ -119,8 +125,10 @@ Criar um arquivo chamado `main.go` com o seguinte conteúdo:
 ```go
 package main
 
+import "fmt"
+
 func main() {
-	println("Hello")
+    fmt.Println("Hello")
 }
 ```
 
@@ -135,15 +143,18 @@ Hello
 ```
 
 ### Referências
+#### Cursos
 - [Go Expert - Full Cycle](https://github.com/devfullcycle/goexpert)  
   Repositório oficial do curso de Pós-Graduação Go Expert da Full Cycle.
 
+#### Documentação Oficial
 - [Go.dev](https://go.dev/)  
   Site oficial da linguagem Go.
 
 - [Tour of Go](https://go.dev/tour/)  
   Tutorial interativo oficial.
 
+#### Ferramentas Online
 - [Go Playground](https://go.dev/play/)  
   The Go Playground.
 
