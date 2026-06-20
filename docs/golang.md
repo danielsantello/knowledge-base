@@ -86,6 +86,22 @@ Instalando no Ubuntu via WSL:
 sudo apt install golang-go
 ```
 
+Conferindo a versão instalada:
+```sh
+go version
+```
+
+Resultado esperado:
+```sh
+go version go1.26.0 linux/amd64
+```
+
+Exibindo as variáveis que o Go utiliza:
+```sh
+go env
+```
+
+
 ### Referências
 - [Go Expert - Full Cycle](https://github.com/devfullcycle/goexpert)  
   Repositório oficial do curso de Pós-Graduação Go Expert da Full Cycle.
