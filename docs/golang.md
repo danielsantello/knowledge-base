@@ -96,9 +96,18 @@ Resultado esperado:
 go version go1.26.0 linux/amd64
 ```
 
-Exibindo as variáveis que o Go utiliza:
+Exibindo as variáveis de ambiente que o Go utiliza:
 ```sh
 go env
+```
+
+Algumas variáveis importantes:
+- `GOPATH` → pasta padrão, onde o Go guardará os binários na compilação
+- `GOMODCACHE` → armazena os arquivos do gerenciador de dependências
+
+Adicionando o Go no Path do SO
+```sh
+export PATH=$PATH:$(go env GOPATH)/bin
 ```
 
 
