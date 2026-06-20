@@ -7,6 +7,7 @@
 - [Principais Diferenciais](#principais-diferenciais)
 - [Casos de Uso](#casos-de-uso)
 - [Filosofia da Linguagem](#filosofia-da-linguagem)
+- [Instalação](#instalação)
 - [Referências](#referências)
 
 ### Características
@@ -78,6 +79,12 @@ Exemplos:
 - Composição acima de herança
 - Convenção acima de configuração
 - Menos recursos para reduzir complexidade
+
+### Instalação
+Instalando no Ubuntu via WSL:
+```sh
+sudo apt install golang-go
+```
 
 ### Referências
 - [Go Expert - Full Cycle](https://github.com/devfullcycle/goexpert)  
