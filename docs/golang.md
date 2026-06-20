@@ -108,6 +108,7 @@ Algumas variáveis importantes:
 Adicionando o Go no Path do SO
 ```sh
 export PATH=$PATH:$(go env GOPATH)/bin
+source ~/.bashrc
 ```
 
 
