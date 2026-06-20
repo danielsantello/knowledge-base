@@ -2,7 +2,7 @@
 
 ## Sumário
 - [Características](#características)
-- [O que Go não é](#o-que-a-go-não-é)
+- [O que Go NÃO é](#o-que-go-não-é)
 - [Motivação](#motivação)
 - [Principais Diferenciais](#principais-diferenciais)
 - [Casos de Uso](#casos-de-uso)
@@ -29,10 +29,10 @@
   - Robert Griesemar - V8 (motores dos browser, node.js)
   - Ken Thompson - UNIX, B e UTF-8
 
-### O que a GO NÃO é
+### O que Go NÃO é
 - Linguagem de programação que resolverá todos os problemas
 - Não é dinâmica (é estaticamente tipada)
-- Não é uma linguagem interpreta (é compilada)
+- Não é uma linguagem interpretada (é compilada)
 - Não é uma linguagem com muitos recursos / firulas
 
 ### Motivação
