@@ -39,6 +39,7 @@
 - Não é dinâmica (é estaticamente tipada)
 - Não é uma linguagem interpretada (é compilada)
 - Não é uma linguagem com muitos recursos / firulas
+- Não é uma linguagem orientada a objetos
 
 ### Motivação
 - Limitações nas principais linguagens utilizadas na Google (Python, Java e C++)
