@@ -8,6 +8,8 @@
 - [Casos de Uso](#casos-de-uso)
 - [Filosofia da Linguagem](#filosofia-da-linguagem)
 - [Instalação](#instalação)
+- [Comandos](#comandos)
+	- [Declaração e atribuição](#declaração-e-atribuição)
 - [Exemplos](#exemplos)
 	- [Hello](#hello)
 - [Referências](#referências)
@@ -118,6 +120,12 @@ source ~/.bashrc
 ```
 
 > **Observação:** o primeiro comando adiciona a configuração permanentemente ao arquivo `.bashrc`.
+
+### Comandos
+#### Declaração e atribuição
+```go
+
+```
 
 ### Exemplos
 #### Hello
