@@ -10,7 +10,7 @@
 - [Instalação](#instalação)
 - [Comandos](#comandos)
 	- [Declaração e atribuição](#declaração-e-atribuição)
- 	- [Array](#go/array.md)
+ 	- [Array](go/array.md)
 - [Exemplos](#exemplos)
 	- [Hello](#hello)
 - [Referências](#referências)
