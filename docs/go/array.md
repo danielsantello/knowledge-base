@@ -1,5 +1,5 @@
 
-# Go - Arrays
+# [Go](../golang.md) - Arrays
 
 > [!NOTE]
 > No array, o tamanho é fixo
