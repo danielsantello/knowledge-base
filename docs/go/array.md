@@ -1,22 +1,31 @@
 
-# [Go](../golang.md) - Arrays
+# [Go](../golang.md) - Array
+
+## Sumário
+- [Declarando um array sem valores iniciais](#declarando-um-array-sem-valores-iniciais)
+- [Atribuindo valores ao array](#atribuindo-valores-ao-array)
+- [Acessando valores de um array](#acessando-valores-de-um-array)
+- [Percorrendo o array e imprimindo todos os valores](#percorrendo-o-array-e-imprimindo-todos-os-valores)
+- [Exibindo o tamanho de um array](#exibindo-o-tamanho-de-um-array)
+- [Declarando e definindo valores ao mesmo tempo](#declarando-e-definindo-valores-ao-mesmo-tempo)
+- [Código com os exemplos](#código-com-os-exemplos)
 
 > [!NOTE]
 > No array, o tamanho é fixo
 
-## Declarando um array sem valores iniciais
+### Declarando um array sem valores iniciais
 ```go
 var meuArray [3]int
 ```
 
-## Atribuindo valores ao array
+### Atribuindo valores ao array
 ```go
 meuArray[0] = 10
 meuArray[1] = 20
 meuArray[2] = 30
 ```
 
-## Acessando valores de um array
+### Acessando valores de um array
 ```go
 fmt.Println(meuArray[0])
 fmt.Println(meuArray[1])
@@ -30,7 +39,7 @@ Resultado:
 30
 ```
 
-## Percorrendo o array e imprimindo todos os valores
+### Percorrendo o array e imprimindo todos os valores
 ```go
 for i, v := range meuArray {
     fmt.Printf("O valor do indice %d é %d\n", i, v)
@@ -44,7 +53,7 @@ O valor do indice 1 é 20
 O valor do indice 2 é 30
 ```
 
-## Exibindo o tamanho de um array
+### Exibindo o tamanho de um array
 ```go
 fmt.Println(len(meuArray))
 ```
@@ -54,7 +63,7 @@ Resultado:
 3
 ```
 
-## Declarando e definindo valores ao mesmo tempo
+### Declarando e definindo valores ao mesmo tempo
 ```go
 var meuArray [5]int = [5]int{10, 20, 30, 40, 50}")
 
@@ -62,7 +71,7 @@ var meuArray [5]int = [5]int{10, 20, 30, 40, 50}")
 meuArray := [5]int{10, 20, 30, 40, 50}")
 ```
 
-## Código completo
+### Código com os exemplos
 ```go
 package main
 
@@ -139,4 +148,62 @@ func titulo(texto string) {
 	fmt.Println(texto)
 	fmt.Println("========================================")
 }
+```
+
+Resultado:
+```go
+========================================
+No array, o tamanho é fixo
+========================================
+
+========================================
+Declarando um array sem valores iniciais
+========================================
+var meuArray [3]int
+
+========================================
+Atribuindo valores ao array
+========================================
+meuArray[0] = 10
+meuArray[1] = 20
+meuArray[2] = 30
+
+========================================
+Acessando valores de um array
+========================================
+fmt.Println(meuArray[0])
+fmt.Println(meuArray[1])
+fmt.Println(meuArray[2])
+
+Resultado:
+10
+20
+30
+
+========================================
+Percorrendo o array e imprimindo todos os valores
+========================================
+for i, v := range meuArray {
+    fmt.Printf("O valor do indice %d é %d\n", i, v)
+}
+
+Resultado:
+O valor do indice 0 é 10
+O valor do indice 1 é 20
+O valor do indice 2 é 30
+
+========================================
+Exibindo o tamanho de um array
+========================================
+fmt.Println(len(meuArray))
+
+Resultado:
+3
+
+========================================
+Declarando e definindo valores ao mesmo tempo:
+========================================
+var meuArray [5]int = [5]int{10, 20, 30, 40, 50}
+ou
+meuArray := [5]int{10, 20, 30, 40, 50}
 ```
