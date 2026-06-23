@@ -6,6 +6,7 @@
 - [O operador ":"](#o-operador-)
   - [Omitindo o início](#omitindo-o-início)
   - [Omitindo o fim](#omitindo-o-fim)
+  - [Copiando tudo](#copiando-tudo)
 - [Código com as explicações e os exemplos](#código-com-as-explicações-e-os-exemplos)
 
 > [!IMPORTANT]
@@ -104,6 +105,19 @@ Resultado:
 ```sh
 [30 40 50]
 ```
+
+#### Copiando tudo
+```go
+numeros[:]
+```
+
+Resultado:
+```sh
+[10 20 30 40 50]
+```
+
+> [!NOTE]
+> Muito usado quando se quer passar o slice inteiro.
 
 ### Código com as explicações e os exemplos
 ```go
