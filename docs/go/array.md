@@ -10,7 +10,7 @@
 - [Declarando e definindo valores ao mesmo tempo](#declarando-e-definindo-valores-ao-mesmo-tempo)
 - [Código com os exemplos](#código-com-os-exemplos)
 
-> [!NOTE]
+> [!IMPORTANT]
 > No array, o tamanho é fixo
 
 ### Declarando um array sem valores iniciais
