@@ -33,7 +33,7 @@ fmt.Println(meuArray[2])
 ```
 
 Resultado:
-```go
+```sh
 10
 20
 30
@@ -47,7 +47,7 @@ for i, v := range meuArray {
 ```
 
 Resultado:
-```go
+```sh
 O valor do indice 0 é 10
 O valor do indice 1 é 20
 O valor do indice 2 é 30
@@ -59,7 +59,7 @@ fmt.Println(len(meuArray))
 ```
 
 Resultado:
-```go
+```sh
 3
 ```
 
@@ -151,7 +151,7 @@ func titulo(texto string) {
 ```
 
 Resultado:
-```go
+```sh
 ========================================
 No array, o tamanho é fixo
 ========================================
