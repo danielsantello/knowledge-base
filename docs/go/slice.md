@@ -10,6 +10,7 @@
 - [O ponto que mais confunde](#o-ponto-que-mais-confunde)
 - [Um exemplo prático](#um-exemplo-prático)
 - [Len e Cap](#len-e-cap)
+- [Sintaxe completa (menos usada)](#sintaxe-completa-menos-usada)
 - [Código com as explicações e os exemplos](#código-com-as-explicações-e-os-exemplos)
 
 > [!IMPORTANT]
@@ -232,6 +233,21 @@ Da posição 1 até o final do array existem:
 fmt.Println(len(parte)) // 3
 fmt.Println(cap(parte)) // 4
 ```
+
+### Sintaxe completa (menos usada)
+Existe uma terceira posição:
+```go
+slice[inicio:fim:capacidade]
+```
+
+Exemplo:
+```go
+numeros := []int{10,20,30,40,50}
+parte := numeros[1:4:4]
+```
+
+Aqui você controla a capacidade do novo slice.  
+Isso é usado quando quer evitar que um append() modifique o array original.
 
 ### Código com as explicações e os exemplos
 ```go
