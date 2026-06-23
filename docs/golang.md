@@ -11,6 +11,7 @@
 - [Comandos](#comandos)
 	- [Declaração e atribuição](#declaração-e-atribuição)
  	- [Array](go/array.md)
+ 	- [Slice](go/slice.md)
 - [Exemplos](#exemplos)
 	- [Hello](#hello)
 - [Referências](#referências)
