@@ -8,7 +8,7 @@
 - [Percorrendo o array e imprimindo todos os valores](#percorrendo-o-array-e-imprimindo-todos-os-valores)
 - [Exibindo o tamanho de um array](#exibindo-o-tamanho-de-um-array)
 - [Declarando e definindo valores ao mesmo tempo](#declarando-e-definindo-valores-ao-mesmo-tempo)
-- [Código com os exemplos](#código-com-os-exemplos)
+- [Código com as explicações e os exemplos](#código-com-as-explicações-e-os-exemplos)
 
 > [!IMPORTANT]
 > No array, o tamanho é fixo
@@ -71,7 +71,7 @@ var meuArray [5]int = [5]int{10, 20, 30, 40, 50}")
 meuArray := [5]int{10, 20, 30, 40, 50}")
 ```
 
-### Código com os exemplos
+### Código com as explicações e os exemplos
 ```go
 package main
 
@@ -79,21 +79,21 @@ import "fmt"
 
 func main() {
 	// No array, o tamanho é fixo
-	titulo("No array, o tamanho é fixo")
+	titulo(`No array, o tamanho é fixo`)
 	fmt.Printf("\n")
 
 	// Declarando um array sem valores iniciais
-	titulo("Declarando um array sem valores iniciais")
+	titulo(`Declarando um array sem valores iniciais`)
 	fmt.Println("var meuArray [3]int")
 	fmt.Printf("\n")
 
 	var meuArray [3]int
 
 	// Atribuindo valores ao array
-	titulo("Atribuindo valores ao array")
-	fmt.Println("meuArray[0] = 10")
-	fmt.Println("meuArray[1] = 20")
-	fmt.Println("meuArray[2] = 30")
+	titulo(`Atribuindo valores ao array`)
+	fmt.Println(`meuArray[0] = 10
+meuArray[1] = 20
+meuArray[2] = 30`)
 	fmt.Printf("\n")
 
 	meuArray[0] = 10
@@ -101,20 +101,19 @@ func main() {
 	meuArray[2] = 30
 
 	// Acessando valores de um array
-	titulo("Acessando valores de um array")
-	fmt.Println("fmt.Println(meuArray[0])")
-	fmt.Println("fmt.Println(meuArray[1])")
-	fmt.Println("fmt.Println(meuArray[2])")
-	fmt.Printf("\n")
+	titulo(`Acessando valores de um array`)
+	fmt.Println(`fmt.Println(meuArray[0])
+fmt.Println(meuArray[1])
+fmt.Println(meuArray[2])
 
-	fmt.Println("Resultado:")
+Resultado:`)
 	fmt.Println(meuArray[0])
 	fmt.Println(meuArray[1])
 	fmt.Println(meuArray[2])
 	fmt.Printf("\n")
 
 	// Percorrendo o array e imprimindo todos os valores
-	titulo("Percorrendo o array e imprimindo todos os valores")
+	titulo(`Percorrendo o array e imprimindo todos os valores`)
 	raw_string := `for i, v := range meuArray {
     fmt.Printf("O valor do indice %d é %d\n", i, v)
 }`
@@ -128,19 +127,18 @@ func main() {
 	fmt.Printf("\n")
 
 	// Exibindo o tamanho de um array
-	titulo("Exibindo o tamanho de um array")
-	fmt.Println("fmt.Println(len(meuArray))")
-	fmt.Printf("\n")
+	titulo(`Exibindo o tamanho de um array`)
+	fmt.Println(`fmt.Println(len(meuArray))
 
-	fmt.Println("Resultado:")
+Resultado:`)
 	fmt.Println(len(meuArray))
 	fmt.Printf("\n")
 
 	// Declarando e definindo valores ao mesmo tempo
-	titulo("Declarando e definindo valores ao mesmo tempo:")
-	fmt.Println("var meuArray [5]int = [5]int{10, 20, 30, 40, 50}")
-	fmt.Println("ou")
-	fmt.Println("meuArray := [5]int{10, 20, 30, 40, 50}")
+	titulo(`Declarando e definindo valores ao mesmo tempo:`)
+	fmt.Println(`var meuArray [5]int = [5]int{10, 20, 30, 40, 50}
+ou
+meuArray := [5]int{10, 20, 30, 40, 50}`)
 }
 
 func titulo(texto string) {
