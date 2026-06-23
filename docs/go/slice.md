@@ -9,6 +9,7 @@
   - [Copiando tudo](#copiando-tudo)
 - [O ponto que mais confunde](#o-ponto-que-mais-confunde)
 - [Um exemplo prático](#um-exemplo-prático)
+- [Len e Cap](#len-e-cap)
 - [Código com as explicações e os exemplos](#código-com-as-explicações-e-os-exemplos)
 
 > [!IMPORTANT]
@@ -189,6 +190,48 @@ lote = registros[2000:3000]
 > - Você apenas cria novas `"janelas"` sobre o mesmo conjunto de dados.
 > - Por isso slices são extremamente eficientes para processar grandes volumes de dados.
 
+### Len e Cap
+Todo slice possui:
+  - `len` (quantos elementos ele vê)
+  - `cap` (quantos elementos existem a partir da posição inicial)
+
+Exemplo:
+```go
+numeros := []int{10, 20, 30, 40, 50}
+
+parte := numeros[1:4]
+
+fmt.Println(parte)
+fmt.Println(len(parte))
+fmt.Println(cap(parte))
+```
+
+Temos:
+```sh
+[20 30 40]
+3
+4
+```
+
+Porque?
+```sh
+Indice:   0   1   2   3   4
+Valor:   10  20  30  40  50
+              ^
+            parte começa aqui
+```
+
+Da posição 1 até o final do array existem:
+
+```sh
+20 30 40 50
+```
+
+4 elementos, logo:
+```sh
+fmt.Println(len(parte)) // 3
+fmt.Println(cap(parte)) // 4
+```
 
 ### Código com as explicações e os exemplos
 ```go
