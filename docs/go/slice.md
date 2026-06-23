@@ -7,6 +7,8 @@
   - [Omitindo o início](#omitindo-o-início)
   - [Omitindo o fim](#omitindo-o-fim)
   - [Copiando tudo](#copiando-tudo)
+- [O ponto que mais confunde](#o-ponto-que-mais-confunde)
+- [Um exemplo prático](#um-exemplo-prático)
 - [Código com as explicações e os exemplos](#código-com-as-explicações-e-os-exemplos)
 
 > [!IMPORTANT]
@@ -118,6 +120,75 @@ Resultado:
 
 > [!NOTE]
 > Muito usado quando se quer passar o slice inteiro.
+
+### O ponto que mais confunde
+O slice NÃO copia os dados.
+
+Veja:
+```go
+numeros := []int{10, 20, 30, 40, 50}
+parte := numeros[1:4]
+fmt.Println(parte)
+```
+
+Resultado:
+```sh
+[20 30 40]
+```
+
+Mas agora:
+```go
+parte[0] = 999
+
+fmt.Println(parte)
+fmt.Println(numeros)
+```
+
+Resultado:
+```sh
+[999 30 40]
+[10 999 30 40 50]
+```
+
+Por quê?
+
+Porque `parte` e `numeros` apontam para o mesmo array.
+
+Visualmente:
+```sh
+Array
+
++----+-----+----+----+----+
+| 10 | 999 | 30 | 40 | 50 |
++----+-----+----+----+----+
+       ^
+       |
+     parte[0]
+```
+
+### Um exemplo prático
+Imagine que você esteja processando um arquivo gigante.
+
+Você lê um lote de registros:
+```go
+lote := registros[0:1000]
+```
+
+Depois:
+```go
+lote = registros[1000:2000]
+```
+
+Depois:
+```go
+lote = registros[2000:3000]
+```
+
+> [!NOTE]
+> - Nenhuma cópia é feita.
+> - Você apenas cria novas `"janelas"` sobre o mesmo conjunto de dados.
+> - Por isso slices são extremamente eficientes para processar grandes volumes de dados.
+
 
 ### Código com as explicações e os exemplos
 ```go
