@@ -1,13 +1,14 @@
 # [Go](../golang.md) - Slice
 
 ## Sumário
+- [O que é um Slice?](#o-que-é-um-slice)
 - [Declarando um slice](#declarando-um-slice)
 - [Acessando um elemento](#acessando-um-elemento)
 - [O operador ":"](#o-operador-)
   - [Omitindo o início](#omitindo-o-início)
   - [Omitindo o fim](#omitindo-o-fim)
   - [Copiando tudo](#copiando-tudo)
-- [O ponto que mais confunde](#o-ponto-que-mais-confunde)
+- [Compartilhamento de memória](#compartilhamento-de-memória)
 - [Um exemplo prático](#um-exemplo-prático)
 - [Len e Cap](#len-e-cap)
 - [Sintaxe completa (menos usada)](#sintaxe-completa-menos-usada)
@@ -18,12 +19,14 @@
   - [Um erro clássico](#um-erro-clássico)
 - [Código com as explicações e os exemplos](#código-com-as-explicações-e-os-exemplos)
 
-> [!IMPORTANT]
-> Um slice é uma `"janela"` para um array
+### O que é um Slice?
+> Um slice é uma estrutura que referencia uma parte de um array.  
+> Ele não possui os dados; apenas descreve uma janela sobre um array existente.  
+> É uma das estruturas mais utilizadas da linguagem Go.
 
 ### Declarando um slice
 Para slices, não definimos tamanho.  
-Internamente o Go cria um array e o slice aponta para ele.
+Internamente todo slice referencia um array.
 ```go
 numeros := []int{10, 20, 30, 40, 50}
 ```
@@ -127,8 +130,10 @@ Resultado:
 > [!NOTE]
 > Muito usado quando se quer passar o slice inteiro.
 
-### O ponto que mais confunde
-O slice NÃO copia os dados.
+### Compartilhamento de memória
+> [!IMPORTANT]
+> O slice NÃO copia os dados.  
+> Este é o comportamento que mais costuma confundir quem está começando.
 
 Veja:
 ```go
@@ -256,6 +261,11 @@ Isso é usado quando quer evitar que um append() modifique o array original.
 ### Como o slice é representado internamente
 Um slice não é exatamente um ponteiro.
 
+O slice é uma estrutura pequena (header) composta por:
+  - ponteiro para o primeiro elemento;
+  - quantidade de elementos visíveis (len);
+  - capacidade restante (cap).
+
 Internamente ele é uma estrutura parecida com:
 ```go
 type slice struct {
@@ -324,7 +334,7 @@ Agora:
 parte = append(parte, 999)
 ```
 
-O Go analisa: ainda tenho espaço dentro da capacidade do slice.
+O Go analisa: ainda tenho espaço dentro da capacidade do slice?
 
 Então ele simplesmente escreve no array existente.
 
@@ -480,6 +490,22 @@ func adiciona(s []int) []int {
 numeros = adiciona(numeros)
 ```
 
+Resumo:
+```sh
+append()
+↓
+Existe capacidade?
+
+SIM
+↓
+Escreve no mesmo array
+
+NÃO
+↓
+Cria novo array
+Copia os dados
+Atualiza o ponteiro
+```
 
 ### Código com as explicações e os exemplos
 ```go
