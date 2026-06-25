@@ -1392,3 +1392,6 @@ Como a capacidade já foi reservada:
 
 Em importações gigantes (100 GB, 200 GB+) isso faz diferença real.
 ```
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
