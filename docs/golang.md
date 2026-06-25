@@ -29,6 +29,8 @@
 - [Slice](go/slice.md)
 </details>
 
+<br>
+
 ### Características
 - Open Source
 - Foco em produtividade (faz muito com pouco)
@@ -46,12 +48,18 @@
   - Robert Griesemar - V8 (motores dos browser, node.js)
   - Ken Thompson - UNIX, B e UTF-8
 
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
+
 ### O que Go NÃO é
 - Linguagem de programação que resolverá todos os problemas
 - Não é dinâmica (é estaticamente tipada)
 - Não é uma linguagem interpretada (é compilada)
 - Não é uma linguagem com muitos recursos / firulas
 - Não é uma linguagem orientada a objetos
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
 
 ### Motivação
 - Limitações nas principais linguagens utilizadas na Google (Python, Java e C++)
@@ -65,6 +73,9 @@
 - Deploy simples (apenas um arquivo binário)
 - Baixa curva de aprendizado
 
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
+
 ### Principais Diferenciais
 - Compilação extremamente rápida
 - Binário único para distribuição
@@ -75,6 +86,9 @@
 - Ferramentas nativas de testes
 - Ferramentas nativas de profiling
 - Ferramentas nativas para detecção de Race Conditions
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
 
 ### Casos de Uso
 - APIs REST
@@ -93,12 +107,18 @@ Tecnologias conhecidas escritas em Go:
 - Vault
 - Prometheus
 
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
+
 ### Filosofia da Linguagem
 - Simplicidade acima de flexibilidade
 - Legibilidade acima de abstrações complexas
 - Composição acima de herança
 - Convenção acima de configuração
 - Menos recursos para reduzir complexidade
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
 
 ### Instalação
 Instalando no Ubuntu via WSL:
@@ -134,11 +154,17 @@ source ~/.bashrc
 
 > **Observação:** o primeiro comando adiciona a configuração permanentemente ao arquivo `.bashrc`.
 
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
+
 ### Comandos
 #### Declaração e atribuição
 ```go
 
 ```
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
 
 ### Exemplos
 #### Hello
@@ -163,6 +189,9 @@ Resultado esperado:
 Hello
 ```
 
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
+
 ### Referências
 #### Cursos
 - [Go Expert - Full Cycle](https://github.com/devfullcycle/goexpert)  
@@ -181,3 +210,6 @@ Hello
 
 - [Go by Example](https://gobyexample.com/)  
   Exemplos práticos da linguagem.
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
