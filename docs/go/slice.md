@@ -20,10 +20,15 @@
   - [Pré-alocando memória](#pré-alocando-memória)
 - [Código com as explicações e os exemplos](#código-com-as-explicações-e-os-exemplos)
 
+<br>
+
 ### O que é um Slice?
 > Um slice é uma estrutura que referencia uma parte de um array.  
 > Ele não possui os dados; apenas descreve uma janela sobre um array existente.  
 > É uma das estruturas mais utilizadas da linguagem Go.
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
 
 ### Declarando um slice
 Para slices, não definimos tamanho.  
@@ -57,6 +62,9 @@ Resultado:
 ```sh
 30
 ```
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
 
 ### O operador ":"
 A sintaxe é:
@@ -134,6 +142,9 @@ Resultado:
 > [!NOTE]
 > Muito usado quando se quer passar o slice inteiro.
 
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
+
 ### Compartilhamento de memória
 > [!IMPORTANT]
 > O slice NÃO copia os dados.  
@@ -180,6 +191,9 @@ Array
      parte[0]
 ```
 
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
+
 ### Um exemplo prático
 Imagine que você esteja processando um arquivo gigante.
 
@@ -202,6 +216,9 @@ lote = registros[2000:3000]
 > - Nenhuma cópia é feita.
 > - Você apenas cria novas `"janelas"` sobre o mesmo conjunto de dados.
 > - Por isso slices são extremamente eficientes para processar grandes volumes de dados.
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
 
 ### Len e Cap
 Todo slice possui:
@@ -246,6 +263,9 @@ fmt.Println(len(parte)) // 3
 fmt.Println(cap(parte)) // 4
 ```
 
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
+
 ### Sintaxe completa (menos usada)
 Existe uma terceira posição:
 ```go
@@ -261,6 +281,8 @@ parte := numeros[1:4:4]
 Aqui você controla a capacidade do novo slice.  
 Isso é usado quando quer evitar que um append() modifique o array original.
 
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
 
 ### Como o slice é representado internamente
 Um slice não é exatamente um ponteiro.
@@ -312,6 +334,9 @@ cap = 2
 > [!IMPORTANT]
 > - Perceba que ele NÃO aponta para o início do array.
 > - Ele aponta para o primeiro elemento visível do slice.
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
 
 ### Append
 #### Cenário 1 - Ainda existe capacidade
@@ -545,6 +570,9 @@ Como a capacidade já foi reservada:
 
 > [!NOTE]
 > Em importações gigantes (100 GB, 200 GB+) isso faz diferença real.
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
 
 ### Código com as explicações e os exemplos
 ```go
