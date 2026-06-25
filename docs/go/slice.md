@@ -11,6 +11,7 @@
 - [Um exemplo prático](#um-exemplo-prático)
 - [Len e Cap](#len-e-cap)
 - [Sintaxe completa (menos usada)](#sintaxe-completa-menos-usada)
+- [Como o slice é representado internamente](#como-o-slice-é-representado-internamente)
 - [Código com as explicações e os exemplos](#código-com-as-explicações-e-os-exemplos)
 
 > [!IMPORTANT]
@@ -248,6 +249,54 @@ parte := numeros[1:4:4]
 
 Aqui você controla a capacidade do novo slice.  
 Isso é usado quando quer evitar que um append() modifique o array original.
+
+
+### Como o slice é representado internamente
+Um slice não é exatamente um ponteiro.
+
+Internamente ele é uma estrutura parecida com:
+```go
+type slice struct {
+    ptr *int
+    len int
+    cap int
+}
+```
+
+> [!NOTE]
+> Não é exatamente isso, mas ajuda a entender.
+
+Então para:
+```go
+completo := []int{10, 20, 30, 40, 50}
+parte := completo[3:4]
+```
+
+Teríamos algo como:
+```sh
+ptr -> posição do valor 40
+len = 1
+cap = 2
+```
+
+Visualmente:
+```sh
+Array original
+
++----+----+----+----+----+
+| 10 | 20 | 30 | 40 | 50 |
++----+----+----+----+----+
+                 ^
+                 |
+                ptr
+
+len = 1
+cap = 2
+```
+
+> [!IMPORTANT]
+> - Perceba que ele NÃO aponta para o início do array.
+> - Ele aponta para o primeiro elemento visível do slice.
 
 ### Código com as explicações e os exemplos
 ```go
