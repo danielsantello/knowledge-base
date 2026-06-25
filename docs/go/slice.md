@@ -12,6 +12,9 @@
 - [Len e Cap](#len-e-cap)
 - [Sintaxe completa (menos usada)](#sintaxe-completa-menos-usada)
 - [Como o slice é representado internamente](#como-o-slice-é-representado-internamente)
+- [Append](#append)
+  - [Cenário 1 - Ainda existe capacidade](#cenário-1---ainda-existe-capacidade)
+  - [Cenário 2 - Capacidade esgotada](#cenário-2---capacidade-esgotada)
 - [Código com as explicações e os exemplos](#código-com-as-explicações-e-os-exemplos)
 
 > [!IMPORTANT]
@@ -27,7 +30,6 @@ numeros := []int{10, 20, 30, 40, 50}
 Visualmente:
 ```sh
 Array real na memória
-
 +----+----+----+----+----+
 | 10 | 20 | 30 | 40 | 50 |
 +----+----+----+----+----+
@@ -160,7 +162,6 @@ Porque `parte` e `numeros` apontam para o mesmo array.
 Visualmente:
 ```sh
 Array
-
 +----+-----+----+----+----+
 | 10 | 999 | 30 | 40 | 50 |
 +----+-----+----+----+----+
@@ -282,7 +283,6 @@ cap = 2
 Visualmente:
 ```sh
 Array original
-
 +----+----+----+----+----+
 | 10 | 20 | 30 | 40 | 50 |
 +----+----+----+----+----+
@@ -297,6 +297,150 @@ cap = 2
 > [!IMPORTANT]
 > - Perceba que ele NÃO aponta para o início do array.
 > - Ele aponta para o primeiro elemento visível do slice.
+
+### Append
+#### Cenário 1 - Ainda existe capacidade
+```go
+numeros := []int{10, 20, 30, 40, 50}
+parte := completo[3:4]
+```
+
+Visualmente:
+```sh
+Array
++----+----+----+----+----+
+| 10 | 20 | 30 | 40 | 50 |
++----+----+----+----+----+
+                 ^
+                 |
+               parte
+len = 1
+cap = 2
+```
+
+Agora:
+```go
+parte = append(parte, 999)
+```
+
+O Go analisa: ainda tenho espaço dentro da capacidade do slice.
+
+Então ele simplesmente escreve no array existente.
+
+Resultado:
+```sh
+Array
++----+----+----+----+-----+
+| 10 | 20 | 30 | 40 | 999 |
++----+----+----+----+-----+
+```
+
+Se printarmos os valores:
+```go
+fmt.Println(numeros)
+fmt.Println(parte)
+```
+
+Resultado:
+```sh
+[10 20 30 40 999]
+[40 999]
+```
+
+#### Cenário 2 - Capacidade esgotada
+```go
+numeros := []int{10, 20, 30, 40, 50}
+parte := completo[3:4]
+```
+
+Temos:
+```sh
+len = 1
+cap = 2
+```
+
+Primeiro append:
+```go
+parte = append(parte, 999)
+```
+
+Agora:
+```sh
+len = 2
+cap = 2
+```
+
+Capacidade cheia.
+
+Antes de fazermos um novo append, vamos imprimir o endereço para onde parte está apontando:
+```go
+fmt.Printf("%p\n", &parte[0])
+```
+
+Resultado:
+```sh
+0x1071890060a8
+```
+
+Se fizer outro append:
+```go
+parte = append(parte, 888)
+```
+
+Então ele:
+  - Cria um novo array maior.
+  - Copia os dados.
+  - Faz o slice apontar para o novo array.
+
+Antes:
+```sh
+numeros
++----+----+----+----+-----+
+| 10 | 20 | 30 | 40 | 999 |
++----+----+----+----+-----+
+```
+
+Depois:
+```sh
+numeros
++----+----+----+----+-----+
+| 10 | 20 | 30 | 40 | 999 |
++----+----+----+----+-----+
+
+parte
++----+-----+-----+
+| 40 | 999 | 888 |
++----+-----+-----+
+```
+
+Agora são arrays diferentes.
+
+Vamos imprimir novamente o endereço para ver onde parte está apontando agora:
+```go
+fmt.Printf("%p\n", &parte[0])
+```
+
+Resultado:
+```sh
+0x107189010000
+```
+
+**Detalhe MUITO importante**
+Muita gente escreve:
+```go
+append(parte, 123)
+```
+
+Mas o correto é:
+```go
+parte = append(parte, 123)
+```
+
+Porque o append pode:
+  - continuar usando o mesmo array
+  - ou criar um array novo
+
+Como você não sabe qual dos dois aconteceu, ele devolve o slice atualizado.
 
 ### Código com as explicações e os exemplos
 ```go
