@@ -22,7 +22,7 @@
 	- [Ferramentas Online](#ferramentas-online)
 </details>
 
-<details>
+<details open>
 <summary><strong>Estruturas de Dados</strong></summary>
 
 - [Array](go/array.md)
