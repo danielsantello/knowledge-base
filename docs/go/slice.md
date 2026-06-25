@@ -579,16 +579,15 @@ Como a capacidade já foi reservada:
 <div align="center">· · ·</div>
 
 ### Resumo
-> Resumo
-> - ✔ Um slice não contém os dados.
-> - ✔ Um slice referencia um array.
-> - ✔ O operador : cria novas janelas sobre o mesmo array.
-> - ✔ Alterações em um slice podem afetar outros slices que compartilham o mesmo array.
-> - ✔ len representa a quantidade de elementos visíveis.  
-> - ✔ cap representa a quantidade de elementos disponíveis até o final do array subjacente.
-> - ✔ append() reutiliza o array quando há capacidade.
-> - ✔ Se a capacidade acabar, um novo array é criado.
-> - ✔ Sempre capture o retorno de append().
+✔ Um slice não contém os dados.  
+✔ Um slice referencia um array.  
+✔ O operador : cria novas janelas sobre o mesmo array.  
+✔ Alterações em um slice podem afetar outros slices que compartilham o mesmo array.  
+✔ len representa a quantidade de elementos visíveis.  
+✔ cap representa a quantidade de elementos disponíveis até o final do array subjacente.  
+✔ append() reutiliza o array quando há capacidade.  
+✔ Se a capacidade acabar, um novo array é criado.  
+✔ Sempre capture o retorno de append().
 
 <div align="right"><a href="#sumário">Sumário [↑]</a></div>
 <div align="center">· · ·</div>
