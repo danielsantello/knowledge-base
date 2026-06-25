@@ -426,6 +426,7 @@ Resultado:
 ```
 
 **Detalhe MUITO importante**
+
 Muita gente escreve:
 ```go
 append(parte, 123)
