@@ -15,6 +15,7 @@
 - [Append](#append)
   - [Cenário 1 - Ainda existe capacidade](#cenário-1---ainda-existe-capacidade)
   - [Cenário 2 - Capacidade esgotada](#cenário-2---capacidade-esgotada)
+  - [Um erro clássico](#um-erro-clássico)
 - [Código com as explicações e os exemplos](#código-com-as-explicações-e-os-exemplos)
 
 > [!IMPORTANT]
@@ -443,8 +444,45 @@ Porque o append pode:
 
 Como você não sabe qual dos dois aconteceu, ele devolve o slice atualizado.
 
+#### Um erro clássico
+```go
+func adiciona(s []int) {
+    s = append(s, 999)
+}
+
+numeros := []int{1,2,3}
+adiciona(numeros)
+fmt.Println(numeros)
+```
+
+Muita gente espera:
+```sh
+[1 2 3 999]
+```
+
+Mas pode aparecer:
+```sh
+[1 2 3]
+```
+
+Porque a função recebeu uma cópia da estrutura do slice.
+
+Se o append precisou realocar memória, somente a variável local foi atualizada.
+
+O slice original continuou apontando para o array antigo.
+
+O correto:
+```go
+```
+
+
 ### Código com as explicações e os exemplos
 ```go
+func adiciona(s []int) []int {
+    return append(s, 999)
+}
+
+numeros = adiciona(numeros)
 ```
 
 Resultado:
