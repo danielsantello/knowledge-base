@@ -372,7 +372,7 @@ cap = 2
 
 Capacidade cheia.
 
-Antes de fazermos um novo append, vamos imprimir o endereço para onde parte está apontando:
+Antes de fazermos um novo append, vamos imprimir o endereço para onde `parte` está apontando:
 ```go
 fmt.Printf("%p\n", &parte[0])
 ```
@@ -415,7 +415,7 @@ parte
 
 Agora são arrays diferentes.
 
-Vamos imprimir novamente o endereço para ver onde parte está apontando agora:
+Vamos imprimir novamente o endereço para ver onde `parte` está apontando agora:
 ```go
 fmt.Printf("%p\n", &parte[0])
 ```
