@@ -45,6 +45,9 @@ Slice
   +--> aponta para o array
 ```
 
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
+
 ### Acessando um elemento
 ```go
 fmt.Println(numeros[2])
