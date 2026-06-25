@@ -1,23 +1,37 @@
 # Go
 
 ## Sumário
-- [Características](#características)
-- [O que Go NÃO é](#o-que-go-não-é)
-- [Motivação](#motivação)
-- [Principais Diferenciais](#principais-diferenciais)
-- [Casos de Uso](#casos-de-uso)
-- [Filosofia da Linguagem](#filosofia-da-linguagem)
-- [Instalação](#instalação)
-- [Comandos](#comandos)
-	- [Declaração e atribuição](#declaração-e-atribuição)
- 	- [Array](go/array.md)
- 	- [Slice](go/slice.md)
-- [Exemplos](#exemplos)
-	- [Hello](#hello)
-- [Referências](#referências)
-	- [Cursos](#cursos)
-	- [Documentação Oficial](#documentação-oficial)
-	- [Ferramentas Online](#ferramentas-online)
+
+<details open>
+  <summary>
+    <strong>Conceitos</strong>
+  </summary>
+  	- [Características](#características)
+	- [O que Go NÃO é](#o-que-go-não-é)
+	- [Motivação](#motivação)
+	- [Principais Diferenciais](#principais-diferenciais)
+	- [Casos de Uso](#casos-de-uso)
+	- [Filosofia da Linguagem](#filosofia-da-linguagem)
+	- [Instalação](#instalação)
+	- [Comandos](#comandos)
+		- [Declaração e atribuição](#declaração-e-atribuição)
+	 	- [Array](go/array.md)
+	 	- [Slice](go/slice.md)
+	- [Exemplos](#exemplos)
+		- [Hello](#hello)
+	- [Referências](#referências)
+		- [Cursos](#cursos)
+		- [Documentação Oficial](#documentação-oficial)
+		- [Ferramentas Online](#ferramentas-online)
+</details>
+
+<details close>
+  <summary>
+    <strong>Estruturas de Dados</strong>
+  </summary>
+	- [Array](go/array.md)
+	- [Slice](go/slice.md)
+</details>
 
 ### Características
 - Open Source
