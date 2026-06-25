@@ -473,16 +473,16 @@ O slice original continuou apontando para o array antigo.
 
 O correto:
 ```go
-```
-
-
-### Código com as explicações e os exemplos
-```go
 func adiciona(s []int) []int {
     return append(s, 999)
 }
 
 numeros = adiciona(numeros)
+```
+
+
+### Código com as explicações e os exemplos
+```go
 ```
 
 Resultado:
