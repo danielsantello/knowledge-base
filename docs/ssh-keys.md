@@ -19,6 +19,7 @@
  - [Criando a estrutura SSH no Linux](#criando-a-estrutura-ssh-no-linux)
  - [Copiando a chave pública para o servidor](#copiando-a-chave-pública-para-o-servidor)
  - [Testando uma conexão](#testando-uma-conexão)
+ - [Como funciona internamente](#como-funciona-internamente)
  - [Boas práticas](#boas-práticas)
 
 <br>
@@ -291,6 +292,31 @@ ssh dalq-api
 ```
 
 O alias é obtido do arquivo `config`:
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
+
+### Como funciona internamente
+```sh
+Cliente (Windows)
+│
+├── Chave privada
+│
+│  (prova criptograficamente sua identidade)
+│
+▼
+Servidor (Linux)
+│
+├── authorized_keys
+│
+│  (contém as chaves públicas autorizadas)
+│
+▼
+As chaves correspondem?
+│
+├── Sim → acesso liberado
+└── Não → solicita senha (ou nega o acesso)
+```
 
 <div align="right"><a href="#sumário">Sumário [↑]</a></div>
 <div align="center">· · ·</div>
