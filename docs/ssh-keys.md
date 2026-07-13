@@ -182,7 +182,7 @@ Get-Content $HOME\.ssh\config
 ### Exibindo a chave pública
 PowerShell:
 ```sh
-Get-Content $HOME\.ssh\dalq_vm_ed25519.pub
+Get-Content $HOME\.ssh\dalq_api_ed25519.pub
 ```
 
 Saída:
