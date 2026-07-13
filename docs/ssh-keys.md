@@ -7,6 +7,13 @@
 	- [Chave privada](#chave-privada)
 	- [Chave pública](#chave-pública)
 	- [authorized_keys](#authorized_keys)
+ - [Estrutura da pasta .ssh (Windows)](#estrutura-da-pasta-ssh-windows)
+	- [Arquivo config](#arquivo-config)
+	- [Arquivo known_hosts](#arquivo-known_hosts)
+ - [Listando as chaves existentes](#listando-as-chaves-existentes)
+ - [Exibindo o conteúdo do arquivo config](#exibindo-o-conteúdo-do-arquivo-config)
+ - [Exibindo a chave pública](#exibindo-a-chave-pública)
+ - [Comentário da chave](#comentário-da-chave)
 
 <br>
 
@@ -66,6 +73,102 @@ Cada linha representa uma chave autorizada.
 <div align="right"><a href="#sumário">Sumário [↑]</a></div>
 <div align="center">· · ·</div>
 
+### Estrutura da pasta .ssh (Windows)
+Local:
+```sh
+C:\Users\Daniel\.ssh
+```
 
+Exemplo:
+```sh
+config
+dalq_api_ed25519
+dalq_api_ed25519.pub
+known_hosts
+```
 
+#### Arquivo config
+Arquivo responsável por armazenar aliases e configurações das conexões SSH.
 
+Exemplo:
+```sh
+Host dalq-api
+    HostName 192.168.15.103
+    User dalq
+    Port 22
+    IdentityFile C:\Users\Daniel\.ssh\dalq_api_ed25519
+    IdentitiesOnly yes
+```
+
+Explicação:
+- `Host` → nome (apelido) da conexão
+- `HostName` → IP ou hostname real
+- `User` → usuário utilizado na conexão
+- `Port` → porta do SSH
+- `IdentityFile` → caminho da chave privada
+- `IdentitiesOnly` → utiliza apenas a chave especificada
+
+#### Arquivo known_hosts
+Armazena a identidade dos servidores já acessados.
+
+Serve para evitar ataques do tipo "man in the middle".
+
+Normalmente não deve ser editado manualmente.
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
+
+### Listando as chaves existentes
+PowerShell:
+```sh
+dir $HOME\.ssh
+```
+
+ou
+```sh
+Get-ChildItem $HOME\.ssh
+```
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
+
+### Exibindo o conteúdo do arquivo config
+PowerShell:
+```sh
+Get-Content $HOME\.ssh\config
+```
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
+
+### Exibindo a chave pública
+PowerShell:
+```sh
+Get-Content $HOME\.ssh\dalq_vm_ed25519.pub
+```
+
+Saída:
+```sh
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAA... notebook-pessoal
+```
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
+
+### Comentário da chave
+A estrutura da chave pública é:
+```sh
+tipo_da_chave chave comentário
+```
+
+Exemplo:
+```sh
+ssh-ed25519 AAAAC3Nza... dalq-api
+```
+
+O comentário é apenas identificador.
+
+Pode ser alterado sem invalidar a chave.
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
