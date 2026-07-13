@@ -224,9 +224,8 @@ ssh-keygen -t ed25519
 ```
 
 > [!TIP]
->
-> Atualmente o algoritmo **ED25519** é o recomendado por oferecer
-> melhor segurança, menor tamanho de chave e maior desempenho quando comparado ao RSA.
+> 
+> O algoritmo ED25519 é uma escolha moderna e recomendada para novas chaves por oferecer chaves compactas, bom desempenho e segurança robusta.
 
 Personalizando o nome:
 ```powershell
@@ -329,7 +328,7 @@ Permissões do arquivo:
 ssh dalq-api
 ```
 
-O alias é obtido do arquivo `config`:
+O alias e as demais configurações da conexão são obtidos do arquivo `config`.
 
 <div align="right"><a href="#sumário">Sumário [↑]</a></div>
 <div align="center">· · ·</div>
