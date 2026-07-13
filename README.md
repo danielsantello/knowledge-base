@@ -10,6 +10,14 @@ Este repositório reúne os principais comandos, conceitos e experimentos realiz
 - [Dockerfile](docs/dockerfile.md)
 - [Docker Compose](docs/docker-compose.md)
 
+### Desenvolvimento
+
+- [SSH - Autenticação por Chaves](docs/ssh-keys.md)
+- Git
+- GitHub
+- Composer
+- REST API
+
 ### Linguagens
 
 - [Go](docs/golang.md)
@@ -27,3 +35,12 @@ Este repositório reúne os principais comandos, conceitos e experimentos realiz
 - Consul
 - Prometheus
 - Grafana
+
+### Arquitetura
+
+- REST
+- MVC
+- Clean Architecture
+- Dependency Injection
+- Design Patterns
+- Microserviços
