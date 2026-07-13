@@ -3,6 +3,7 @@
 ## Sumário
 
 - [O que é?](#o-que-é)
+- [Quando utilizar?](#quando-utilizar)
 - [Conceitos](#conceitos)
 	- [Chave privada](#chave-privada)
 	- [Chave pública](#chave-pública)
@@ -15,12 +16,15 @@
  - [Exibindo a chave pública](#exibindo-a-chave-pública)
  - [Comentário da chave](#comentário-da-chave)
  - [Gerando um novo par de chaves](#gerando-um-novo-par-de-chaves)
- - [Visualizando a chave pública derivada da chave privada](#visualizando-a-chave-pública-derivada-da-chave-privada)
+ - [Obtendo a chave pública a partir da chave privada](#obtendo-a-chave-pública-a-partir-da-chave-privada)
  - [Criando a estrutura SSH no Linux](#criando-a-estrutura-ssh-no-linux)
  - [Copiando a chave pública para o servidor](#copiando-a-chave-pública-para-o-servidor)
  - [Testando uma conexão](#testando-uma-conexão)
  - [Como funciona internamente](#como-funciona-internamente)
+ - [Fluxo completo](#fluxo-completo)
  - [Boas práticas](#boas-práticas)
+ - [Problemas comuns](#problemas-comuns)
+ 	- [Continua pedindo senha](#continua-pedindo-senha)
 
 <br>
 
@@ -37,6 +41,21 @@ Quando a chave pública do servidor corresponde à chave privada do cliente, o a
 <div align="right"><a href="#sumário">Sumário [↑]</a></div>
 <div align="center">· · ·</div>
 
+### Quando utilizar?
+
+A autenticação por chaves é recomendada para:
+
+- acesso a servidores Linux via SSH;
+- desenvolvimento remoto utilizando VS Code Remote SSH;
+- autenticação no GitHub, GitLab e outros serviços Git;
+- automações (CI/CD);
+- scripts que necessitam acessar servidores sem interação humana.
+
+Em praticamente todos os cenários, a autenticação por chaves é mais segura do que utilizar senhas.
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
+
 ### Conceitos
 #### Chave privada
 Exemplo:
@@ -47,6 +66,12 @@ dalq_api_ed25519
 - Nunca deve ser compartilhada.
 - Fica somente na máquina cliente.
 - É utilizada para provar sua identidade.
+
+> [!WARNING]
+>
+> Nunca copie sua chave privada (id_ed25519, dalq_api_ed25519, etc.) para servidores Linux.
+> 
+> Apenas a chave pública (*.pub) deve ser instalada no servidor.
 
 #### Chave pública
 Exemplo:
@@ -79,7 +104,9 @@ ssh-ed25519 AAAAC3Nz..... servidor-ci
 ```
 
 > [!NOTE]
-> Cada linha representa uma chave autorizada.
+>
+> O arquivo `authorized_keys` pode conter dezenas ou centenas de chaves públicas.
+> Cada linha representa um cliente autorizado a acessar aquele usuário.
 
 <div align="right"><a href="#sumário">Sumário [↑]</a></div>
 <div align="center">· · ·</div>
@@ -190,6 +217,11 @@ Algoritmo recomendado atualmente:
 ssh-keygen -t ed25519
 ```
 
+> [!TIP]
+>
+> Atualmente o algoritmo **ED25519** é o recomendado por oferecer
+> melhor segurança, menor tamanho de chave e maior desempenho quando comparado ao RSA.
+
 Personalizando o nome:
 ```sh
 ssh-keygen -t ed25519 -f $HOME\.ssh\dalq_api_ed25519
@@ -211,7 +243,7 @@ ssh-keygen `
 <div align="right"><a href="#sumário">Sumário [↑]</a></div>
 <div align="center">· · ·</div>
 
-### Visualizando a chave pública derivada da chave privada
+### Obtendo a chave pública a partir da chave privada
 ```sh
 ssh-keygen -y -f $HOME\.ssh\dalq_api_ed25519
 ```
@@ -321,6 +353,22 @@ As chaves correspondem?
 <div align="right"><a href="#sumário">Sumário [↑]</a></div>
 <div align="center">· · ·</div>
 
+### Fluxo completo
+```sh
+1. Gerar o par de chaves
+↓
+2. Instalar a chave pública no servidor
+↓
+3. Configurar o arquivo config
+↓
+4. Testar a conexão
+↓
+5. Utilizar normalmente
+```
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
+
 ### Boas práticas
 - Nunca compartilhe a chave privada.  
 - Faça backup da chave privada.  
@@ -331,3 +379,14 @@ As chaves correspondem?
 
 <div align="right"><a href="#sumário">Sumário [↑]</a></div>
 <div align="center">· · ·</div>
+
+### Problemas comuns
+#### Continua pedindo senha
+Possíveis causas:
+
+- chave pública não copiada para `authorized_keys`;
+- permissões incorretas em `~/.ssh`;
+- permissões incorretas em `authorized_keys`;
+- usuário incorreto;
+- `IdentityFile` apontando para outra chave;
+- serviço SSH configurado para não aceitar autenticação por chave.
