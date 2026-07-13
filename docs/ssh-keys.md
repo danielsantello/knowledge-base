@@ -29,14 +29,20 @@
 <br>
 
 ### O que é?
-A autenticação por chaves substitui o uso de senhas durante a conexão SSH.
+A autenticação por chaves permite acessar servidores SSH sem utilizar a senha da conta remota.
+
+> [!NOTE]
+>
+> A chave privada pode ser protegida por uma passphrase. Nesse caso, a passphrase protege o arquivo da chave e não corresponde à senha do usuário no servidor.
 
 Ela utiliza um par de chaves:
 
 - Chave privada (fica apenas com você)
 - Chave pública (é instalada no servidor)
 
-Quando a chave pública do servidor corresponde à chave privada do cliente, o acesso é liberado sem necessidade de senha.
+Durante a conexão, o cliente utiliza a chave privada para provar sua identidade.
+
+O servidor verifica essa prova utilizando a chave pública cadastrada no arquivo `authorized_keys`. Quando a validação é bem-sucedida, o acesso é liberado sem solicitar a senha do usuário.
 
 <div align="right"><a href="#sumário">Sumário [↑]</a></div>
 <div align="center">· · ·</div>
@@ -113,7 +119,7 @@ ssh-ed25519 AAAAC3Nz..... servidor-ci
 
 ### Estrutura da pasta .ssh (Windows)
 Local:
-```sh
+```powershell
 C:\Users\Daniel\.ssh
 ```
 
@@ -129,7 +135,7 @@ known_hosts
 Arquivo responsável por armazenar aliases e configurações das conexões SSH.
 
 Exemplo:
-```sh
+```sshconfig
 Host dalq-api
     HostName 192.168.15.103
     User dalq
@@ -158,12 +164,12 @@ Normalmente não deve ser editado manualmente.
 
 ### Listando as chaves existentes
 PowerShell:
-```sh
+```powershell
 dir $HOME\.ssh
 ```
 
 ou
-```sh
+```powershell
 Get-ChildItem $HOME\.ssh
 ```
 
@@ -172,7 +178,7 @@ Get-ChildItem $HOME\.ssh
 
 ### Exibindo o conteúdo do arquivo config
 PowerShell:
-```sh
+```powershell
 Get-Content $HOME\.ssh\config
 ```
 
@@ -181,7 +187,7 @@ Get-Content $HOME\.ssh\config
 
 ### Exibindo a chave pública
 PowerShell:
-```sh
+```powershell
 Get-Content $HOME\.ssh\dalq_api_ed25519.pub
 ```
 
@@ -213,7 +219,7 @@ Pode ser alterado sem invalidar a chave.
 
 ### Gerando um novo par de chaves
 Algoritmo recomendado atualmente:
-```sh
+```powershell
 ssh-keygen -t ed25519
 ```
 
@@ -223,17 +229,17 @@ ssh-keygen -t ed25519
 > melhor segurança, menor tamanho de chave e maior desempenho quando comparado ao RSA.
 
 Personalizando o nome:
-```sh
+```powershell
 ssh-keygen -t ed25519 -f $HOME\.ssh\dalq_api_ed25519
 ```
 
 Definindo comentário:
-```sh
+```powershell
 ssh-keygen -t ed25519 -C "Notebook Pessoal"
 ```
 
 Ou tudo junto:
-```sh
+```powershell
 ssh-keygen `
     -t ed25519 `
     -C "Notebook Pessoal" `
@@ -244,7 +250,7 @@ ssh-keygen `
 <div align="center">· · ·</div>
 
 ### Obtendo a chave pública a partir da chave privada
-```sh
+```powershell
 ssh-keygen -y -f $HOME\.ssh\dalq_api_ed25519
 ```
 
@@ -280,7 +286,7 @@ Permissões:
 
 ### Copiando a chave pública para o servidor
 Windows:
-```sh
+```powershell
 type $HOME\.ssh\dalq_api_ed25519.pub | ssh dalq-api "cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
 ```
 
@@ -329,7 +335,7 @@ O alias é obtido do arquivo `config`:
 <div align="center">· · ·</div>
 
 ### Como funciona internamente
-```sh
+```text
 Cliente (Windows)
 │
 ├── Chave privada
@@ -354,7 +360,7 @@ As chaves correspondem?
 <div align="center">· · ·</div>
 
 ### Fluxo completo
-```sh
+```text
 1. Gerar o par de chaves
 ↓
 2. Instalar a chave pública no servidor
