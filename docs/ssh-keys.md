@@ -390,3 +390,6 @@ Possíveis causas:
 - usuário incorreto;
 - `IdentityFile` apontando para outra chave;
 - serviço SSH configurado para não aceitar autenticação por chave.
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
