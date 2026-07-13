@@ -14,6 +14,12 @@
  - [Exibindo o conteúdo do arquivo config](#exibindo-o-conteúdo-do-arquivo-config)
  - [Exibindo a chave pública](#exibindo-a-chave-pública)
  - [Comentário da chave](#comentário-da-chave)
+ - [Gerando um novo par de chaves](#gerando-um-novo-par-de-chaves)
+ - [Visualizando a chave pública derivada da chave privada](#visualizando-a-chave-pública-derivada-da-chave-privada)
+ - [Criando a estrutura SSH no Linux](#criando-a-estrutura-ssh-no-linux)
+ - [Copiando a chave pública para o servidor](#copiando-a-chave-pública-para-o-servidor)
+ - [Testando uma conexão](#testando-uma-conexão)
+ - [Boas práticas](#boas-práticas)
 
 <br>
 
@@ -51,6 +57,9 @@ Pode ser compartilhada livremente.
 
 Ela será instalada nos servidores que você deseja acessar.
 
+> [!NOTE]
+> A mesma chave pública pode ser instalada em diversos servidores.
+
 #### authorized_keys
 No Linux:
 ```sh
@@ -68,7 +77,8 @@ ssh-ed25519 AAAAC3Nz..... desktop
 ssh-ed25519 AAAAC3Nz..... servidor-ci
 ```
 
-Cada linha representa uma chave autorizada.
+> [!NOTE]
+> Cada linha representa uma chave autorizada.
 
 <div align="right"><a href="#sumário">Sumário [↑]</a></div>
 <div align="center">· · ·</div>
@@ -169,6 +179,129 @@ ssh-ed25519 AAAAC3Nza... dalq-api
 O comentário é apenas identificador.
 
 Pode ser alterado sem invalidar a chave.
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
+
+### Gerando um novo par de chaves
+Algoritmo recomendado atualmente:
+```sh
+ssh-keygen -t ed25519
+```
+
+Personalizando o nome:
+```sh
+ssh-keygen -t ed25519 -f $HOME\.ssh\dalq_api_ed25519
+```
+
+Definindo comentário:
+```sh
+ssh-keygen -t ed25519 -C "Notebook Pessoal"
+```
+
+Ou tudo junto:
+```sh
+ssh-keygen `
+    -t ed25519 `
+    -C "Notebook Pessoal" `
+    -f $HOME\.ssh\dalq_api_ed25519
+```
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
+
+### Visualizando a chave pública derivada da chave privada
+```sh
+ssh-keygen -y -f $HOME\.ssh\dalq_api_ed25519
+```
+
+Útil para confirmar que a chave privada corresponde à chave pública.
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
+
+### Criando a estrutura SSH no Linux
+```sh
+mkdir -p ~/.ssh
+chmod 700 ~/.ssh
+```
+
+Explicação:
+```sh
+mkdir -p
+```
+
+Cria o diretório caso não exista.
+
+```sh
+chmod 700
+```
+
+Permissões:
+- dono: leitura, escrita e execução
+- grupo: nenhum acesso
+- outros: nenhum acesso
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
+
+### Copiando a chave pública para o servidor
+Windows:
+```sh
+type $HOME\.ssh\dalq_api_ed25519.pub | ssh dalq-api "cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
+```
+
+Explicação:
+```sh
+type
+```
+
+Lê o conteúdo da chave pública.
+
+```sh
+|
+```
+
+Envia a saída para outro comando.
+
+```sh
+cat >>
+```
+
+Acrescenta o conteúdo ao arquivo authorized_keys.
+
+Se o arquivo não existir, ele será criado.
+
+```sh
+chmod 600
+```
+
+Permissões do arquivo:
+
+- dono: leitura e escrita
+- grupo: nenhum acesso
+- outros: nenhum acesso
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
+
+### Testando uma conexão
+```sh
+ssh dalq-api
+```
+
+O alias é obtido do arquivo `config`:
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
+
+### Boas práticas
+- Nunca compartilhe a chave privada.  
+- Faça backup da chave privada.  
+- Utilize nomes descritivos para as chaves.  
+- Utilize aliases no arquivo `config`.  
+- Prefira o algoritmo `ed25519`.  
+- Mantenha permissões corretas em `~/.ssh`.
 
 <div align="right"><a href="#sumário">Sumário [↑]</a></div>
 <div align="center">· · ·</div>
