@@ -1,5 +1,7 @@
 # SSH - Autenticação por Chaves (SSH Keys)
 
+← [Base de Conhecimento](../README.md)
+
 ## Sumário
 
 - [O que é?](#o-que-é)
@@ -396,5 +398,5 @@ Possíveis causas:
 - `IdentityFile` apontando para outra chave;
 - serviço SSH configurado para não aceitar autenticação por chave.
 
-<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="right"><a href="#sumário">Sumário [↑]</a> | <a href="../README.md">Base de Conhecimento [←]</a></div>
 <div align="center">· · ·</div>
