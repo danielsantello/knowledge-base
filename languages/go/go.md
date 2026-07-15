@@ -34,7 +34,7 @@
 <details open>
 <summary><strong>Pacotes</strong></summary>
 
-- [fmt](/languages/go/packages/fmt.md)
+- [fmt](/languages/go/standard-library/fmt.md)
 </details>
 
 <br>
