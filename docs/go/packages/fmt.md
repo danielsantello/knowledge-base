@@ -1,6 +1,6 @@
 # Array
 
-<a href="../../README.md">Base de Conhecimento</a> › <a href="../go.md">Go</a> › <a href="packages.md">Pacotes</a> › fmt
+<a href="../../../README.md">Base de Conhecimento</a> › <a href="../../go.md">Go</a> › <a href="packages.md">Pacotes</a> › fmt
 
 ## Sumário
 - [Declarando um array sem valores iniciais](#declarando-um-array-sem-valores-iniciais)
