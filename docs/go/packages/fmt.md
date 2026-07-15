@@ -1,6 +1,6 @@
+# Array
 
-
-# [Go](../golang.md) - Array
+<a href="../../README.md">Base de Conhecimento</a> › <a href="../go.md">Go</a>
 
 ## Sumário
 - [Declarando um array sem valores iniciais](#declarando-um-array-sem-valores-iniciais)
