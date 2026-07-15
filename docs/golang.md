@@ -1,6 +1,6 @@
 # Go
 
-<a href="../README.md">Base de Conhecimento</a> › Go
+<a href="../README.md">Base de Conhecimento</a>
 
 ## Sumário
 
