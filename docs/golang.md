@@ -29,6 +29,12 @@
 - [Slice](go/slice.md)
 </details>
 
+<details open>
+<summary><strong>Pacotes</strong></summary>
+
+- [fmt](go/packages/fmt.md)
+</details>
+
 <br>
 
 ### Características
