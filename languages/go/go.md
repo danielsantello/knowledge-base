@@ -16,6 +16,8 @@
 - [Instalação](#instalação)
 - [Comandos](#comandos)
 	- [Declaração e atribuição](#declaração-e-atribuição)
+- [Biblioteca Padrão](/languages/go/standard-library/standard-library.md)
+	- [fmt](/languages/go/standard-library/fmt.md)
 - [Exemplos](#exemplos)
 	- [Hello](#hello)
 - [Referências](#referências)
@@ -29,12 +31,6 @@
 
 - [Array](go/array.md)
 - [Slice](go/slice.md)
-</details>
-
-<details open>
-<summary><strong>Biblioteca Padrão</strong></summary>
-
-- [fmt](/languages/go/standard-library/fmt.md)
 </details>
 
 <br>
