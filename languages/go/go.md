@@ -32,7 +32,7 @@
 </details>
 
 <details open>
-<summary><strong>Pacotes</strong></summary>
+<summary><strong>Biblioteca Padrão</strong></summary>
 
 - [fmt](/languages/go/standard-library/fmt.md)
 </details>
