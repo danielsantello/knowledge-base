@@ -10,6 +10,7 @@
   - [fmt.Printf()](#fmtprintf)
   - [fmt.Sprintf()](#fmtsprintf)
   - [fmt.Errorf()](#fmterrorf)
+  - [fmt.Scan()](#fmtscan)
 - [Strings de formatação](#strings-de-formatação)
 - [Verbos para Strings](#verbos-para-strings)
 - [Verbos para Inteiros](#verbos-para-inteiros)
@@ -171,6 +172,19 @@ Muito utilizado para retornar erros.
 <div align="right"><a href="#sumário">Sumário [↑]</a></div>
 <div align="center">· · ·</div>
 
+#### fmt.Scan()
+
+Lê dados da entrada padrão (teclado).
+
+```go
+var nome string
+
+fmt.Scan(&nome)
+```
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
+
 ### Strings de formatação
 
 As strings de formatação são utilizadas principalmente pelo `fmt.Printf()`, `fmt.Sprintf()` e `fmt.Errorf()`.
@@ -236,7 +250,8 @@ Nesse exemplo:
 
 | Verbo | Descrição |
 |--------|-----------|
-| `%v` | Valor padrão |
+| `%v` | Representação padrão do valor |
+| `%T` | Exibe o tipo da variável |
 | `%+v` | Exibe structs com o nome dos campos |
 | `%#v` | Exibe structs utilizando a sintaxe Go |
 
