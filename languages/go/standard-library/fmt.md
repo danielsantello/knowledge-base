@@ -182,6 +182,12 @@ var nome string
 fmt.Scan(&nome)
 ```
 
+Também existem:
+
+- fmt.Scan()
+- fmt.Scanln()
+- fmt.Scanf()
+
 <div align="right"><a href="#sumário">Sumário [↑]</a></div>
 <div align="center">· · ·</div>
 
