@@ -52,8 +52,8 @@ Imprime exatamente os valores informados.
 
 Características:
 
-- Não adiciona quebra de linha.
-- Não adiciona espaços automaticamente.
+- Não adiciona uma quebra de linha.
+- Não adiciona espaços entre strings; quando necessário, os espaços devem ser informados explicitamente.
 - Aceita um ou vários argumentos.
 
 ```go
@@ -141,7 +141,7 @@ Diferentemente do `Print()` e `Println()`, o `Printf()` utiliza uma **string de 
 
 #### fmt.Sprintf()
 
-Possui exatamente o mesmo comportamento do `Printf()`, porém retorna uma string ao invés de imprimir.
+Utiliza a mesma lógica de formatação do `Printf()`, porém retorna uma string em vez de imprimir no terminal.
 
 ```go
 texto := fmt.Sprintf("Nome: %s", nome)
@@ -168,6 +168,12 @@ err := fmt.Errorf("cliente %d não encontrado", id)
 ```
 
 Muito utilizado para retornar erros.
+
+Também é possível envolver um erro existente utilizando o verbo `%w`:
+
+```go
+err := fmt.Errorf("falha ao buscar cliente: %w", errOriginal)
+```
 
 <div align="right"><a href="#sumário">Sumário [↑]</a></div>
 <div align="center">· · ·</div>
@@ -296,7 +302,9 @@ fmt.Printf("%#v\n", cliente)
 
 ### Raw Strings
 
-Strings delimitadas por crases (**`**) não interpretam caracteres especiais.
+Strings delimitadas por crases são chamadas de **raw strings** e preservam seu conteúdo literalmente, sem interpretar sequências de escape como `\n`, `\t`, `\\` e `\"`.
+
+Uma raw string não pode conter uma crase diretamente.
 
 ```go
 codigo := `fmt.Printf("Valor %d\n", valor)`
