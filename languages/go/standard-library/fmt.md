@@ -184,9 +184,8 @@ fmt.Scan(&nome)
 
 Também existem:
 
-- fmt.Scan()
-- fmt.Scanln()
-- fmt.Scanf()
+- `fmt.Scanln()` — lê valores até o fim da linha.
+- `fmt.Scanf()` — lê valores utilizando uma string de formatação.
 
 <div align="right"><a href="#sumário">Sumário [↑]</a></div>
 <div align="center">· · ·</div>
@@ -265,6 +264,7 @@ Exemplo:
 
 ```go
 fmt.Printf("%v\n", cliente)
+fmt.Printf("%T\n", cliente)
 fmt.Printf("%+v\n", cliente)
 fmt.Printf("%#v\n", cliente)
 ```
@@ -288,7 +288,7 @@ fmt.Printf("%#v\n", cliente)
 | `\n` | Nova linha |
 | `\t` | Tabulação |
 | `\\` | Barra invertida |
-| `\"` | Aspas |
+| `\"` | Aspas duplas dentro de uma string interpretada |
 | `%%` | Imprime o caractere `%` |
 
 <div align="right"><a href="#sumário">Sumário [↑]</a></div>
@@ -367,6 +367,7 @@ Todos são válidos.
 | `Printf()` | Texto formatado |
 | `Sprintf()` | Criar uma string formatada |
 | `Errorf()` | Criar um erro formatado |
+| `Scan()` | Ler dados da entrada padrão |
 
 <div align="right"><a href="#sumário">Sumário [↑]</a></div>
 <div align="center">· · ·</div>
@@ -379,7 +380,8 @@ Todos são válidos.
 | `%d` | Inteiro |
 | `%f` | Float |
 | `%t` | Boolean |
-| `%v` | Valor padrão |
+| `%v` | Representação padrão do valor |
+| `%T` | Tipo do valor |
 | `%+v` | Struct detalhada |
 | `%#v` | Struct em sintaxe Go |
 | `%p` | Ponteiro |
