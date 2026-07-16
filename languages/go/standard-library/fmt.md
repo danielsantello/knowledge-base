@@ -14,6 +14,16 @@
 - [Verbos para Strings](#verbos-para-strings)
 - [Verbos para Inteiros](#verbos-para-inteiros)
 - [Verbos para Float](#verbos-para-float)
+- [Verbos para Boolean](#verbos-para-boolean)
+- [Verbos genéricos](#verbos-genéricos)
+- [Ponteiros](#ponteiros)
+- [Sequências especiais](#sequências-especiais)
+- [Raw Strings](#raw-strings)
+- [Funções variádicas](#funções-variádicas)
+- [Resumo](#resumo)
+  - [Escolha do comando](#escolha-do-comando)
+  - [Verbos mais utilizados](#verbos-mais-utilizados)
+- [Boas práticas](#boas-práticas)
 
 <br>
 
@@ -210,17 +220,19 @@ Nesse exemplo:
 | `%.2f` | Float com duas casas decimais | 123.46 |
 | `%.4f` | Float com quatro casas decimais | 123.4560 |
 
----
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
 
-# Verbos para Boolean
+### Verbos para Boolean
 
 | Verbo | Descrição |
 |--------|-----------|
 | `%t` | Boolean |
 
----
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
 
-# Verbos genéricos
+### Verbos genéricos
 
 | Verbo | Descrição |
 |--------|-----------|
@@ -236,17 +248,19 @@ fmt.Printf("%+v\n", cliente)
 fmt.Printf("%#v\n", cliente)
 ```
 
----
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
 
-# Ponteiros
+### Ponteiros
 
 | Verbo | Descrição |
 |--------|-----------|
 | `%p` | Endereço de memória |
 
----
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
 
-# Sequências especiais
+### Sequências especiais
 
 | Sequência | Descrição |
 |------------|-----------|
@@ -256,9 +270,10 @@ fmt.Printf("%#v\n", cliente)
 | `\"` | Aspas |
 | `%%` | Imprime o caractere `%` |
 
----
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
 
-# Raw Strings
+### Raw Strings
 
 Strings delimitadas por crases (**`**) não interpretam caracteres especiais.
 
@@ -269,7 +284,6 @@ fmt.Println(codigo)
 ```
 
 Resultado:
-
 ```text
 fmt.Printf("Valor %d\n", valor)
 ```
@@ -282,9 +296,10 @@ Muito útil para:
 - Expressões regulares
 - Exemplos de código
 
----
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
 
-# Funções variádicas
+### Funções variádicas
 
 As funções `Print()`, `Println()` e `Printf()` aceitam uma quantidade variável de argumentos.
 
@@ -301,7 +316,6 @@ func Printf(format string, a ...any)
 ```
 
 O trecho:
-
 ```go
 ...any
 ```
@@ -311,7 +325,6 @@ significa:
 > "A função pode receber zero, um ou vários argumentos."
 
 Exemplos:
-
 ```go
 fmt.Print("A")
 fmt.Print("A", "B")
@@ -320,11 +333,11 @@ fmt.Print("A", "B", "C")
 
 Todos são válidos.
 
----
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
 
-# Resumo
-
-## Escolha do comando
+### Resumo
+#### Escolha do comando
 
 | Comando | Quando utilizar |
 |----------|-----------------|
@@ -334,9 +347,10 @@ Todos são válidos.
 | `Sprintf()` | Criar uma string formatada |
 | `Errorf()` | Criar um erro formatado |
 
----
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
 
-## Verbos mais utilizados
+#### Verbos mais utilizados
 
 | Verbo | Tipo |
 |--------|------|
@@ -349,12 +363,16 @@ Todos são válidos.
 | `%#v` | Struct em sintaxe Go |
 | `%p` | Ponteiro |
 
----
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
 
-# Boas práticas
+### Boas práticas
 
 - Utilize `Println()` para mensagens simples no terminal.
 - Utilize `Printf()` quando precisar formatar valores.
 - Utilize `Sprintf()` quando precisar montar uma string.
 - Utilize `%+v` e `%#v` durante a depuração de structs.
 - Utilize Raw Strings (crases) para SQL, JSON e exemplos de código.
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
