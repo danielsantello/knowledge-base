@@ -18,6 +18,7 @@
 	- [Declaração e atribuição](#declaração-e-atribuição)
 - [Biblioteca Padrão](/languages/go/standard-library/standard-library.md)
 	- [fmt](/languages/go/standard-library/fmt.md)
+- [Packaging](#packaging) 
 - [Exemplos](#exemplos)
 	- [Hello](#hello)
 - [Referências](#referências)
@@ -165,6 +166,51 @@ source ~/.bashrc
 #### Declaração e atribuição
 ```go
 
+```
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
+
+### Packaging
+Quando instalamos o `GO`, ele cria algumas variáveis de sistema. Uma dessas variáveis é a `GOPATH`. Ela indica o caminho onde o executável do Go irá procurar os pacotes.
+
+```sh
+go env GOPATH
+```
+
+Resultado:
+```sh
+/home/dalq/go
+```
+
+Como podemos ter vários projetos ao mesmo tempo, uma outra forma de definir um pacote é através do comando `go mod`.
+
+Para isso, vamos criar uma pasta onde ficará o nosso projeto:
+
+```sh
+cd /home/dalq/go
+mkdir packaging
+cd packaging
+```
+
+Agora, dentro da pasta `/home/dalq/go/packaging` digitamos:
+
+```sh
+go mod init <nome_do_projeto>
+```
+
+Por convenção, usamos como nome do projeto o caminho do repositório no GitHub. Para esse exemplo, ficará assim:
+
+```sh
+go mod init github.com/danielsantello/packaging
+```
+
+Será criado um arquivo chamado `go.mod` com o seguinte conteúdo:
+
+```sh
+module github.com/danielsantello/packaging
+
+go 1.25.0
 ```
 
 <div align="right"><a href="#sumário">Sumário [↑]</a></div>
