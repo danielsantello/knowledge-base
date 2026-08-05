@@ -239,7 +239,7 @@ Projeto
     └── pertencem a um pacote
 ```
 
-Agora, vamos olhar para um exemplo de como importar um pacote para ser usado dentro do GO:
+Agora vamos criar um pacote chamado `math` e importá-lo em outro pacote (`main`).
 
 Segue abaixo uma visão das pastas:
 ```sh
