@@ -172,7 +172,7 @@ source ~/.bashrc
 <div align="center">· · ·</div>
 
 ### Packaging
-Quando instalamos o `GO`, ele cria algumas variáveis de sistema. Uma dessas variáveis é a `GOPATH`. Ela indica o caminho onde o executável do Go irá procurar os pacotes.
+Quando instalamos o Go, algumas variáveis de ambiente são configuradas. Uma delas é a `GOPATH`, que representa o diretório de trabalho do Go. Atualmente, com o uso de módulos (`go.mod`), ela deixou de definir onde os pacotes do projeto ficam, sendo utilizada principalmente para armazenar binários, cache e dependências baixadas.
 
 ```sh
 go env GOPATH
@@ -183,7 +183,7 @@ Resultado:
 /home/dalq/go
 ```
 
-Como podemos ter vários projetos ao mesmo tempo, uma outra forma de definir um pacote é através do comando `go mod`.
+Cada projeto Go moderno é organizado como um módulo. Um módulo é criado através do comando `go mod init` e define o caminho base utilizado para importar todos os pacotes do projeto.
 
 Para isso, vamos criar uma pasta onde ficará o nosso projeto:
 
@@ -199,7 +199,7 @@ Agora, dentro da pasta `/home/dalq/go/packaging` digitamos:
 go mod init <nome_do_projeto>
 ```
 
-Por convenção, usamos como nome do projeto o caminho do repositório no GitHub. Para esse exemplo, ficará assim:
+Por convenção, usamos como nome do projeto o caminho do repositório no GitHub. Esse caminho não precisa existir no GitHub naquele momento. Ele apenas será utilizado como identificador do módulo. Para esse exemplo, ficará assim:
 
 ```sh
 go mod init github.com/danielsantello/packaging
@@ -212,6 +212,97 @@ module github.com/danielsantello/packaging
 
 go 1.25.0
 ```
+
+#### Diferença entre módulo e pacote
+```sh
+Módulo
+└── github.com/danielsantello/packaging
+
+Pacotes
+├── math
+├── crypto
+├── network
+└── wallet
+```
+
+Um módulo pode conter vários pacotes.
+
+Agora, vamos olhar para um exemplo de como importar um pacote para ser usado dentro do GO:
+
+Segue abaixo uma visão das pastas:
+```sh
+packaging/
+│
+├── go.mod
+│
+├── math/
+│   └── math.go
+│
+└── cmd/
+    └── main.go
+```
+
+Primeiro, criaremos uma pasta chamada `math` na raiz do projeto. Dentro dela, um arquivo chamado `math.go` com o seguinte conteúdo:
+
+```sh
+package math
+
+type Math struct {
+	A int
+	B int
+}
+
+func (m Math) Add() int {
+	return m.A + m.B
+}
+```
+
+Agora, vamos criar o arquivo principal na pasta `cmd` chamado `main.go` com o seguinte conteúdo:
+
+```sh
+package main
+
+import (
+	"fmt"
+	"github.com/danielsantello/packaging/math"
+)
+
+func main() {
+	m := math.Math{A: 1, B: 2}
+	fmt.Println(m.Add())
+}
+```
+
+O caminho utilizado no import sempre começa pelo nome do módulo definido no `go.mod` e termina com o pacote que desejamos importar.
+
+Exemplo:
+```sh
+github.com/danielsantello/packaging/math
+│──────────────────────────────────│└── pacote
+           módulo
+```
+
+Resumo:
+```sh
+go mod init
+    ↓
+cria um módulo
+
+package
+    ↓
+organiza o código
+
+import
+    ↓
+permite utilizar outro pacote
+
+go.mod
+    ↓
+define o caminho base dos imports
+```
+
+> [!NOTE]
+> Em Go, cada diretório normalmente representa um pacote.
 
 <div align="right"><a href="#sumário">Sumário [↑]</a></div>
 <div align="center">· · ·</div>
