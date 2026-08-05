@@ -18,7 +18,7 @@
 	- [Declaração e atribuição](#declaração-e-atribuição)
 - [Biblioteca Padrão](/languages/go/standard-library/standard-library.md)
 	- [fmt](/languages/go/standard-library/fmt.md)
-- [Packaging](#packaging) 
+- [Módulos e Pacotes](#módulos-e-pacotes) 
 - [Exemplos](#exemplos)
 	- [Hello](#hello)
 - [Referências](#referências)
@@ -171,7 +171,7 @@ source ~/.bashrc
 <div align="right"><a href="#sumário">Sumário [↑]</a></div>
 <div align="center">· · ·</div>
 
-### Packaging
+### Módulos e Pacotes
 Quando instalamos o Go, algumas variáveis de ambiente são configuradas. Uma delas é a `GOPATH`, que representa o diretório de trabalho do Go. Atualmente, com o uso de módulos (`go.mod`), ela deixou de definir onde os pacotes do projeto ficam, sendo utilizada principalmente para armazenar binários, cache e dependências baixadas.
 
 ```sh
@@ -183,7 +183,7 @@ Resultado:
 /home/dalq/go
 ```
 
-Cada projeto Go moderno é organizado como um módulo. Um módulo é criado através do comando `go mod init` e define o caminho base utilizado para importar todos os pacotes do projeto.
+Cada projeto Go moderno é organizado como um módulo. Um módulo é criado através do comando `go mod init` e define o caminho base utilizado pelos imports do projeto.
 
 Para isso, vamos criar uma pasta onde ficará o nosso projeto:
 
@@ -218,14 +218,26 @@ go 1.25.0
 Módulo
 └── github.com/danielsantello/packaging
 
-Pacotes
+Pacotes do módulo
 ├── math
 ├── crypto
 ├── network
 └── wallet
 ```
 
-Um módulo pode conter vários pacotes.
+Um módulo pode conter vários pacotes:
+```sh
+Projeto
+│
+├── Módulo
+│   └── definido no go.mod
+│
+├── Pacotes
+│   └── um por diretório
+│
+└── Arquivos
+    └── pertencem a um pacote
+```
 
 Agora, vamos olhar para um exemplo de como importar um pacote para ser usado dentro do GO:
 
@@ -288,17 +300,17 @@ go mod init
     ↓
 cria um módulo
 
+go.mod
+    ↓
+define o módulo do projeto
+
 package
     ↓
 organiza o código
 
 import
     ↓
-permite utilizar outro pacote
-
-go.mod
-    ↓
-define o caminho base dos imports
+utiliza outros pacotes
 ```
 
 > [!NOTE]
