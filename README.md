@@ -44,3 +44,7 @@ Este repositório reúne os principais comandos, conceitos e experimentos realiz
 - Dependency Injection
 - Design Patterns
 - Microserviços
+
+### Projetos
+
+- [Projetos desenvolvidos](projects/README.md)
