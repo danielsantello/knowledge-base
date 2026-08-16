@@ -53,7 +53,11 @@ Projetos desenvolvidos de forma independente para estudo, experimentação ou ap
 
 ### Bitcoin Lottery Miner
 
+Laboratório modular para estudo do protocolo Bitcoin, desenvolvido em Go, com o objetivo de construir um minerador solo experimental conectado a um nó Bitcoin Core próprio e executado em um Raspberry Pi.
+
 *Em construção.*
+
+- [Repositório no GitHub](https://github.com/danielsantello/go-bitcoin-lab)
 
 <div align="right"><a href="#sumário">Sumário [↑]</a></div>
 <div align="center">· · ·</div>
