@@ -9,6 +9,7 @@
   - [fmt.Println()](#fmtprintln)
   - [fmt.Printf()](#fmtprintf)
   - [fmt.Sprintf()](#fmtsprintf)
+  - [fmt.Fprintln()](#fmtfprintln)
   - [fmt.Errorf()](#fmterrorf)
   - [fmt.Scan()](#fmtscan)
 - [Strings de formatação](#strings-de-formatação)
@@ -155,6 +156,58 @@ Nome: Daniel
 ```
 
 Muito utilizado para montar mensagens.
+
+<div align="right"><a href="#sumário">Sumário [↑]</a></div>
+<div align="center">· · ·</div>
+
+#### fmt.Fprintln
+
+A assinatura conceitual é:
+```text
+fmt.Fprintln(destino, valores...)
+```
+
+Portanto:
+```go
+fmt.Fprintln(os.Stderr, err)
+```
+
+significa: Escreva o valor de `err` no fluxo de saída de erros do sistema operacional.
+
+Código	Destino
+fmt.Println(err)	stdout, saída normal
+fmt.Fprintln(os.Stdout, err)	stdout, explicitamente
+fmt.Fprintln(os.Stderr, err)	stderr, saída de erros
+
+| Código | Destino |
+| ------ | ------- |
+| `fmt.Println(err)` | `stdout`, saída normal |
+| `fmt.Fprintln(os.Stdout, err)` | `stdout`, explicitamente |
+| `fmt.Fprintln(os.Stderr, err)` | `stderr`, saída de erros |
+
+Usamos `stderr` para erros porque isso mantém separados:
+
+- resultados normais do programa;
+- mensagens de falha.
+
+Por exemplo:
+
+```sh
+cnpj-api algum-comando > saida.txt
+```
+
+O operador `>` redireciona apenas `stdout`. Com nosso código, um erro continuará aparecendo no terminal porque foi enviado para `stderr`.
+
+Se quiséssemos redirecionar somente os erros:
+
+```sh
+cnpj-api algum-comando 2> erro.txt
+```
+
+No terminal:
+
+- `1` representa stdout;
+- `2` representa stderr.
 
 <div align="right"><a href="#sumário">Sumário [↑]</a></div>
 <div align="center">· · ·</div>
