@@ -160,7 +160,7 @@ Muito utilizado para montar mensagens.
 <div align="right"><a href="#sumário">Sumário [↑]</a></div>
 <div align="center">· · ·</div>
 
-#### fmt.Fprintln
+#### fmt.Fprintln()
 
 A assinatura conceitual é:
 ```text
