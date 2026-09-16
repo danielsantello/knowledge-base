@@ -172,12 +172,7 @@ Portanto:
 fmt.Fprintln(os.Stderr, err)
 ```
 
-significa: Escreva o valor de `err` no fluxo de saída de erros do sistema operacional.
-
-Código	Destino
-fmt.Println(err)	stdout, saída normal
-fmt.Fprintln(os.Stdout, err)	stdout, explicitamente
-fmt.Fprintln(os.Stderr, err)	stderr, saída de erros
+Significa: Escreva o valor de `err` no fluxo de saída de erros do sistema operacional.
 
 | Código | Destino |
 | ------ | ------- |
